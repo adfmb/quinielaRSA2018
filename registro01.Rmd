@@ -20,17 +20,24 @@ Sidebar {.sidebar}
 The streaming data is a 1-week-delayed livestream of download
 logs from  cran.rstudio.com. The server code for that service is at [jcheng5/cransim](https://github.com/jcheng5/cransim).
 
+![](Sigueme02.jpg)
+
 
 ```{r}
 # Rate at which to flag high download traffic
-sliderInput("rateThreshold", "Warn when rate exceeds:",
-            min = 0, max = 50, value = 3, step = 0.1
-)
+# sliderInput("rateThreshold", "Warn when rate exceeds:",
+#             min = 0, max = 50, value = 3, step = 0.1
+# )
 
 # Maximum number of raw data rows to keep
-numericInput("maxrows", "Recent downloads window:", 50)
+# numericInput("maxrows", "Recent downloads window:", 50)
 ```
 
+Dashboard
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
 
 
 Column {data-width=650}
