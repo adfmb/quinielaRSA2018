@@ -1,0 +1,59 @@
+---
+title: "QUINIELA RUSIA 2018"
+subtitle: "Sígueme A 2018"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(shiny)
+```
+
+Sidebar {.sidebar}
+=======================================================================
+
+### cran.rstudio.com
+
+The streaming data is a 1-week-delayed livestream of download
+logs from  cran.rstudio.com. The server code for that service is at [jcheng5/cransim](https://github.com/jcheng5/cransim).
+
+
+```{r}
+# Rate at which to flag high download traffic
+sliderInput("rateThreshold", "Warn when rate exceeds:",
+            min = 0, max = 50, value = 3, step = 0.1
+)
+
+# Maximum number of raw data rows to keep
+numericInput("maxrows", "Recent downloads window:", 50)
+```
+
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+
