@@ -81,7 +81,92 @@ Row {data-height=250} {.tabset}
 ### Grupo A
 
 ```{r echo=FALSE}
-textInput("rusia1", "Rusia",width = '20px')
+fluidRow(
+  column(1, 
+    numericInput("rusia1", "Rusia", min=0, max=100, value=0,step=1,
+             width = '65px')
+    ),
+  column(1,
+        tags$div(
+  HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+)),
+    column(2,
+           numericInput("as1", "Arabia S", min=0, max=100, value=0,step=1,
+             width = '65px')),
+
+
+column(1, 
+    numericInput("rusia2", "Rusia", min=0, max=100, value=0,step=1,
+             width = '65px')
+    ),
+  column(1,
+        tags$div(
+  HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+)),
+    column(2,
+           numericInput("egipto1", "Egipto", min=0, max=100, value=0,step=1,
+             width = '65px'))
+
+
+)
+
+fluidRow(
+  column(1, 
+    numericInput("uruguay1", "Uruguay", min=0, max=100, value=0,step=1,
+             width = '65px')
+    ),
+  column(1,
+        tags$div(
+  HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+)),
+    column(2,
+           numericInput("rusia3", "Rusia", min=0, max=100, value=0,step=1,
+             width = '65px')),
+
+
+column(1, 
+    numericInput("uruguay2", "Uruguay", min=0, max=100, value=0,step=1,
+             width = '65px')
+    ),
+  column(1,
+        tags$div(
+  HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+)),
+    column(2,
+           numericInput("as2", "Arabia S", min=0, max=100, value=0,step=1,
+             width = '65px'))
+
+
+)
+
+fluidRow(
+  column(1, 
+    numericInput("as3", "Arabia S", min=0, max=100, value=0,step=1,
+             width = '65px')
+    ),
+  column(1,
+        tags$div(
+  HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+)),
+    column(2,
+           numericInput("egipto2", "Egipto", min=0, max=100, value=0,step=1,
+             width = '65px')),
+
+
+column(1, 
+    numericInput("egipto3", "Egipto", min=0, max=100, value=0,step=1,
+             width = '65px')
+    ),
+  column(1,
+        tags$div(
+  HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+)),
+    column(2,
+           numericInput("uruguay3", "Uruguay", min=0, max=100, value=0,step=1,
+             width = '65px'))
+
+
+)
 ```
 
 
