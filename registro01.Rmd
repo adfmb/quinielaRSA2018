@@ -3,68 +3,88 @@ title: "QUINIELA RUSIA 2018"
 subtitle: "Sígueme A 2018"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: scroll
-    logo: Sigueme05.png
+    orientation: rows
+    # vertical_layout: scroll
+    logo: football-soccer-ball-48-183228.png
     theme: cerulean
 runtime: shiny
 ---
+<!-- [id]: russia09.png -->
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
 library(shiny)
+library(png)
 options(warn = 0)
 ```
 
-Sidebar {.sidebar data-width=250}
+<!-- Sidebar {.sidebar data-width=320} -->
+<!-- ======================================================================= -->
+<!-- ```{r fig.width=3.15, fig.height=6.35,echo=FALSE}
+library(jpeg)
+library(png)
+library(grid)
+# img <- readJPEG("russia01.jpg")
+img <- readPNG("russia02.png")
+
+grid.raster(img)
+ # img(src='russia03.png', align = "center")
+<!-- ``` -->
+
+Sidebar {.sidebar data-width=200}
 =======================================================================
-
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-\newline
-
-```{r fig.width=2, fig.height=2,echo=FALSE}
+```{r fig.width=.5, fig.height=.5,echo=FALSE}
 library(jpeg)
 library(grid)
-img <- readJPEG("russia01.jpg")
+# img <- readJPEG("russia01.jpg")
+# img <- readJPEG("Sigueme03.jpg")
+img <- readPNG("Sigueme05.png")
 
 grid.raster(img)
 ```
 
 
-Dashboard
+Fase de grupos
 =======================================================================
 
-Row
+Row {data-height=350}
+-----------------------------------------------------------------------
+<!-- ```{r fig.width=20, fig.height=4,echo=FALSE}
+library(jpeg)
+library(png)
+library(grid)
+# img <- readJPEG("russia01.jpg")
+# img <- readPNG("russia07.png")
+# img <- readJPEG("Sigueme02.jpg")
+# img <- readJPEG("russia05.jpg")
+
+# grid.raster(img)
+ img(src='russia09.png', align = "center")
+<!-- ``` -->
+<!-- ![](russia09.png){#id .class width=1200 height=320px} -->
+<!-- ![](russia09.png){ width=100% height=30% } -->
+[![](russia14.jpg){#id .class width=1150 height=270px}](http://www.fifa.com/worldcup/)
+<!-- ![](russia12.jpg){#id .class width=1150 height=300px} -->
+<!-- ![](russia15.png){#id .class width=1150 height=300px} -->
+<!-- http://www.squawka.com/news/world-cup-2018-russias-stadiums-in-pictures/201955#2oEbD5Hqu7cCUy2y.97 -->
+
+Row {data-height=250} {.tabset}
 -----------------------------------------------------------------------
 
-
-Column {data-width=650}
------------------------------------------------------------------------
-
-### Chart A
+### Grupo A
 
 ```{r}
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
 
-### Chart B
+### Grupo B
 
 ```{r}
 
 ```
 
-### Chart C
+### Grupo C
 
 ```{r}
 
