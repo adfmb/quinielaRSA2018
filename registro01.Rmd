@@ -17,6 +17,7 @@ library(shiny)
 library(png)
 library(dplyr)
 source("utils/calcula_goles.R")
+source("utils/etopn.R")
 options(warn = 0)
 options(digits = 0)
 ```
@@ -1277,3 +1278,123 @@ fluidRow(
   column(2, actionButton(paste0("button",Grupo), "Actualizar")
   ))
 ```
+
+Octavos de Final
+=======================================================================
+    
+```{r}
+ea<-reactive({#input$buttonA, {
+  etopn(lista2A()$data_resumenEquipos)
+})
+eb<-reactive({#input$buttonB, {
+  etopn(lista2B()$data_resumenEquipos)
+})
+ec<-reactive({#input$buttonC, {
+  etopn(lista2C()$data_resumenEquipos)
+})
+ed<-reactive({#input$buttonD, {
+  etopn(lista2D()$data_resumenEquipos)
+})
+ee<-reactive({#input$buttonE, {
+  etopn(lista2E()$data_resumenEquipos)
+})
+ef<-reactive({#input$buttonF, {
+  etopn(lista2F()$data_resumenEquipos)
+})
+eg<-reactive({#input$buttonG, {
+  etopn(lista2G()$data_resumenEquipos)
+})
+eh<-reactive({#input$buttonH, {
+  etopn(lista2H()$data_resumenEquipos)
+})
+```
+
+Row
+-------------------------------------
+    
+### [W49]
+    
+```{r}
+
+Grupo1<-"A"
+Grupo2<-"B"
+
+fluidRow(
+        
+        column(4,
+               h2(paste0("1",Grupo1))
+              ),
+  
+        column(4,
+         numericInput(paste0("E1",Grupo1),
+                      renderUI(paste0(ea()[1])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+fluidRow(
+
+   column(4,
+           tags$div(
+             HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+          )),
+
+        column(4,
+         tags$div(
+                 HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+               ))
+
+)
+
+fluidRow(
+        column(4,
+               h2(paste0("2",Grupo2))
+              ),
+  
+        column(4,
+         numericInput(paste0("E2",Grupo2),
+                      renderUI(paste0(eb()[2])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+```
+ 
+### [W50]
+    
+```{r}
+``` 
+
+### [W53]
+    
+```{r}
+```
+ 
+### [W54]
+    
+```{r}
+``` 
+
+
+Row
+-------------------------------------
+    
+### [W51]
+    
+```{r}
+```
+ 
+### [W52]
+    
+```{r}
+``` 
+
+### [W55]
+    
+```{r}
+```
+ 
+### [W56]
+    
+```{r}
+``` 
