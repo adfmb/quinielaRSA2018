@@ -555,18 +555,18 @@ fluidRow(
 ### Grupo D
 
 ```{r}
-v1<-rbind(c("D_p1_e1", "Rusia"),
-    c("D_p1_e2", "Arabia S"),
-    c("D_p2_e1", "Rusia"),
-    c("D_p2_e2", "Egipto"),
-    c("D_p3_e1", "Uruguay"),
-    c("D_p3_e2", "Rusia"),
-    c("D_p4_e1", "Uruguay"),
-    c("D_p4_e2", "Arabia S"),
-    c("D_p5_e1", "Arabia S"),
-    c("D_p5_e2", "Egipto"),
-    c("D_p6_e1", "Egipto"),
-    c("D_p6_e2", "Uruguay")
+v1<-rbind(c("D_p1_e1", "Argentina"),
+    c("D_p1_e2", "Islandia"),
+    c("D_p2_e1", "Croacia"),
+    c("D_p2_e2", "Nigeria"),
+    c("D_p3_e1", "Argentina"),
+    c("D_p3_e2", "Croacia"),
+    c("D_p4_e1", "Nigeria"),
+    c("D_p4_e2", "Islandia"),
+    c("D_p5_e1", "Nigeria"),
+    c("D_p5_e2", "Argentina"),
+    c("D_p6_e1", "Islandia"),
+    c("D_p6_e2", "Croacia")
 )
 colnames(v1)<-c("Codigo","Equipo")
 dataD<-data.frame(as.data.frame(v1))
@@ -606,7 +606,7 @@ sidebarLayout(position = "right",
               mainPanel(
                 fluidRow(
                   column(2, 
-                         numericInput("D_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("D_p1_e1", "Argentina", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -614,12 +614,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("D_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("D_p1_e2", "Islandia", min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("D_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("D_p2_e1", "Croacia", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -627,7 +627,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("D_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("D_p2_e2", "Nigeria", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   )
                 ),
@@ -635,7 +635,7 @@ sidebarLayout(position = "right",
                 
                 fluidRow(
                   column(2, 
-                         numericInput("D_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("D_p3_e1", "Argentina", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -643,12 +643,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("D_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("D_p3_e2", "Croacia", min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("D_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("D_p4_e1", "Nigeria", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -656,7 +656,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("D_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("D_p4_e2", "Islandia", min=0, max=100, value=0,step=1,
                                       width = '65px'))
                   
                   
@@ -664,7 +664,7 @@ sidebarLayout(position = "right",
                 
                 fluidRow(
                   column(2, 
-                         numericInput("D_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("D_p5_e1", "Nigeria", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -672,12 +672,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("D_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("D_p5_e2", "Argentina", min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("D_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("D_p6_e1", "Islandia", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -685,7 +685,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("D_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("D_p6_e2", "Croacia", min=0, max=100, value=0,step=1,
                                       width = '65px'))
                   
                   
@@ -703,18 +703,18 @@ fluidRow(
 ### Grupo E
 
 ```{r}
-v1<-rbind(c("E_p1_e1", "Rusia"),
-    c("E_p1_e2", "Arabia S"),
-    c("E_p2_e1", "Rusia"),
-    c("E_p2_e2", "Egipto"),
-    c("E_p3_e1", "Uruguay"),
-    c("E_p3_e2", "Rusia"),
-    c("E_p4_e1", "Uruguay"),
-    c("E_p4_e2", "Arabia S"),
-    c("E_p5_e1", "Arabia S"),
-    c("E_p5_e2", "Egipto"),
-    c("E_p6_e1", "Egipto"),
-    c("E_p6_e2", "Uruguay")
+v1<-rbind(c("E_p1_e1", "Costa R"),
+    c("E_p1_e2", "Serbia"),
+    c("E_p2_e1", "Brasil"),
+    c("E_p2_e2", "Suiza"),
+    c("E_p3_e1", "Brasil"),
+    c("E_p3_e2", "Costa R"),
+    c("E_p4_e1", "Serbia"),
+    c("E_p4_e2", "Suiza"),
+    c("E_p5_e1", "Serbia"),
+    c("E_p5_e2", "Brasil"),
+    c("E_p6_e1", "Suiza"),
+    c("E_p6_e2", "Costa R")
 )
 colnames(v1)<-c("Codigo","Equipo")
 dataE<-data.frame(as.data.frame(v1))
@@ -754,7 +754,7 @@ sidebarLayout(position = "right",
               mainPanel(
                 fluidRow(
                   column(2, 
-                         numericInput("E_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("E_p1_e1", "Costa R", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -762,12 +762,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("E_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("E_p1_e2", "Serbia", min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("E_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("E_p2_e1", "Brasil", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -775,7 +775,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("E_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("E_p2_e2", "Suiza", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   )
                 ),
@@ -783,7 +783,7 @@ sidebarLayout(position = "right",
                 
                 fluidRow(
                   column(2, 
-                         numericInput("E_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("E_p3_e1", "Brasil", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -791,12 +791,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("E_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("E_p3_e2", "Costa R", min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("E_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("E_p4_e1", "Serbia", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -804,7 +804,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("E_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("E_p4_e2", "Suiza", min=0, max=100, value=0,step=1,
                                       width = '65px'))
                   
                   
@@ -812,7 +812,7 @@ sidebarLayout(position = "right",
                 
                 fluidRow(
                   column(2, 
-                         numericInput("E_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("E_p5_e1", "Serbia", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -820,12 +820,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("E_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("E_p5_e2", "Brasil", min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("E_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("E_p6_e1", "Suiza", min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -833,7 +833,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("E_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("E_p6_e2", "Costa R", min=0, max=100, value=0,step=1,
                                       width = '65px'))
                   
                   
@@ -850,24 +850,25 @@ fluidRow(
 ### Grupo F
 
 ```{r}
-v1<-rbind(c("F_p1_e1", "Rusia"),
-    c("F_p1_e2", "Arabia S"),
-    c("F_p2_e1", "Rusia"),
-    c("F_p2_e2", "Egipto"),
-    c("F_p3_e1", "Uruguay"),
-    c("F_p3_e2", "Rusia"),
-    c("F_p4_e1", "Uruguay"),
-    c("F_p4_e2", "Arabia S"),
-    c("F_p5_e1", "Arabia S"),
-    c("F_p5_e2", "Egipto"),
-    c("F_p6_e1", "Egipto"),
-    c("F_p6_e2", "Uruguay")
+Grupo<-"F"
+v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Alemania"),
+          c(paste0(Grupo,"_p1_e2"), "México"),
+          c(paste0(Grupo,"_p2_e1"), "Suecia"),
+          c(paste0(Grupo,"_p2_e2"), "Corea S"),
+          c(paste0(Grupo,"_p3_e1"), "Corea S"),
+          c(paste0(Grupo,"_p3_e2"), "México"),
+          c(paste0(Grupo,"_p4_e1"), "Alemania"),
+          c(paste0(Grupo,"_p4_e2"), "Suecia"),
+          c(paste0(Grupo,"_p5_e1"), "México"),
+          c(paste0(Grupo,"_p5_e2"), "Suecia"),
+          c(paste0(Grupo,"_p6_e1"), "Corea S"),
+          c(paste0(Grupo,"_p6_e2"), "Alemania")
 )
 colnames(v1)<-c("Codigo","Equipo")
 dataF<-data.frame(as.data.frame(v1))
 dataF$Codigo<-as.character(dataF$Codigo)
 dataF$Equipo<-as.character(dataF$Equipo)
-  
+# source("utils/partidosF.R")
  lista2F<-eventReactive(input$buttonF, {
    
   calcula_Goles(vectorgoles=c(input$F_p1_e1,input$F_p1_e2,
@@ -901,7 +902,7 @@ sidebarLayout(position = "right",
               mainPanel(
                 fluidRow(
                   column(2, 
-                         numericInput("F_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("F_p1_e1", dataF$Equipo[1], min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -909,12 +910,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("F_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("F_p1_e2", dataF$Equipo[2], min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("F_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("F_p2_e1", dataF$Equipo[3], min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -922,7 +923,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("F_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("F_p2_e2", dataF$Equipo[4], min=0, max=100, value=0,step=1,
                                       width = '65px')
                   )
                 ),
@@ -930,7 +931,7 @@ sidebarLayout(position = "right",
                 
                 fluidRow(
                   column(2, 
-                         numericInput("F_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("F_p3_e1", dataF$Equipo[5], min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -938,12 +939,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("F_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                         numericInput("F_p3_e2", dataF$Equipo[6], min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("F_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("F_p4_e1", dataF$Equipo[7], min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -951,7 +952,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("F_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("F_p4_e2", dataF$Equipo[8], min=0, max=100, value=0,step=1,
                                       width = '65px'))
                   
                   
@@ -959,7 +960,7 @@ sidebarLayout(position = "right",
                 
                 fluidRow(
                   column(2, 
-                         numericInput("F_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                         numericInput("F_p5_e1", dataF$Equipo[9], min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -967,12 +968,12 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("F_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("F_p5_e2", dataF$Equipo[10], min=0, max=100, value=0,step=1,
                                       width = '65px')),
                   
                   
                   column(2, 
-                         numericInput("F_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                         numericInput("F_p6_e1", dataF$Equipo[11], min=0, max=100, value=0,step=1,
                                       width = '65px')
                   ),
                   column(2,
@@ -980,7 +981,7 @@ sidebarLayout(position = "right",
                            HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
                          )),
                   column(2,
-                         numericInput("F_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                         numericInput("F_p6_e2", dataF$Equipo[12], min=0, max=100, value=0,step=1,
                                       width = '65px'))
                   
                   
