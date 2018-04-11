@@ -92,7 +92,7 @@ calcula_Goles<-function(vectorgoles,data){
         GC=sum(GolesContra),
         D=sum(DiferenciaGoles),
         Pts=sum(Pts)
-      )
+      ) %>% arrange(desc(Pts),desc(D),desc(GF))
     data_resumenEquipos<-as.data.frame(data_resumenEquipos)
     
     

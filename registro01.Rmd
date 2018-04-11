@@ -86,16 +86,21 @@ Row {data-height=280} {.tabset}
 ```{r echo=FALSE}
 v1<-rbind(c("A_p1_e1", "Rusia"),
     c("A_p1_e2", "Arabia S"),
-    c("A_p2_e1", "Rusia"),
-    c("A_p2_e2", "Egipto"),
-    c("A_p3_e1", "Uruguay"),
-    c("A_p3_e2", "Rusia"),
+    
+    c("A_p2_e1", "Egipto"),
+    c("A_p2_e2", "Uruguay"),
+    
+    c("A_p3_e1", "Rusia"),
+    c("A_p3_e2", "Egipto"),
+    
     c("A_p4_e1", "Uruguay"),
     c("A_p4_e2", "Arabia S"),
-    c("A_p5_e1", "Arabia S"),
-    c("A_p5_e2", "Egipto"),
-    c("A_p6_e1", "Egipto"),
-    c("A_p6_e2", "Uruguay")
+    
+    c("A_p5_e1", "Uruguay"),
+    c("A_p5_e2", "Rusia"),
+    
+    c("A_p6_e1", "Arabia S"),
+    c("A_p6_e2", "Egipto")
 )
 colnames(v1)<-c("Codigo","Equipo")
 dataA<-data.frame(as.data.frame(v1))
@@ -113,155 +118,1320 @@ dataA$Equipo<-as.character(dataA$Equipo)
                      ),
                 data=dataA)
   })
- 
 sidebarLayout(position = "right",
-  sidebarPanel(
-    
-    # renderDataTable(data.frame("numeros"=rnorm(6),"num2"=rnorm(6))),
-    # renderTable(as.matrix(data.frame("Equipo"=unique(data$Equipo),
-    #                                  "G"=input$A_p1_e1,
-    #                                  "P"=input$A_p1_e2,
-    #                                  "E"=rnorm(4),
-    #                                  "GF"=rnorm(4),
-    #                                  "GC"=rnorm(4),
-    #                                  "D"=rnorm(4),
-    #                                  "Pts"=input$A_p6_e2))),
-    
-     renderTable({
-      if(!is.null(lista2A()$data_resumenEquipos)){
-       as.matrix(lista2A()$data_resumenEquipos)
-
-      }else{
-          m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
-          colnames(m)<-"¡¡¡AGUAS!!!!"
-          m
-        }
-
-      }),
-    
-    width = 4
-    
-  ),
-  mainPanel(
-  fluidRow(
-      column(2, 
-        numericInput("A_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
-                 width = '65px')
-        ),
-      column(2,
-            tags$div(
-      HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
-    )),
-        column(2,
-               numericInput("A_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
-                 width = '65px')),
-    
-    
-    column(2, 
-        numericInput("A_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
-                 width = '65px')
-        ),
-      column(2,
-            tags$div(
-      HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
-    )),
-        column(2,
-               numericInput("A_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
-                 width = '65px')
-               )
-    ),
-     
-     
-    fluidRow(
-      column(2, 
-        numericInput("A_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
-                 width = '65px')
-        ),
-      column(2,
-            tags$div(
-      HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
-    )),
-        column(2,
-               numericInput("A_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
-                 width = '65px')),
-    
-    
-    column(2, 
-        numericInput("A_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
-                 width = '65px')
-        ),
-      column(2,
-            tags$div(
-      HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
-    )),
-        column(2,
-               numericInput("A_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
-                 width = '65px'))
-    
-    
-    ),
-    
-    fluidRow(
-      column(2, 
-        numericInput("A_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
-                 width = '65px')
-        ),
-      column(2,
-            tags$div(
-      HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
-    )),
-        column(2,
-               numericInput("A_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
-                 width = '65px')),
-    
-    
-    column(2, 
-        numericInput("A_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
-                 width = '65px')
-        ),
-      column(2,
-            tags$div(
-      HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
-    )),
-        column(2,
-               numericInput("A_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
-                 width = '65px'))
-  
-  
-    ),
-    width = 8
-  )
+              sidebarPanel(
+                
+                # renderDataTable(data.frame("numeros"=rnorm(6),"num2"=rnorm(6))),
+                # renderTable(as.matrix(data.frame("Equipo"=unique(data$Equipo),
+                #                                  "G"=input$A_p1_e1,
+                #                                  "P"=input$A_p1_e2,
+                #                                  "E"=rnorm(4),
+                #                                  "GF"=rnorm(4),
+                #                                  "GC"=rnorm(4),
+                #                                  "D"=rnorm(4),
+                #                                  "Pts"=input$A_p6_e2))),
+                
+                renderTable({
+                  if(!is.null(lista2A()$data_resumenEquipos)){
+                    as.matrix(lista2A()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("A_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("A_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("A_p2_e1", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("A_p2_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("A_p3_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("A_p3_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("A_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("A_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("A_p5_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("A_p5_e2", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("A_p6_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("A_p6_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
 )
 
- fluidRow(
-      column(2, actionButton("buttonA", "Actualizar")
-             ))
- 
- # renderTable({
- #      if(!is.null(lista2A()$data2)){
- #        lista2A()$data2
- #      }else{
- #          m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
- #          colnames(m)<-"¡¡¡AGUAS!!!!"
- #          m
- #        }
- #           
- #      })
-
-
-
+fluidRow(
+  column(2, actionButton("buttonA", "Actualizar")
+  ))
 ```
 
 
 ### Grupo B
 
 ```{r}
+v1<-rbind(c("B_p1_e1", "Marruecos"),
+    c("B_p1_e2", "Irán"),
+    
+    c("B_p2_e1", "Portugal"),
+    c("B_p2_e2", "España"),
+    
+    c("B_p3_e1", "Portugal"),
+    c("B_p3_e2", "Marruecos"),
+    
+    c("B_p4_e1", "Irán"),
+    c("B_p4_e2", "España"),
+    
+    c("B_p5_e1", "Irán"),
+    c("B_p5_e2", "Portugal"),
+    
+    c("B_p6_e1", "España"),
+    c("B_p6_e2", "Marruecos")
+)
+colnames(v1)<-c("Codigo","Equipo")
+dataB<-data.frame(as.data.frame(v1))
+dataB$Codigo<-as.character(dataB$Codigo)
+dataB$Equipo<-as.character(dataB$Equipo)
+  
+ lista2B<-eventReactive(input$buttonB, {
+   
+  calcula_Goles(vectorgoles=c(input$B_p1_e1,input$B_p1_e2,
+                              input$B_p2_e1,input$B_p2_e2,
+                              input$B_p3_e1,input$B_p3_e2,
+                              input$B_p4_e1,input$B_p4_e2,
+                              input$B_p5_e1,input$B_p5_e2,
+                              input$B_p6_e1,input$B_p6_e2
+                     ),
+                data=dataB)
+  })
+sidebarLayout(position = "right",
+              sidebarPanel(
+            
+                
+                renderTable({
+                  if(!is.null(lista2B()$data_resumenEquipos)){
+                    as.matrix(lista2B()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("B_p1_e1", "Marruecos", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("B_p1_e2", "Irán", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("B_p2_e1", "Portugal", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("B_p2_e2", "España", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("B_p3_e1", "Portugal", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("B_p3_e2", "Marruecos", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("B_p4_e1", "Irán", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("B_p4_e2", "España", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("B_p5_e1", "Irán", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("B_p5_e2", "Portugal", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("B_p6_e1", "España", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("B_p6_e2", "Marruecos", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
+)
 
+fluidRow(
+  column(2, actionButton("buttonB", "Actualizar")
+  ))
 ```
 
 ### Grupo C
 
 ```{r}
+v1<-rbind(c("C_p1_e1", "Francia"),
+    c("C_p1_e2", "Australia"),
+    
+    c("C_p2_e1", "Perú"),
+    c("C_p2_e2", "Dinamarca"),
+    
+    c("C_p3_e1", "Dinamarca"),
+    c("C_p3_e2", "Australia"),
+    
+    c("C_p4_e1", "Francia"),
+    c("C_p4_e2", "Perú"),
+    
+    c("C_p5_e1", "Dinamarca"),
+    c("C_p5_e2", "Francia"),
+    
+    c("C_p6_e1", "Australia"),
+    c("C_p6_e2", "Perú")
+)
+colnames(v1)<-c("Codigo","Equipo")
+dataC<-data.frame(as.data.frame(v1))
+dataC$Codigo<-as.character(dataC$Codigo)
+dataC$Equipo<-as.character(dataC$Equipo)
+  
+ lista2C<-eventReactive(input$buttonC, {
+   
+  calcula_Goles(vectorgoles=c(input$C_p1_e1,input$C_p1_e2,
+                              input$C_p2_e1,input$C_p2_e2,
+                              input$C_p3_e1,input$C_p3_e2,
+                              input$C_p4_e1,input$C_p4_e2,
+                              input$C_p5_e1,input$C_p5_e2,
+                              input$C_p6_e1,input$C_p6_e2
+                     ),
+                data=dataC)
+  })
+sidebarLayout(position = "right",
+              sidebarPanel(
+            
+                
+                renderTable({
+                  if(!is.null(lista2C()$data_resumenEquipos)){
+                    as.matrix(lista2C()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("C_p1_e1", "Francia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                
+   
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  
+    
+                  column(2,
+                         numericInput("C_p1_e2", "Australia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+          
+                  column(2, 
+                         numericInput("C_p2_e1", "Perú", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("C_p2_e2", "Dinamarca", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+             
+                fluidRow(
+                  column(2, 
+                         numericInput("C_p3_e1", "Dinamarca", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("C_p3_e2", "Australia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+             
+                  column(2, 
+                         numericInput("C_p4_e1", "Francia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("C_p4_e2", "Perú", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("C_p5_e1", "Dinamarca", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("C_p5_e2", "Francia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("C_p6_e1", "Australia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("C_p6_e2", "Perú", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
+)
 
+fluidRow(
+  column(2, actionButton("buttonC", "Actualizar")
+  ))
 ```
 
+
+### Grupo D
+
+```{r}
+v1<-rbind(c("D_p1_e1", "Rusia"),
+    c("D_p1_e2", "Arabia S"),
+    c("D_p2_e1", "Rusia"),
+    c("D_p2_e2", "Egipto"),
+    c("D_p3_e1", "Uruguay"),
+    c("D_p3_e2", "Rusia"),
+    c("D_p4_e1", "Uruguay"),
+    c("D_p4_e2", "Arabia S"),
+    c("D_p5_e1", "Arabia S"),
+    c("D_p5_e2", "Egipto"),
+    c("D_p6_e1", "Egipto"),
+    c("D_p6_e2", "Uruguay")
+)
+colnames(v1)<-c("Codigo","Equipo")
+dataD<-data.frame(as.data.frame(v1))
+dataD$Codigo<-as.character(dataD$Codigo)
+dataD$Equipo<-as.character(dataD$Equipo)
+  
+ lista2D<-eventReactive(input$buttonD, {
+   
+  calcula_Goles(vectorgoles=c(input$D_p1_e1,input$D_p1_e2,
+                              input$D_p2_e1,input$D_p2_e2,
+                              input$D_p3_e1,input$D_p3_e2,
+                              input$D_p4_e1,input$D_p4_e2,
+                              input$D_p5_e1,input$D_p5_e2,
+                              input$D_p6_e1,input$D_p6_e2
+                     ),
+                data=dataD)
+  })
+sidebarLayout(position = "right",
+              sidebarPanel(
+            
+                
+                renderTable({
+                  if(!is.null(lista2D()$data_resumenEquipos)){
+                    as.matrix(lista2D()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("D_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("D_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("D_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("D_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("D_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("D_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("D_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("D_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("D_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("D_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("D_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("D_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
+)
+
+fluidRow(
+  column(2, actionButton("buttonD", "Actualizar")
+  ))
+```
+
+
+### Grupo E
+
+```{r}
+v1<-rbind(c("E_p1_e1", "Rusia"),
+    c("E_p1_e2", "Arabia S"),
+    c("E_p2_e1", "Rusia"),
+    c("E_p2_e2", "Egipto"),
+    c("E_p3_e1", "Uruguay"),
+    c("E_p3_e2", "Rusia"),
+    c("E_p4_e1", "Uruguay"),
+    c("E_p4_e2", "Arabia S"),
+    c("E_p5_e1", "Arabia S"),
+    c("E_p5_e2", "Egipto"),
+    c("E_p6_e1", "Egipto"),
+    c("E_p6_e2", "Uruguay")
+)
+colnames(v1)<-c("Codigo","Equipo")
+dataE<-data.frame(as.data.frame(v1))
+dataE$Codigo<-as.character(dataE$Codigo)
+dataE$Equipo<-as.character(dataE$Equipo)
+  
+ lista2E<-eventReactive(input$buttonE, {
+   
+  calcula_Goles(vectorgoles=c(input$E_p1_e1,input$E_p1_e2,
+                              input$E_p2_e1,input$E_p2_e2,
+                              input$E_p3_e1,input$E_p3_e2,
+                              input$E_p4_e1,input$E_p4_e2,
+                              input$E_p5_e1,input$E_p5_e2,
+                              input$E_p6_e1,input$E_p6_e2
+                     ),
+                data=dataE)
+  })
+sidebarLayout(position = "right",
+              sidebarPanel(
+            
+                
+                renderTable({
+                  if(!is.null(lista2E()$data_resumenEquipos)){
+                    as.matrix(lista2E()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("E_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("E_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("E_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("E_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("E_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("E_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("E_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("E_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("E_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("E_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("E_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("E_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
+)
+
+fluidRow(
+  column(2, actionButton("buttonE", "Actualizar")
+  ))
+```
+
+### Grupo F
+
+```{r}
+v1<-rbind(c("F_p1_e1", "Rusia"),
+    c("F_p1_e2", "Arabia S"),
+    c("F_p2_e1", "Rusia"),
+    c("F_p2_e2", "Egipto"),
+    c("F_p3_e1", "Uruguay"),
+    c("F_p3_e2", "Rusia"),
+    c("F_p4_e1", "Uruguay"),
+    c("F_p4_e2", "Arabia S"),
+    c("F_p5_e1", "Arabia S"),
+    c("F_p5_e2", "Egipto"),
+    c("F_p6_e1", "Egipto"),
+    c("F_p6_e2", "Uruguay")
+)
+colnames(v1)<-c("Codigo","Equipo")
+dataF<-data.frame(as.data.frame(v1))
+dataF$Codigo<-as.character(dataF$Codigo)
+dataF$Equipo<-as.character(dataF$Equipo)
+  
+ lista2F<-eventReactive(input$buttonF, {
+   
+  calcula_Goles(vectorgoles=c(input$F_p1_e1,input$F_p1_e2,
+                              input$F_p2_e1,input$F_p2_e2,
+                              input$F_p3_e1,input$F_p3_e2,
+                              input$F_p4_e1,input$F_p4_e2,
+                              input$F_p5_e1,input$F_p5_e2,
+                              input$F_p6_e1,input$F_p6_e2
+                     ),
+                data=dataF)
+  })
+sidebarLayout(position = "right",
+              sidebarPanel(
+            
+                
+                renderTable({
+                  if(!is.null(lista2F()$data_resumenEquipos)){
+                    as.matrix(lista2F()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("F_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("F_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("F_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("F_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("F_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("F_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("F_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("F_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("F_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("F_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("F_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("F_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
+)
+
+fluidRow(
+  column(2, actionButton("buttonF", "Actualizar")
+  ))
+```
+
+### Grupo G
+
+```{r}
+v1<-rbind(c("G_p1_e1", "Rusia"),
+    c("G_p1_e2", "Arabia S"),
+    c("G_p2_e1", "Rusia"),
+    c("G_p2_e2", "Egipto"),
+    c("G_p3_e1", "Uruguay"),
+    c("G_p3_e2", "Rusia"),
+    c("G_p4_e1", "Uruguay"),
+    c("G_p4_e2", "Arabia S"),
+    c("G_p5_e1", "Arabia S"),
+    c("G_p5_e2", "Egipto"),
+    c("G_p6_e1", "Egipto"),
+    c("G_p6_e2", "Uruguay")
+)
+colnames(v1)<-c("Codigo","Equipo")
+dataG<-data.frame(as.data.frame(v1))
+dataG$Codigo<-as.character(dataG$Codigo)
+dataG$Equipo<-as.character(dataG$Equipo)
+  
+ lista2G<-eventReactive(input$buttonG, {
+   
+  calcula_Goles(vectorgoles=c(input$G_p1_e1,input$G_p1_e2,
+                              input$G_p2_e1,input$G_p2_e2,
+                              input$G_p3_e1,input$G_p3_e2,
+                              input$G_p4_e1,input$G_p4_e2,
+                              input$G_p5_e1,input$G_p5_e2,
+                              input$G_p6_e1,input$G_p6_e2
+                     ),
+                data=dataG)
+  })
+sidebarLayout(position = "right",
+              sidebarPanel(
+            
+                
+                renderTable({
+                  if(!is.null(lista2G()$data_resumenEquipos)){
+                    as.matrix(lista2G()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("G_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("G_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("G_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("G_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("G_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("G_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("G_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("G_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("G_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("G_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("G_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("G_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
+)
+
+fluidRow(
+  column(2, actionButton("buttonG", "Actualizar")
+  ))
+```
+
+
+### Grupo H
+
+```{r}
+v1<-rbind(c("H_p1_e1", "Rusia"),
+    c("H_p1_e2", "Arabia S"),
+    c("H_p2_e1", "Rusia"),
+    c("H_p2_e2", "Egipto"),
+    c("H_p3_e1", "Uruguay"),
+    c("H_p3_e2", "Rusia"),
+    c("H_p4_e1", "Uruguay"),
+    c("H_p4_e2", "Arabia S"),
+    c("H_p5_e1", "Arabia S"),
+    c("H_p5_e2", "Egipto"),
+    c("H_p6_e1", "Egipto"),
+    c("H_p6_e2", "Uruguay")
+)
+colnames(v1)<-c("Codigo","Equipo")
+dataH<-data.frame(as.data.frame(v1))
+dataH$Codigo<-as.character(dataH$Codigo)
+dataH$Equipo<-as.character(dataH$Equipo)
+  
+ lista2H<-eventReactive(input$buttonH, {
+   
+  calcula_Goles(vectorgoles=c(input$H_p1_e1,input$H_p1_e2,
+                              input$H_p2_e1,input$H_p2_e2,
+                              input$H_p3_e1,input$H_p3_e2,
+                              input$H_p4_e1,input$H_p4_e2,
+                              input$H_p5_e1,input$H_p5_e2,
+                              input$H_p6_e1,input$H_p6_e2
+                     ),
+                data=dataH)
+  })
+sidebarLayout(position = "right",
+              sidebarPanel(
+            
+                
+                renderTable({
+                  if(!is.null(lista2H()$data_resumenEquipos)){
+                    as.matrix(lista2H()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("H_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("H_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("H_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("H_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("H_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("H_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("H_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("H_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("H_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("H_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("H_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("H_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
+)
+
+fluidRow(
+  column(2, actionButton("buttonH", "Actualizar")
+  ))
+```
+
+### Grupo I
+
+```{r}
+v1<-rbind(c("I_p1_e1", "Rusia"),
+    c("I_p1_e2", "Arabia S"),
+    c("I_p2_e1", "Rusia"),
+    c("I_p2_e2", "Egipto"),
+    c("I_p3_e1", "Uruguay"),
+    c("I_p3_e2", "Rusia"),
+    c("I_p4_e1", "Uruguay"),
+    c("I_p4_e2", "Arabia S"),
+    c("I_p5_e1", "Arabia S"),
+    c("I_p5_e2", "Egipto"),
+    c("I_p6_e1", "Egipto"),
+    c("I_p6_e2", "Uruguay")
+)
+colnames(v1)<-c("Codigo","Equipo")
+dataI<-data.frame(as.data.frame(v1))
+dataI$Codigo<-as.character(dataI$Codigo)
+dataI$Equipo<-as.character(dataI$Equipo)
+  
+ lista2I<-eventReactive(input$buttonI, {
+   
+  calcula_Goles(vectorgoles=c(input$I_p1_e1,input$I_p1_e2,
+                              input$I_p2_e1,input$I_p2_e2,
+                              input$I_p3_e1,input$I_p3_e2,
+                              input$I_p4_e1,input$I_p4_e2,
+                              input$I_p5_e1,input$I_p5_e2,
+                              input$I_p6_e1,input$I_p6_e2
+                     ),
+                data=dataI)
+  })
+sidebarLayout(position = "right",
+              sidebarPanel(
+            
+                
+                renderTable({
+                  if(!is.null(lista2I()$data_resumenEquipos)){
+                    as.matrix(lista2I()$data_resumenEquipos)
+                    
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+                  
+                }),
+                
+                width = 4
+                
+              ),
+              mainPanel(
+                fluidRow(
+                  column(2, 
+                         numericInput("I_p1_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("I_p1_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("I_p2_e1", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("I_p2_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  )
+                ),
+                
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("I_p3_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("I_p3_e2", "Rusia", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("I_p4_e1", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("I_p4_e2", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                
+                fluidRow(
+                  column(2, 
+                         numericInput("I_p5_e1", "Arabia S", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("I_p5_e2", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')),
+                  
+                  
+                  column(2, 
+                         numericInput("I_p6_e1", "Egipto", min=0, max=100, value=0,step=1,
+                                      width = '65px')
+                  ),
+                  column(2,
+                         tags$div(
+                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                         )),
+                  column(2,
+                         numericInput("I_p6_e2", "Uruguay", min=0, max=100, value=0,step=1,
+                                      width = '65px'))
+                  
+                  
+                ),
+                width = 8
+              )
+)
+
+fluidRow(
+  column(2, actionButton("buttonI", "Actualizar")
+  ))
+```
