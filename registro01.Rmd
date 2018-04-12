@@ -1363,16 +1363,142 @@ fluidRow(
 ### [W50]
     
 ```{r}
+Grupo1<-"C"
+Grupo2<-"D"
+
+fluidRow(
+        
+        column(4,
+               h2(paste0("1",Grupo1))
+              ),
+  
+        column(4,
+         numericInput(paste0("E1",Grupo1),
+                      renderUI(paste0(ec()[1])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+fluidRow(
+
+   column(4,
+           tags$div(
+             HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+          )),
+
+        column(4,
+         tags$div(
+                 HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+               ))
+
+)
+
+fluidRow(
+        column(4,
+               h2(paste0("2",Grupo2))
+              ),
+  
+        column(4,
+         numericInput(paste0("E2",Grupo2),
+                      renderUI(paste0(ed()[2])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
 ``` 
 
 ### [W53]
     
 ```{r}
+Grupo1<-"E"
+Grupo2<-"F"
+
+fluidRow(
+        
+        column(4,
+               h2(paste0("1",Grupo1))
+              ),
+  
+        column(4,
+         numericInput(paste0("E1",Grupo1),
+                      renderUI(paste0(ee()[1])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+fluidRow(
+
+   column(4,
+           tags$div(
+             HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+          )),
+
+        column(4,
+         tags$div(
+                 HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+               ))
+
+)
+
+fluidRow(
+        column(4,
+               h2(paste0("2",Grupo2))
+              ),
+  
+        column(4,
+         numericInput(paste0("E2",Grupo2),
+                      renderUI(paste0(ef()[2])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
 ```
  
 ### [W54]
     
 ```{r}
+Grupo1<-"G"
+Grupo2<-"H"
+
+fluidRow(
+        
+        column(4,
+               h2(paste0("1",Grupo1))
+              ),
+  
+        column(4,
+         numericInput(paste0("E1",Grupo1),
+                      renderUI(paste0(eg()[1])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+fluidRow(
+
+   column(4,
+           tags$div(
+             HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+          )),
+
+        column(4,
+         tags$div(
+                 HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+               ))
+
+)
+
+fluidRow(
+        column(4,
+               h2(paste0("2",Grupo2))
+              ),
+  
+        column(4,
+         numericInput(paste0("E2",Grupo2),
+                      renderUI(paste0(eh()[2])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
 ``` 
 
 
@@ -1382,19 +1508,187 @@ Row
 ### [W51]
     
 ```{r}
+Grupo1<-"B"
+Grupo2<-"A"
+
+fluidRow(
+        
+        column(4,
+               h2(paste0("1",Grupo1))
+              ),
+  
+        column(4,
+         numericInput(paste0("E1",Grupo1),
+                      renderUI(paste0(eb()[1])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+fluidRow(
+
+   column(4,
+           tags$div(
+             HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+          )),
+
+        column(4,
+         tags$div(
+                 HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+               ))
+
+)
+
+fluidRow(
+        column(4,
+               h2(paste0("2",Grupo2))
+              ),
+  
+        column(4,
+         numericInput(paste0("E2",Grupo2),
+                      renderUI(paste0(ea()[2])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
 ```
  
 ### [W52]
     
 ```{r}
+Grupo1<-"D"
+Grupo2<-"C"
+
+fluidRow(
+        
+        column(4,
+               h2(paste0("1",Grupo1))
+              ),
+  
+        column(4,
+         numericInput(paste0("E1",Grupo1),
+                      renderUI(paste0(ed()[1])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+fluidRow(
+
+   column(4,
+           tags$div(
+             HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+          )),
+
+        column(4,
+         tags$div(
+                 HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+               ))
+
+)
+
+fluidRow(
+        column(4,
+               h2(paste0("2",Grupo2))
+              ),
+  
+        column(4,
+         numericInput(paste0("E2",Grupo2),
+                      renderUI(paste0(ec()[2])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
 ``` 
 
 ### [W55]
     
 ```{r}
+Grupo1<-"F"
+Grupo2<-"E"
+
+fluidRow(
+        
+        column(4,
+               h2(paste0("1",Grupo1))
+              ),
+  
+        column(4,
+         numericInput(paste0("E1",Grupo1),
+                      renderUI(paste0(ef()[1])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+fluidRow(
+
+   column(4,
+           tags$div(
+             HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+          )),
+
+        column(4,
+         tags$div(
+                 HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+               ))
+
+)
+
+fluidRow(
+        column(4,
+               h2(paste0("2",Grupo2))
+              ),
+  
+        column(4,
+         numericInput(paste0("E2",Grupo2),
+                      renderUI(paste0(ee()[2])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
 ```
  
 ### [W56]
     
 ```{r}
+Grupo1<-"H"
+Grupo2<-"G"
+
+fluidRow(
+        
+        column(4,
+               h2(paste0("1",Grupo1))
+              ),
+  
+        column(4,
+         numericInput(paste0("E1",Grupo1),
+                      renderUI(paste0(eh()[1])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
+fluidRow(
+
+   column(4,
+           tags$div(
+             HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+          )),
+
+        column(4,
+         tags$div(
+                 HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+               ))
+
+)
+
+fluidRow(
+        column(4,
+               h2(paste0("2",Grupo2))
+              ),
+  
+        column(4,
+         numericInput(paste0("E2",Grupo2),
+                      renderUI(paste0(eg()[2])),
+                      min=0, max=100, value=0,step=1,
+                            width = '100px')
+        )
+)
 ``` 
