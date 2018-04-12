@@ -1318,31 +1318,6 @@ Row
 
 Grupo1<-"A"
 Grupo2<-"B"
-# dataW<-reactive({data.frame("Codigo"=c(paste0("E1",Grupo1)
-#                              ,paste0("E2",Grupo2)),
-#                   "Equipo"=c(paste0(ea()[1]),
-#                              paste0(eb()[2]))
-#                              )
-#   })
-# listaW49<-eventReactive(input$button8vos,{
-#   
-#   calcula_Goles(vectorgoles=c(input[[paste0("E1",Grupo1)]],
-#                               input[[paste0("E2",Grupo2)]]),
-#   data=dataW()
-#   )
-# })
-# 
-# renderTable({
-#                   if(!is.null(listaW49()$data_resumenEquipos)){
-#                     as.matrix(listaW49()$data_resumenEquipos)
-#                     
-#                   }else{
-#                     m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
-#                     colnames(m)<-"¡¡¡AGUAS!!!!"
-#                     m
-#                   }
-#                   
-#                 })
 
 fluidRow(
         
@@ -1722,11 +1697,42 @@ Row {data-height=100}
 -------------------------------------
 ```{r}
 
+dataW<-reactive({data.frame("Codigo"=c(paste0("E1",Grupo1)
+                             ,paste0("E2",Grupo2)),
+                  "Equipo"=c(paste0(ea()[1]),
+                             paste0(eb()[2]))
+                             )
+  })
+
+listaW49<-eventReactive(input$button8vos,{
+
+  calcula_Goles(vectorgoles=c(input[[paste0("E1",Grupo1)]],
+                              input[[paste0("E2",Grupo2)]]),
+  data=dataW()
+  )
+})
+
   fluidRow(
         
         column(7,
   actionButton("button8vos","Aceptar")#,width = '1090px')
-        )
-  
+        ),
+
+
+
+column(7,
+renderTable({
+                  if(!is.null(listaW49()$data_resumenEquipos)){
+                    as.matrix(listaW49()$data_resumenEquipos)
+
+                  }else{
+                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                    colnames(m)<-"¡¡¡AGUAS!!!!"
+                    m
+                  }
+
+                })
+
+)
 )
 ```
