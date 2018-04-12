@@ -49,8 +49,8 @@ sidebarLayout(position = "right",
                 #                                  "Pts"=input$A_p6_e2))),
                 
                 renderTable({
-                  if(!is.null(lista2A()$data_EquipoPartido)){
-                    as.matrix(lista2A()$data_EquipoPartido)
+                  if(!is.null(lista2A()$data_resumenEquipos)){
+                    as.matrix(lista2A()$data_resumenEquipos)
                     
                   }else{
                     m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
