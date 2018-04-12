@@ -20,6 +20,8 @@ source("utils/calcula_goles.R")
 source("utils/etopn.R")
 options(warn = 0)
 options(digits = 0)
+library(shinyjs)
+useShinyjs()
 ```
 
  Sidebar {.sidebar data-width=200}
@@ -1279,9 +1281,9 @@ fluidRow(
   ))
 ```
 
+
 Octavos de Final
 =======================================================================
-    
 ```{r}
 ea<-reactive({#input$buttonA, {
   etopn(lista2A()$data_resumenEquipos)
@@ -1307,6 +1309,9 @@ eg<-reactive({#input$buttonG, {
 eh<-reactive({#input$buttonH, {
   etopn(lista2H()$data_resumenEquipos)
 })
+observeEvent(input$showTab, {
+    showTab(inputId = "tabs", target = "Foo")
+  })
 ```
 
 Row
@@ -1365,6 +1370,7 @@ fluidRow(
 ```{r}
 Grupo1<-"C"
 Grupo2<-"D"
+p<-"W50"
 
 fluidRow(
         
@@ -1696,13 +1702,23 @@ fluidRow(
 Row {data-height=100}
 -------------------------------------
 ```{r}
+observeEvent({ 
+  input$buttonA
+  input$buttonB
+}, { if(data2A()$marcaBoton & data2B()$marcaBoton){
+  enable("button8vos")
+} 
+  })
+Etapa<-"W"
+p<-49
 
-dataW<-reactive({data.frame("Codigo"=c(paste0("E1",Grupo1)
-                             ,paste0("E2",Grupo2)),
+dataW<-reactive({data.frame("Codigo"=c(paste(Etapa,p,"E1",sep="_"),
+                                       paste(Etapa,p,"E2",sep="_")),
                   "Equipo"=c(paste0(ea()[1]),
                              paste0(eb()[2]))
                              )
   })
+disable("button8vos")
 
 listaW49<-eventReactive(input$button8vos,{
 
@@ -1718,21 +1734,26 @@ listaW49<-eventReactive(input$button8vos,{
   actionButton("button8vos","Aceptar")#,width = '1090px')
         ),
 
-
-
 column(7,
 renderTable({
-                  if(!is.null(listaW49()$data_resumenEquipos)){
-                    as.matrix(listaW49()$data_resumenEquipos)
-
-                  }else{
-                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
-                    colnames(m)<-"¡¡¡AGUAS!!!!"
-                    m
-                  }
+      if(!is.null(listaW49()$data_resumenEquipos)){
+        if(sum(is.na(listaW49()$data_resumenEquipos$Equipo))==0){
+          as.matrix(listaW49()$data_resumenEquipos)
+        }else{
+          m<-matrix("Por favor revisa que las cantidades de Primera Fase sean correctas :O")
+          colnames(m)<-"¡¡¡AGUAS!!!!"
+          m
+        }
+  
+      }else{
+        m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+        colnames(m)<-"¡¡¡AGUAS!!!!"
+        m
+      }
 
                 })
 
 )
 )
+
 ```

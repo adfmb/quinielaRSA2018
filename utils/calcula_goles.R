@@ -95,16 +95,20 @@ calcula_Goles<-function(vectorgoles,data){
       ) %>% arrange(desc(Pts),desc(D),desc(GF))
     data_resumenEquipos<-as.data.frame(data_resumenEquipos)
     
+    marcaBoton<-T
+    
     
     
   }else{
     data2<-NULL
     data_EquipoPartido<-NULL
-    data_resumenEquipos<-NULL}
+    data_resumenEquipos<-NULL
+    marcaBoton<-F}
   
   return(list("data2"=data2,
               # "vectorgoles"=vectorgoles,
               "data_EquipoPartido"=data_EquipoPartido,
-              "data_resumenEquipos"=data_resumenEquipos)
+              "data_resumenEquipos"=data_resumenEquipos,
+              "marcaBoton"= marcaBoton)
   )
 }
