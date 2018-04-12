@@ -27,7 +27,14 @@ lista2A<-eventReactive(input$buttonA, {
                               input$A_p6_e1,input$A_p6_e2
   ),
   data=dataA)
+  
 })
+
+observeEvent(input$buttonA, {
+  # Change the following line for more examples
+  toggleState("element")
+})
+
 sidebarLayout(position = "right",
               sidebarPanel(
                 
@@ -42,8 +49,8 @@ sidebarLayout(position = "right",
                 #                                  "Pts"=input$A_p6_e2))),
                 
                 renderTable({
-                  if(!is.null(lista2A()$data_resumenEquipos)){
-                    as.matrix(lista2A()$data_resumenEquipos)
+                  if(!is.null(lista2A()$data_EquipoPartido)){
+                    as.matrix(lista2A()$data_EquipoPartido)
                     
                   }else{
                     m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
