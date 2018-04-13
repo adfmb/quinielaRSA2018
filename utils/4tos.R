@@ -1,29 +1,30 @@
 Cuartos de Final
 =======================================================================
+  
   ```{r}
 e49<-reactive({#input$buttonA, {
-  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==49],n=1)
+  etopn(lista8vos()$data_EquipoPartido[lista8vos()$data_EquipoPartido$Partido==49,],n=1)
 })
 e50<-reactive({#input$buttonA, {
-  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==50],n=1)
+  etopn(lista8vos()$data_EquipoPartido[lista8vos()$data_EquipoPartido$Partido==50,],n=1)
 })
 e51<-reactive({#input$buttonA, {
-  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==51],n=1)
+  etopn(lista8vos()$data_EquipoPartido[lista8vos()$data_EquipoPartido$Partido==51,],n=1)
 })
 e52<-reactive({#input$buttonA, {
-  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==52],n=1)
+  etopn(lista8vos()$data_EquipoPartido[lista8vos()$data_EquipoPartido$Partido==52,],n=1)
 })
 e53<-reactive({#input$buttonA, {
-  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==53],n=1)
+  etopn(lista8vos()$data_EquipoPartido[lista8vos()$data_EquipoPartido$Partido==53,],n=1)
 })
 e54<-reactive({#input$buttonA, {
-  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==54],n=1)
+  etopn(lista8vos()$data_EquipoPartido[lista8vos()$data_EquipoPartido$Partido==54,],n=1)
 })
 e55<-reactive({#input$buttonA, {
-  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==55],n=1)
+  etopn(lista8vos()$data_EquipoPartido[lista8vos()$data_EquipoPartido$Partido==55,],n=1)
 })
 e56<-reactive({#input$buttonA, {
-  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==56],n=1)
+  etopn(lista8vos()$data_EquipoPartido[lista8vos()$data_EquipoPartido$Partido==56,],n=1)
 })
 
 v4s <- reactiveValues(OK = c(F,F))
@@ -38,7 +39,7 @@ observeEvent(input$button8vos, {
   }
 })
 
-alarma4s<-paste0("¡O.O Nos caemos a pedazos!")
+alarma4s<-paste0("¡O.O Terminemos con las fases anteriores :D!")
 ```
 
 Row
@@ -308,3 +309,84 @@ fluidRow(
   )
 )
 ``` 
+
+
+Row {data-height=100}
+-------------------------------------
+  
+  
+  ```{r}
+library(shinyjs)
+
+dataW4s<-reactive({data.frame("Codigo"=c("W_57_E1","W_57_E2",
+                                         "W_58_E1","W_58_E2",
+                                         "W_59_E1","W_59_E2",
+                                         "W_60_E1","W_60_E2"),
+                              "Equipo"=c(paste0(e49()[1]),paste0(e50()[1]),
+                                         paste0(e53()[1]),paste0(e54()[1]),
+                                         paste0(e51()[1]),paste0(e52()[1]),
+                                         paste0(e55()[1]),paste0(e56()[1]))
+)
+  # eventReactive({ input$buttonA input$buttonB input$buttonC input$buttonD input$buttonE input$buttonF input$buttonG input$buttonH}
+})
+
+
+lista4s<-eventReactive(input$button4s,{
+  
+  if(v4s$OK[1] & v4s$OK[2]){
+    # print("holi")
+    calcula_Goles(vectorgoles=c(input[["W49"]],input[["W50"]],#input[[paste0("E1",Grupo1)]],
+                                input[["W53"]],input[["W54"]],
+                                input[["W51"]],input[["W52"]],
+                                input[["W55"]],input[["W56"]]),
+                  data=dataW4s()
+    )
+  }else{
+    "MENSAJE SIN CONCLUIR SEGUNDA FASE"
+  }
+})
+fluidRow(
+  
+  column(7,
+         actionButton("button4s","  NO TE VAYAS SIN ACTUALIZARME    :P")
+  ),
+  
+  column(7,
+         renderTable({
+           if(lista4s()=="MENSAJE SIN CONCLUIR SEGUNDA FASE"){
+             m<-matrix("SEGUNDA FASE SIN CONCLUIR CORRECTAMENTE")
+             colnames(m)<-"¡¡¡O.O!!!!"
+             m
+           }else if(!is.null(lista4s()$data_EquipoPartido)){
+             if(lista2A()$marcaBoton & lista2B()$marcaBoton){
+               if(lista4s()$marcaBoton){
+                 if(sum(lista4s()$data_EquipoPartido$Empate)==0){
+                   as.matrix(lista4s()$data_EquipoPartido[1:4,c("Grupo","Partido","Equipo")])
+                 }else{
+                   m<-matrix("</3 Cámbialo porfiiiiis")
+                   colnames(m)<-"¡¡¡NO MAMAR QUE PUSISTE EMPATES!!!!"
+                   m
+                 }
+                 
+               }else{
+                 m<-matrix("Por favor revisa que las cantidades de Segunda Fase sean correctas :O")
+                 colnames(m)<-"¡¡¡AGUAS!!!!"
+                 m
+               }
+             }else{
+               m<-matrix("Por favor revisa que las cantidades de Primera Fase sean correctas :O")
+               colnames(m)<-"¡¡¡AGUAS!!!!"
+               m
+             }
+             
+           }else{
+             m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+             colnames(m)<-"¡¡¡AGUAS!!!!"
+             m
+           }
+           
+         })
+         
+  )
+)
+```
