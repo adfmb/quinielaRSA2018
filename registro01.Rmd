@@ -1309,6 +1309,7 @@ eg<-reactive({#input$buttonG, {
 eh<-reactive({#input$buttonH, {
   etopn(lista2H()$data_resumenEquipos)
 })
+alarma8vos<-paste0("¡O.O Nos caemos a pedazos!")
 ```
 
 Row
@@ -1334,7 +1335,7 @@ fluidRow(
                           paste0(ea()[1])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1368,7 +1369,7 @@ fluidRow(
                           paste0(eb()[2])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2B()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2B()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1398,7 +1399,7 @@ fluidRow(
                           paste0(ec()[1])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2C()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2C()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1432,7 +1433,7 @@ fluidRow(
                           paste0(ed()[2])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2D()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2D()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1461,7 +1462,7 @@ fluidRow(
                           paste0(ee()[1])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2E()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2E()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1495,7 +1496,7 @@ fluidRow(
                           paste0(ef()[2])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2F()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2F()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1524,7 +1525,7 @@ fluidRow(
                           paste0(eg()[1])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2G()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2G()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1558,7 +1559,7 @@ fluidRow(
                           paste0(eh()[2])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2H()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2H()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1591,7 +1592,7 @@ fluidRow(
                           paste0(eb()[1])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2B()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2B()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1625,7 +1626,7 @@ fluidRow(
                           paste0(ea()[2])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1654,7 +1655,7 @@ fluidRow(
                           paste0(ed()[1])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2D()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2D()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1688,7 +1689,7 @@ fluidRow(
                           paste0(ec()[2])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2C()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2C()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1717,7 +1718,7 @@ fluidRow(
                           paste0(ef()[1])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2F()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2F()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1751,7 +1752,7 @@ fluidRow(
                           paste0(ee()[2])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2E()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2E()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1780,7 +1781,7 @@ fluidRow(
                           paste0(eh()[1])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")##,unique(lista2H()$data_EquipoPartido$Grupo),"!")
+                                   alarma8vos##,unique(lista2H()$data_EquipoPartido$Grupo),"!")
                           )
                         }
                       ),
@@ -1814,7 +1815,7 @@ fluidRow(
                           paste0(eg()[2])}
                         else{
                           tags$span(style="color:red",
-                                   paste0("¡Aguas en Grupo!")###,unique(as.character(lista2G()$data_EquipoPartido$Grupo)),"!")
+                                   alarma8vos###,unique(as.character(lista2G()$data_EquipoPartido$Grupo)),"!")
                           )
                         }
                       ),
@@ -1827,15 +1828,25 @@ fluidRow(
 Row {data-height=100}
 -------------------------------------
 ```{r}
-observeEvent({ 
-  input$buttonA
-  input$buttonB
-}, { if(lista2A()$marcaBoton & lista2B()$marcaBoton){
-  enable("button8vos")
-}else{
-  disable("button8vos")
-  } 
+# observeEvent({
+#   input$buttonA
+#   input$buttonB
+# }, { if(lista2A()$marcaBoton & lista2B()$marcaBoton){
+#   shinyjs::enable("button8vos")
+# }else{
+#   shinyjs::disable("button8vos")
+#   }
+#   })
+library(shinyjs)
+v <- reactiveValues(OK = c(F,F))
+observeEvent(input$buttonA, {
+    v$OK[1] <- lista2A()$marcaBoton
   })
+
+observeEvent(input$buttonB, {
+    v$OK[2] <- lista2B()$marcaBoton
+  })
+
 Grupo1<-"A"
 Grupo2<-"B"
 Etapa<-"W"
@@ -1847,25 +1858,39 @@ dataW<-reactive({data.frame("Codigo"=c(paste(Etapa,p,"E1",sep="_"),
                              paste0(eb()[2]))
                              )
   })
-disable("button8vos")
+# shinyjs::disable("button8vos")
 
 listaW49<-eventReactive(input$button8vos,{
 
-  calcula_Goles(vectorgoles=c(input[[paste0("E1",Grupo1)]],
+  if(v$OK[1] & v$OK[2]){
+    # print("holi")
+    calcula_Goles(vectorgoles=c(input[[paste0("E1",Grupo1)]],
                               input[[paste0("E2",Grupo2)]]),
-  data=dataW()
-  )
+    data=dataW()
+    )
+  }else{
+      "MENSAJE SIN CONCLUIR PRIMERA FASE"
+    }
 })
-
   fluidRow(
         
         column(7,
-  actionButton("button8vos","Aceptar")#,width = '1090px')
+               # disabled(
+        # ,
+        # hidden(
+          actionButton("button8vos","Aceptar")
+          # )
+      # )
+  #,width = '1090px')
         ),
 
 column(7,
 renderTable({
-      if(!is.null(listaW49()$data_resumenEquipos)){
+  if(listaW49()=="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+    m<-matrix("PRIMERA FASE SIN CONCLUIR CORRECTAMENTE")
+    colnames(m)<-"¡¡¡O.O!!!!"
+    m
+  }else if(!is.null(listaW49()$data_resumenEquipos)){
         if(lista2A()$marcaBoton & lista2B()$marcaBoton){
           if(listaW49()$marcaBoton){
             as.matrix(listaW49()$data_resumenEquipos)
@@ -1890,5 +1915,10 @@ renderTable({
 
 )
 )
+# useShinyjs(debug = TRUE)
+# observe({
+#   toggleState("button8vos", condition = input$buttonA)
+#   })
+
 
 ```
