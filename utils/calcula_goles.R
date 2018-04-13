@@ -95,6 +95,7 @@ calcula_Goles<-function(vectorgoles,data){
       ) %>% arrange(desc(Pts),desc(D),desc(GF))
     data_resumenEquipos<-as.data.frame(data_resumenEquipos)
     
+    data_EquipoPartido<-data_EquipoPartido %>% arrange(desc(Pts))
     marcaBoton<-T
     
     

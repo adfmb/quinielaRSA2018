@@ -1890,10 +1890,20 @@ renderTable({
     m<-matrix("PRIMERA FASE SIN CONCLUIR CORRECTAMENTE")
     colnames(m)<-"¡¡¡O.O!!!!"
     m
-  }else if(!is.null(listaW49()$data_resumenEquipos)){
+  }else if(!is.null(listaW49()$data_EquipoPartido)){
         if(lista2A()$marcaBoton & lista2B()$marcaBoton){
           if(listaW49()$marcaBoton){
-            as.matrix(listaW49()$data_resumenEquipos)
+            if(sum(listaW49()$data_EquipoPartido$Empate==0)){
+              as.matrix(listaW49()$data_EquipoPartido[1:4,c("Grupo","Partido","Equipo")])
+            }else{
+              m<-matrix("</3 Cámbialo porfiiiiis")
+              colnames(m)<-"¡¡¡NO MAMAR QUE PUSISTE EMPATES!!!!"
+              m
+            }
+
+            
+            
+            
           }else{
             m<-matrix("Por favor revisa que las cantidades de Segunda Fase sean correctas :O")
             colnames(m)<-"¡¡¡AGUAS!!!!"
