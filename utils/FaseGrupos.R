@@ -1,159 +1,1225 @@
-Grupo<-"A"
-v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Rusia"),
-          c(paste0(Grupo,"_p1_e2"), "Arabia S"),
-          c(paste0(Grupo,"_p2_e1"), "Egipto"),
-          c(paste0(Grupo,"_p2_e2"), "Uruguay"),
-          c(paste0(Grupo,"_p3_e1"), "Rusia"),
-          c(paste0(Grupo,"_p3_e2"), "Egipto"),
-          c(paste0(Grupo,"_p4_e1"), "Uruguay"),
-          c(paste0(Grupo,"_p4_e2"), "Arabia S"),
-          c(paste0(Grupo,"_p5_e1"), "Uruguay"),
-          c(paste0(Grupo,"_p5_e2"), "Rusia"),
-          c(paste0(Grupo,"_p6_e1"), "Arabia S"),
-          c(paste0(Grupo,"_p6_e2"), "Egipto")
-)
-colnames(v1)<-c("Codigo","Equipo")
-dataA<-data.frame(as.data.frame(v1))
-dataA$Codigo<-as.character(dataA$Codigo)
-dataA$Equipo<-as.character(dataA$Equipo)
-
-lista2A<-eventReactive(input$buttonA, {
+Fase de grupos
+=======================================================================
   
-  calcula_Goles(vectorgoles=c(input$A_p1_e1,input$A_p1_e2,
-                              input$A_p2_e1,input$A_p2_e2,
-                              input$A_p3_e1,input$A_p3_e2,
-                              input$A_p4_e1,input$A_p4_e2,
-                              input$A_p5_e1,input$A_p5_e2,
-                              input$A_p6_e1,input$A_p6_e2
-  ),
-  data=dataA)
-  
-})
+  Row {data-height=270}
+-----------------------------------------------------------------------
+  <!-- ```{r fig.width=20, fig.height=4,echo=FALSE}
+library(jpeg)
+library(png)
+library(grid)
+# img <- readJPEG("www/russia01.jpg")
+# img <- readPNG("www/russia07.png")
+# img <- readJPEG("www/Sigueme02.jpg")
+# img <- readJPEG("www/russia05.jpg")
 
-observeEvent(input$buttonA, {
-  # Change the following line for more examples
-  toggleState("element")
-})
-
-sidebarLayout(position = "right",
-              sidebarPanel(
-                
-                # renderDataTable(data.frame("numeros"=rnorm(6),"num2"=rnorm(6))),
-                # renderTable(as.matrix(data.frame("Equipo"=unique(data$Equipo),
-                #                                  "G"=input$A_p1_e1,
-                #                                  "P"=input$A_p1_e2,
-                #                                  "E"=rnorm(4),
-                #                                  "GF"=rnorm(4),
-                #                                  "GC"=rnorm(4),
-                #                                  "D"=rnorm(4),
-                #                                  "Pts"=input$A_p6_e2))),
-                
-                renderTable({
-                  if(!is.null(lista2A()$data_resumenEquipos)){
-                    as.matrix(lista2A()$data_resumenEquipos)
-                    
-                  }else{
-                    m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
-                    colnames(m)<-"¡¡¡AGUAS!!!!"
-                    m
-                  }
-                  
-                }),
-                
-                width = 4
-                
+# grid.raster(img)
+img(src='www/russia09.png', align = "center")
+<!-- ``` -->
+  <!-- ![](www/russia09.png){#id .class width=1200 height=320px} -->
+    <!-- ![](www/russia09.png){ width=100% height=30% } -->
+      [![](www/russia14.jpg){#id .class width=1150 height=230px}](http://www.fifa.com/worldcup/)
+        <!-- ![](www/russia12.jpg){#id .class width=1150 height=300px} -->
+          <!-- ![](www/russia15.png){#id .class width=1150 height=300px} -->
+            <!-- http://www.squawka.com/news/world-cup-2018-russias-stadiums-in-pictures/201955#2oEbD5Hqu7cCUy2y.97 -->
+            
+            Row {data-height=280} {.tabset}
+            -----------------------------------------------------------------------
+              
+              ### Grupo A
+              
+              ```{r echo=FALSE}
+            Grupo<-"A"
+            v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Rusia"),
+                      c(paste0(Grupo,"_p1_e2"), "Arabia S"),
+                      c(paste0(Grupo,"_p2_e1"), "Egipto"),
+                      c(paste0(Grupo,"_p2_e2"), "Uruguay"),
+                      c(paste0(Grupo,"_p3_e1"), "Rusia"),
+                      c(paste0(Grupo,"_p3_e2"), "Egipto"),
+                      c(paste0(Grupo,"_p4_e1"), "Uruguay"),
+                      c(paste0(Grupo,"_p4_e2"), "Arabia S"),
+                      c(paste0(Grupo,"_p5_e1"), "Uruguay"),
+                      c(paste0(Grupo,"_p5_e2"), "Rusia"),
+                      c(paste0(Grupo,"_p6_e1"), "Arabia S"),
+                      c(paste0(Grupo,"_p6_e2"), "Egipto")
+            )
+            colnames(v1)<-c("Codigo","Equipo")
+            dataA<-data.frame(as.data.frame(v1))
+            dataA$Codigo<-as.character(dataA$Codigo)
+            dataA$Equipo<-as.character(dataA$Equipo)
+            
+            lista2A<-eventReactive(input$buttonA, {
+              
+              calcula_Goles(vectorgoles=c(input$A_p1_e1,input$A_p1_e2,
+                                          input$A_p2_e1,input$A_p2_e2,
+                                          input$A_p3_e1,input$A_p3_e2,
+                                          input$A_p4_e1,input$A_p4_e2,
+                                          input$A_p5_e1,input$A_p5_e2,
+                                          input$A_p6_e1,input$A_p6_e2
               ),
-              mainPanel(
-                fluidRow(
-                  column(2, 
-                         numericInput(paste0(Grupo,"_p1_e1"), dataA$Equipo[1], min=0, max=100, value=0,step=1,
-                                      width = '65px')
-                  ),
-                  column(2,
-                         tags$div(
-                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
-                         )),
-                  column(2,
-                         numericInput(paste0(Grupo,"_p1_e2"), dataA$Equipo[2], min=0, max=100, value=0,step=1,
-                                      width = '65px')),
-                  
-                  
-                  column(2, 
-                         numericInput(paste0(Grupo,"_p2_e1"), dataA$Equipo[3], min=0, max=100, value=0,step=1,
-                                      width = '65px')
-                  ),
-                  column(2,
-                         tags$div(
-                           HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
-                         )),
-                  column(2,
-                         numericInput(paste0(Grupo,"_p2_e2"), dataA$Equipo[4], min=0, max=100, value=0,step=1,
-                                      width = '65px')
-                  )
-                ),
-                
-                
-                fluidRow(
-                  column(2, 
-                         numericInput(paste0(Grupo,"_p3_e1"), dataA$Equipo[5], min=0, max=100, value=0,step=1,
-                                      width = '65px')
-                  ),
-                  column(2,
-                         tags$div(
-                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
-                         )),
-                  column(2,
-                         numericInput(paste0(Grupo,"_p3_e2"), dataA$Equipo[6], min=0, max=100, value=0,step=1,
-                                      width = '65px')),
-                  
-                  
-                  column(2, 
-                         numericInput(paste0(Grupo,"_p4_e1"), dataA$Equipo[7], min=0, max=100, value=0,step=1,
-                                      width = '65px')
-                  ),
-                  column(2,
-                         tags$div(
-                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
-                         )),
-                  column(2,
-                         numericInput(paste0(Grupo,"_p4_e2"), dataA$Equipo[8], min=0, max=100, value=0,step=1,
-                                      width = '65px'))
-                  
-                  
-                ),
-                
-                fluidRow(
-                  column(2, 
-                         numericInput(paste0(Grupo,"_p5_e1"), dataA$Equipo[9], min=0, max=100, value=0,step=1,
-                                      width = '65px')
-                  ),
-                  column(2,
-                         tags$div(
-                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
-                         )),
-                  column(2,
-                         numericInput(paste0(Grupo,"_p5_e2"), dataA$Equipo[10], min=0, max=100, value=0,step=1,
-                                      width = '65px')),
-                  
-                  
-                  column(2, 
-                         numericInput(paste0(Grupo,"_p6_e1"), dataA$Equipo[11], min=0, max=100, value=0,step=1,
-                                      width = '65px')
-                  ),
-                  column(2,
-                         tags$div(
-                           HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
-                         )),
-                  column(2,
-                         numericInput(paste0(Grupo,"_p6_e2"), dataA$Equipo[12], min=0, max=100, value=0,step=1,
-                                      width = '65px'))
-                  
-                  
-                ),
-                width = 8
-              )
-)
-
-fluidRow(
-  column(2, actionButton("buttonA", "Actualizar")
-  ))
+              data=dataA)
+            })
+            sidebarLayout(position = "right",
+                          sidebarPanel(
+                            
+                            # renderDataTable(data.frame("numeros"=rnorm(6),"num2"=rnorm(6))),
+                            # renderTable(as.matrix(data.frame("Equipo"=unique(data$Equipo),
+                            #                                  "G"=input$A_p1_e1,
+                            #                                  "P"=input$A_p1_e2,
+                            #                                  "E"=rnorm(4),
+                            #                                  "GF"=rnorm(4),
+                            #                                  "GC"=rnorm(4),
+                            #                                  "D"=rnorm(4),
+                            #                                  "Pts"=input$A_p6_e2))),
+                            
+                            renderTable({
+                              if(!is.null(lista2A()$data_resumenEquipos)){
+                                as.matrix(lista2A()$data_resumenEquipos)
+                                
+                              }else{
+                                m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                                colnames(m)<-"¡¡¡AGUAS!!!!"
+                                m
+                              }
+                              
+                            }),
+                            
+                            width = 4
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p1_e1"), dataA$Equipo[1], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p1_e2"), dataA$Equipo[2], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p2_e1"), dataA$Equipo[3], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p2_e2"), dataA$Equipo[4], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              )
+                            ),
+                            
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p3_e1"), dataA$Equipo[5], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p3_e2"), dataA$Equipo[6], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p4_e1"), dataA$Equipo[7], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p4_e2"), dataA$Equipo[8], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p5_e1"), dataA$Equipo[9], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p5_e2"), dataA$Equipo[10], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p6_e1"), dataA$Equipo[11], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p6_e2"), dataA$Equipo[12], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            width = 8
+                          )
+            )
+            
+            fluidRow(
+              column(2, actionButton("buttonA", "Actualizar")
+              ))
+            ```
+            
+            
+            ### Grupo B
+            
+            ```{r}
+            Grupo<-"B"
+            v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Marruecos"),
+                      c(paste0(Grupo,"_p1_e2"), "Irán"),
+                      c(paste0(Grupo,"_p2_e1"), "Portugal"),
+                      c(paste0(Grupo,"_p2_e2"), "España"),
+                      c(paste0(Grupo,"_p3_e1"), "Portugal"),
+                      c(paste0(Grupo,"_p3_e2"), "Marruecos"),
+                      c(paste0(Grupo,"_p4_e1"), "Irán"),
+                      c(paste0(Grupo,"_p4_e2"), "España"),
+                      c(paste0(Grupo,"_p5_e1"), "Irán"),
+                      c(paste0(Grupo,"_p5_e2"), "Portugal"),
+                      c(paste0(Grupo,"_p6_e1"), "España"),
+                      c(paste0(Grupo,"_p6_e2"), "Marruecos")
+            )
+            colnames(v1)<-c("Codigo","Equipo")
+            dataB<-data.frame(as.data.frame(v1))
+            dataB$Codigo<-as.character(dataB$Codigo)
+            dataB$Equipo<-as.character(dataB$Equipo)
+            
+            lista2B<-eventReactive(input$buttonB, {
+              
+              calcula_Goles(vectorgoles=c(input$B_p1_e1,input$B_p1_e2,
+                                          input$B_p2_e1,input$B_p2_e2,
+                                          input$B_p3_e1,input$B_p3_e2,
+                                          input$B_p4_e1,input$B_p4_e2,
+                                          input$B_p5_e1,input$B_p5_e2,
+                                          input$B_p6_e1,input$B_p6_e2
+              ),
+              data=dataB)
+            })
+            sidebarLayout(position = "right",
+                          sidebarPanel(
+                            
+                            
+                            renderTable({
+                              if(!is.null(lista2B()$data_resumenEquipos)){
+                                as.matrix(lista2B()$data_resumenEquipos)
+                                
+                              }else{
+                                m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                                colnames(m)<-"¡¡¡AGUAS!!!!"
+                                m
+                              }
+                              
+                            }),
+                            
+                            width = 4
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p1_e1"), dataB$Equipo[1], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p1_e2"), dataB$Equipo[2], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p2_e1"), dataB$Equipo[3], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p2_e2"), dataB$Equipo[4], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              )
+                            ),
+                            
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p3_e1"), dataB$Equipo[5], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p3_e2"), dataB$Equipo[6], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p4_e1"), dataB$Equipo[7], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p4_e2"), dataB$Equipo[8], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p5_e1"), dataB$Equipo[9], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p5_e2"), dataB$Equipo[10], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p6_e1"), dataB$Equipo[11], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p6_e2"), dataB$Equipo[12], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            width = 8
+                          )
+            )
+            
+            fluidRow(
+              column(2, actionButton("buttonB", "Actualizar")
+              ))
+            ```
+            
+            ### Grupo C
+            
+            ```{r}
+            Grupo<-"C"
+            v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Francia"),
+                      c(paste0(Grupo,"_p1_e2"), "Australia"),
+                      c(paste0(Grupo,"_p2_e1"), "Perú"),
+                      c(paste0(Grupo,"_p2_e2"), "Dinamarca"),
+                      c(paste0(Grupo,"_p3_e1"), "Dinamarca"),
+                      c(paste0(Grupo,"_p3_e2"), "Australia"),
+                      c(paste0(Grupo,"_p4_e1"), "Francia"),
+                      c(paste0(Grupo,"_p4_e2"), "Perú"),
+                      c(paste0(Grupo,"_p5_e1"), "Dinamarca"),
+                      c(paste0(Grupo,"_p5_e2"), "Francia"),
+                      c(paste0(Grupo,"_p6_e1"), "Australia"),
+                      c(paste0(Grupo,"_p6_e2"), "Perú")
+            )
+            colnames(v1)<-c("Codigo","Equipo")
+            dataC<-data.frame(as.data.frame(v1))
+            dataC$Codigo<-as.character(dataC$Codigo)
+            dataC$Equipo<-as.character(dataC$Equipo)
+            
+            lista2C<-eventReactive(input$buttonC, {
+              
+              calcula_Goles(vectorgoles=c(input$C_p1_e1,input$C_p1_e2,
+                                          input$C_p2_e1,input$C_p2_e2,
+                                          input$C_p3_e1,input$C_p3_e2,
+                                          input$C_p4_e1,input$C_p4_e2,
+                                          input$C_p5_e1,input$C_p5_e2,
+                                          input$C_p6_e1,input$C_p6_e2
+              ),
+              data=dataC)
+            })
+            sidebarLayout(position = "right",
+                          sidebarPanel(
+                            
+                            
+                            renderTable({
+                              if(!is.null(lista2C()$data_resumenEquipos)){
+                                as.matrix(lista2C()$data_resumenEquipos)
+                                
+                              }else{
+                                m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                                colnames(m)<-"¡¡¡AGUAS!!!!"
+                                m
+                              }
+                              
+                            }),
+                            
+                            width = 4
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p1_e1"), dataC$Equipo[1], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p1_e2"), dataC$Equipo[2], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p2_e1"), dataC$Equipo[3], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p2_e2"), dataC$Equipo[4], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              )
+                            ),
+                            
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p3_e1"), dataC$Equipo[5], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p3_e2"), dataC$Equipo[6], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p4_e1"), dataC$Equipo[7], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p4_e2"), dataC$Equipo[8], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p5_e1"), dataC$Equipo[9], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p5_e2"), dataC$Equipo[10], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p6_e1"), dataC$Equipo[11], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p6_e2"), dataC$Equipo[12], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            width = 8
+                          )
+            )
+            
+            fluidRow(
+              column(2, actionButton("buttonC", "Actualizar")
+              ))
+            ```
+            
+            
+            ### Grupo D
+            
+            ```{r}
+            Grupo<-"D"
+            v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Argentina"),
+                      c(paste0(Grupo,"_p1_e2"), "Islandia"),
+                      c(paste0(Grupo,"_p2_e1"), "Croacia"),
+                      c(paste0(Grupo,"_p2_e2"), "Nigeria"),
+                      c(paste0(Grupo,"_p3_e1"), "Argentina"),
+                      c(paste0(Grupo,"_p3_e2"), "Croacia"),
+                      c(paste0(Grupo,"_p4_e1"), "Nigeria"),
+                      c(paste0(Grupo,"_p4_e2"), "Islandia"),
+                      c(paste0(Grupo,"_p5_e1"), "Nigeria"),
+                      c(paste0(Grupo,"_p5_e2"), "Argentina"),
+                      c(paste0(Grupo,"_p6_e1"), "Islandia"),
+                      c(paste0(Grupo,"_p6_e2"), "Croacia")
+            )
+            colnames(v1)<-c("Codigo","Equipo")
+            dataD<-data.frame(as.data.frame(v1))
+            dataD$Codigo<-as.character(dataD$Codigo)
+            dataD$Equipo<-as.character(dataD$Equipo)
+            
+            lista2D<-eventReactive(input$buttonD, {
+              
+              calcula_Goles(vectorgoles=c(input$D_p1_e1,input$D_p1_e2,
+                                          input$D_p2_e1,input$D_p2_e2,
+                                          input$D_p3_e1,input$D_p3_e2,
+                                          input$D_p4_e1,input$D_p4_e2,
+                                          input$D_p5_e1,input$D_p5_e2,
+                                          input$D_p6_e1,input$D_p6_e2
+              ),
+              data=dataD)
+            })
+            sidebarLayout(position = "right",
+                          sidebarPanel(
+                            
+                            
+                            renderTable({
+                              if(!is.null(lista2D()$data_resumenEquipos)){
+                                as.matrix(lista2D()$data_resumenEquipos)
+                                
+                              }else{
+                                m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                                colnames(m)<-"¡¡¡AGUAS!!!!"
+                                m
+                              }
+                              
+                            }),
+                            
+                            width = 4
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p1_e1"), dataD$Equipo[1], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p1_e2"), dataD$Equipo[2], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p2_e1"), dataD$Equipo[3], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p2_e2"), dataD$Equipo[4], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              )
+                            ),
+                            
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p3_e1"), dataD$Equipo[5], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p3_e2"), dataD$Equipo[6], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p4_e1"), dataD$Equipo[7], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p4_e2"), dataD$Equipo[8], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p5_e1"), dataD$Equipo[9], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p5_e2"), dataD$Equipo[10], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p6_e1"), dataD$Equipo[11], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p6_e2"), dataD$Equipo[12], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            width = 8
+                          )
+            )
+            
+            fluidRow(
+              column(2, actionButton("buttonD", "Actualizar")
+              ))
+            ```
+            
+            
+            ### Grupo E
+            
+            ```{r}
+            Grupo<-"E"
+            v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Costa R"),
+                      c(paste0(Grupo,"_p1_e2"), "Serbia"),
+                      c(paste0(Grupo,"_p2_e1"), "Brasil"),
+                      c(paste0(Grupo,"_p2_e2"), "Suiza"),
+                      c(paste0(Grupo,"_p3_e1"), "Brasil"),
+                      c(paste0(Grupo,"_p3_e2"), "Costa R"),
+                      c(paste0(Grupo,"_p4_e1"), "Serbia"),
+                      c(paste0(Grupo,"_p4_e2"), "Suiza"),
+                      c(paste0(Grupo,"_p5_e1"), "Serbia"),
+                      c(paste0(Grupo,"_p5_e2"), "Brasil"),
+                      c(paste0(Grupo,"_p6_e1"), "Suiza"),
+                      c(paste0(Grupo,"_p6_e2"), "Costa R")
+            )
+            colnames(v1)<-c("Codigo","Equipo")
+            dataE<-data.frame(as.data.frame(v1))
+            dataE$Codigo<-as.character(dataE$Codigo)
+            dataE$Equipo<-as.character(dataE$Equipo)
+            
+            lista2E<-eventReactive(input$buttonE, {
+              
+              calcula_Goles(vectorgoles=c(input$E_p1_e1,input$E_p1_e2,
+                                          input$E_p2_e1,input$E_p2_e2,
+                                          input$E_p3_e1,input$E_p3_e2,
+                                          input$E_p4_e1,input$E_p4_e2,
+                                          input$E_p5_e1,input$E_p5_e2,
+                                          input$E_p6_e1,input$E_p6_e2
+              ),
+              data=dataE)
+            })
+            sidebarLayout(position = "right",
+                          sidebarPanel(
+                            
+                            
+                            renderTable({
+                              if(!is.null(lista2E()$data_resumenEquipos)){
+                                as.matrix(lista2E()$data_resumenEquipos)
+                                
+                              }else{
+                                m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                                colnames(m)<-"¡¡¡AGUAS!!!!"
+                                m
+                              }
+                              
+                            }),
+                            
+                            width = 4
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p1_e1"), dataE$Equipo[1], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p1_e2"), dataE$Equipo[2], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p2_e1"), dataE$Equipo[3], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p2_e2"), dataE$Equipo[4], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              )
+                            ),
+                            
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p3_e1"), dataE$Equipo[5], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p3_e2"), dataE$Equipo[6], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p4_e1"), dataE$Equipo[7], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p4_e2"), dataE$Equipo[8], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p5_e1"), dataE$Equipo[9], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p5_e2"), dataE$Equipo[10], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p6_e1"), dataE$Equipo[11], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p6_e2"), dataE$Equipo[12], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            width = 8
+                          )
+            )
+            
+            fluidRow(
+              column(2, actionButton("buttonE", "Actualizar")
+              ))
+            ```
+            
+            ### Grupo F
+            
+            ```{r}
+            Grupo<-"F"
+            v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Alemania"),
+                      c(paste0(Grupo,"_p1_e2"), "México"),
+                      c(paste0(Grupo,"_p2_e1"), "Suecia"),
+                      c(paste0(Grupo,"_p2_e2"), "Corea S"),
+                      c(paste0(Grupo,"_p3_e1"), "Corea S"),
+                      c(paste0(Grupo,"_p3_e2"), "México"),
+                      c(paste0(Grupo,"_p4_e1"), "Alemania"),
+                      c(paste0(Grupo,"_p4_e2"), "Suecia"),
+                      c(paste0(Grupo,"_p5_e1"), "México"),
+                      c(paste0(Grupo,"_p5_e2"), "Suecia"),
+                      c(paste0(Grupo,"_p6_e1"), "Corea S"),
+                      c(paste0(Grupo,"_p6_e2"), "Alemania")
+            )
+            colnames(v1)<-c("Codigo","Equipo")
+            dataF<-data.frame(as.data.frame(v1))
+            dataF$Codigo<-as.character(dataF$Codigo)
+            dataF$Equipo<-as.character(dataF$Equipo)
+            # source("utils/partidosF.R")
+            lista2F<-eventReactive(input$buttonF, {
+              
+              calcula_Goles(vectorgoles=c(input$F_p1_e1,input$F_p1_e2,
+                                          input$F_p2_e1,input$F_p2_e2,
+                                          input$F_p3_e1,input$F_p3_e2,
+                                          input$F_p4_e1,input$F_p4_e2,
+                                          input$F_p5_e1,input$F_p5_e2,
+                                          input$F_p6_e1,input$F_p6_e2
+              ),
+              data=dataF)
+            })
+            sidebarLayout(position = "right",
+                          sidebarPanel(
+                            
+                            
+                            renderTable({
+                              if(!is.null(lista2F()$data_resumenEquipos)){
+                                as.matrix(lista2F()$data_resumenEquipos)
+                                
+                              }else{
+                                m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                                colnames(m)<-"¡¡¡AGUAS!!!!"
+                                m
+                              }
+                              
+                            }),
+                            
+                            width = 4
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p1_e1"), dataF$Equipo[1], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p1_e2"), dataF$Equipo[2], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p2_e1"), dataF$Equipo[3], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p2_e2"), dataF$Equipo[4], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              )
+                            ),
+                            
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p3_e1"), dataF$Equipo[5], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p3_e2"), dataF$Equipo[6], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p4_e1"), dataF$Equipo[7], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p4_e2"), dataF$Equipo[8], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p5_e1"), dataF$Equipo[9], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p5_e2"), dataF$Equipo[10], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p6_e1"), dataF$Equipo[11], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p6_e2"), dataF$Equipo[12], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            width = 8
+                          )
+            )
+            
+            fluidRow(
+              column(2, actionButton("buttonF", "Actualizar")
+              ))
+            ```
+            
+            ### Grupo G
+            
+            ```{r}
+            Grupo<-"G"
+            v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Bélgica"),
+                      c(paste0(Grupo,"_p1_e2"), "Panamá"),
+                      c(paste0(Grupo,"_p2_e1"), "Túnez"),
+                      c(paste0(Grupo,"_p2_e2"), "Inglaterra"),
+                      c(paste0(Grupo,"_p3_e1"), "Bélgica"),
+                      c(paste0(Grupo,"_p3_e2"), "Túnez"),
+                      c(paste0(Grupo,"_p4_e1"), "Inglaterra"),
+                      c(paste0(Grupo,"_p4_e2"), "Panamá"),
+                      c(paste0(Grupo,"_p5_e1"), "Panamá"),
+                      c(paste0(Grupo,"_p5_e2"), "Túnez"),
+                      c(paste0(Grupo,"_p6_e1"), "Inglaterra"),
+                      c(paste0(Grupo,"_p6_e2"), "Bélgica")
+            )
+            colnames(v1)<-c("Codigo","Equipo")
+            dataG<-data.frame(as.data.frame(v1))
+            dataG$Codigo<-as.character(dataG$Codigo)
+            dataG$Equipo<-as.character(dataG$Equipo)
+            
+            lista2G<-eventReactive(input$buttonG, {
+              
+              calcula_Goles(vectorgoles=c(input$G_p1_e1,input$G_p1_e2,
+                                          input$G_p2_e1,input$G_p2_e2,
+                                          input$G_p3_e1,input$G_p3_e2,
+                                          input$G_p4_e1,input$G_p4_e2,
+                                          input$G_p5_e1,input$G_p5_e2,
+                                          input$G_p6_e1,input$G_p6_e2
+              ),
+              data=dataG)
+            })
+            sidebarLayout(position = "right",
+                          sidebarPanel(
+                            
+                            
+                            renderTable({
+                              if(!is.null(lista2G()$data_resumenEquipos)){
+                                as.matrix(lista2G()$data_resumenEquipos)
+                                
+                              }else{
+                                m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                                colnames(m)<-"¡¡¡AGUAS!!!!"
+                                m
+                              }
+                              
+                            }),
+                            
+                            width = 4
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p1_e1"), dataG$Equipo[1], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p1_e2"), dataG$Equipo[2], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p2_e1"), dataG$Equipo[3], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p2_e2"), dataG$Equipo[4], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              )
+                            ),
+                            
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p3_e1"), dataG$Equipo[5], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p3_e2"), dataG$Equipo[6], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p4_e1"), dataG$Equipo[7], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p4_e2"), dataG$Equipo[8], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p5_e1"), dataG$Equipo[9], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p5_e2"), dataG$Equipo[10], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p6_e1"), dataG$Equipo[11], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p6_e2"), dataG$Equipo[12], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            width = 8
+                          )
+            )
+            
+            fluidRow(
+              column(2, actionButton("buttonG", "Actualizar")
+              ))
+            ```
+            
+            
+            ### Grupo H
+            
+            ```{r}
+            Grupo<-"H"
+            v1<-rbind(c(paste0(Grupo,"_p1_e1"), "Colombia"),
+                      c(paste0(Grupo,"_p1_e2"), "Japón"),
+                      c(paste0(Grupo,"_p2_e1"), "Polonia"),
+                      c(paste0(Grupo,"_p2_e2"), "Senegal"),
+                      c(paste0(Grupo,"_p3_e1"), "Japón"),
+                      c(paste0(Grupo,"_p3_e2"), "Senegal"),
+                      c(paste0(Grupo,"_p4_e1"), "Polonia"),
+                      c(paste0(Grupo,"_p4_e2"), "Colombia"),
+                      c(paste0(Grupo,"_p5_e1"), "Japón"),
+                      c(paste0(Grupo,"_p5_e2"), "Polonia"),
+                      c(paste0(Grupo,"_p6_e1"), "Senegal"),
+                      c(paste0(Grupo,"_p6_e2"), "Colombia")
+            )
+            colnames(v1)<-c("Codigo","Equipo")
+            dataH<-data.frame(as.data.frame(v1))
+            dataH$Codigo<-as.character(dataH$Codigo)
+            dataH$Equipo<-as.character(dataH$Equipo)
+            
+            lista2H<-eventReactive(input$buttonH, {
+              
+              calcula_Goles(vectorgoles=c(input$H_p1_e1,input$H_p1_e2,
+                                          input$H_p2_e1,input$H_p2_e2,
+                                          input$H_p3_e1,input$H_p3_e2,
+                                          input$H_p4_e1,input$H_p4_e2,
+                                          input$H_p5_e1,input$H_p5_e2,
+                                          input$H_p6_e1,input$H_p6_e2
+              ),
+              data=dataH)
+            })
+            sidebarLayout(position = "right",
+                          sidebarPanel(
+                            
+                            
+                            renderTable({
+                              if(!is.null(lista2H()$data_resumenEquipos)){
+                                as.matrix(lista2H()$data_resumenEquipos)
+                                
+                              }else{
+                                m<-matrix("Por favor revisa que las cantidades ingresadas sean correctas")
+                                colnames(m)<-"¡¡¡AGUAS!!!!"
+                                m
+                              }
+                              
+                            }),
+                            
+                            width = 4
+                            
+                          ),
+                          mainPanel(
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p1_e1"), dataH$Equipo[1], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p1_e2"), dataH$Equipo[2], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p2_e1"), dataH$Equipo[3], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"),tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p2_e2"), dataH$Equipo[4], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              )
+                            ),
+                            
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p3_e1"), dataH$Equipo[5], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p3_e2"), dataH$Equipo[6], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p4_e1"), dataH$Equipo[7], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p4_e2"), dataH$Equipo[8], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            
+                            fluidRow(
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p5_e1"), dataH$Equipo[9], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p5_e2"), dataH$Equipo[10], min=0, max=100, value=0,step=1,
+                                                  width = '65px')),
+                              
+                              
+                              column(2, 
+                                     numericInput(paste0(Grupo,"_p6_e1"), dataH$Equipo[11], min=0, max=100, value=0,step=1,
+                                                  width = '65px')
+                              ),
+                              column(2,
+                                     tags$div(
+                                       HTML(paste(tags$span(style="color:white", "----"), tags$span(style="color:red", "vs"), sep = ""))
+                                     )),
+                              column(2,
+                                     numericInput(paste0(Grupo,"_p6_e2"), dataH$Equipo[12], min=0, max=100, value=0,step=1,
+                                                  width = '65px'))
+                              
+                              
+                            ),
+                            width = 8
+                          )
+            )
+            
+            fluidRow(
+              column(2, actionButton(paste0("button",Grupo), "Actualizar")
+              ))
+            ```
+            
+            
