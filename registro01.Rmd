@@ -1309,6 +1309,41 @@ eg<-reactive({#input$buttonG, {
 eh<-reactive({#input$buttonH, {
   etopn(lista2H()$data_resumenEquipos)
 })
+
+v8s <- reactiveValues(OK = c(F,F,F,F,
+                           F,F,F,F))
+observeEvent(input$buttonA, {
+    v8s$OK[1] <- lista2A()$marcaBoton
+  })
+
+observeEvent(input$buttonB, {
+    v8s$OK[2] <- lista2B()$marcaBoton
+  })
+
+observeEvent(input$buttonC, {
+    v8s$OK[3] <- lista2C()$marcaBoton
+  })
+
+observeEvent(input$buttonD, {
+    v8s$OK[4] <- lista2D()$marcaBoton
+  })
+
+observeEvent(input$buttonE, {
+    v8s$OK[5] <- lista2E()$marcaBoton
+  })
+
+observeEvent(input$buttonF, {
+    v8s$OK[6] <- lista2F()$marcaBoton
+  })
+
+observeEvent(input$buttonG, {
+    v8s$OK[7] <- lista2G()$marcaBoton
+  })
+
+observeEvent(input$buttonH, {
+    v8s$OK[8] <- lista2H()$marcaBoton
+  })
+
 alarma8vos<-paste0("¡O.O Nos caemos a pedazos!")
 ```
 
@@ -1827,45 +1862,43 @@ fluidRow(
 
 Row {data-height=100}
 -------------------------------------
+
+
 ```{r}
-# observeEvent({
-#   input$buttonA
-#   input$buttonB
-# }, { if(lista2A()$marcaBoton & lista2B()$marcaBoton){
-#   shinyjs::enable("button8vos")
-# }else{
-#   shinyjs::disable("button8vos")
-#   }
-#   })
 library(shinyjs)
-v <- reactiveValues(OK = c(F,F))
-observeEvent(input$buttonA, {
-    v$OK[1] <- lista2A()$marcaBoton
-  })
 
-observeEvent(input$buttonB, {
-    v$OK[2] <- lista2B()$marcaBoton
-  })
-
-Grupo1<-"A"
-Grupo2<-"B"
-Etapa<-"W"
-p<-49
-
-dataW<-reactive({data.frame("Codigo"=c(paste(Etapa,p,"E1",sep="_"),
-                                       paste(Etapa,p,"E2",sep="_")),
-                  "Equipo"=c(paste0(ea()[1]),
-                             paste0(eb()[2]))
+dataW<-reactive({data.frame("Codigo"=c("W_49_E1","W_49_E2", #paste(Etapa,p,"E1",sep="_"),paste(Etapa,p,"E2",sep="_")
+                                       "W_50_E1","W_50_E2",
+                                       "W_53_E1","W_53_E1",
+                                       "W_54_E1","W_54_E1",
+                                       "W_51_E1","W_51_E1",
+                                       "W_52_E1","W_52_E1",
+                                       "W_55_E1","W_55_E1",
+                                       "W_56_E1","W_56_E1"),
+                  "Equipo"=c(paste0(ea()[1]),paste0(eb()[2]),
+                             paste0(ec()[1]),paste0(ed()[2]),
+                             paste0(ee()[1]),paste0(ef()[2]),
+                             paste0(eg()[1]),paste0(eh()[2]),
+                             paste0(eb()[1]),paste0(ea()[2]),
+                             paste0(ed()[1]),paste0(ec()[2]),
+                             paste0(ef()[1]),paste0(ee()[2]),
+                             paste0(eh()[1]),paste0(eg()[2]))
                              )
   })
-# shinyjs::disable("button8vos")
 
-listaW49<-eventReactive(input$button8vos,{
 
-  if(v$OK[1] & v$OK[2]){
+lista8vos<-eventReactive(input$button8vos,{
+
+  if(v8s$OK[1] & v8s$OK[2] & v8s$OK[3] & v8s$OK[4] & v8s$OK[5] & v8s$OK[6] & v8s$OK[7] & v8s$OK[8]){
     # print("holi")
-    calcula_Goles(vectorgoles=c(input[[paste0("E1",Grupo1)]],
-                              input[[paste0("E2",Grupo2)]]),
+    calcula_Goles(vectorgoles=c(input[["E1A"]],input[["E2B"]],#input[[paste0("E1",Grupo1)]],
+                              input[["E1C"]],input[["E2D"]],
+                              input[["E1E"]],input[["E2F"]],
+                              input[["E1G"]],input[["E2H"]],
+                              input[["E1B"]],input[["E2A"]],
+                              input[["E1D"]],input[["E2C"]],
+                              input[["E1F"]],input[["E2E"]],
+                              input[["E1H"]],input[["E2G"]]),
     data=dataW()
     )
   }else{
@@ -1875,34 +1908,25 @@ listaW49<-eventReactive(input$button8vos,{
   fluidRow(
         
         column(7,
-               # disabled(
-        # ,
-        # hidden(
           actionButton("button8vos","Aceptar")
-          # )
-      # )
-  #,width = '1090px')
         ),
 
 column(7,
 renderTable({
-  if(listaW49()=="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+  if(lista8vos()=="MENSAJE SIN CONCLUIR PRIMERA FASE"){
     m<-matrix("PRIMERA FASE SIN CONCLUIR CORRECTAMENTE")
     colnames(m)<-"¡¡¡O.O!!!!"
     m
-  }else if(!is.null(listaW49()$data_EquipoPartido)){
+  }else if(!is.null(lista8vos()$data_EquipoPartido)){
         if(lista2A()$marcaBoton & lista2B()$marcaBoton){
-          if(listaW49()$marcaBoton){
-            if(sum(listaW49()$data_EquipoPartido$Empate==0)){
-              as.matrix(listaW49()$data_EquipoPartido[1:4,c("Grupo","Partido","Equipo")])
+          if(lista8vos()$marcaBoton){
+            if(sum(lista8vos()$data_EquipoPartido$Empate)==0){
+              as.matrix(lista8vos()$data_EquipoPartido[1:8,c("Grupo","Partido","Equipo")])
             }else{
               m<-matrix("</3 Cámbialo porfiiiiis")
               colnames(m)<-"¡¡¡NO MAMAR QUE PUSISTE EMPATES!!!!"
               m
             }
-
-            
-            
             
           }else{
             m<-matrix("Por favor revisa que las cantidades de Segunda Fase sean correctas :O")
@@ -1925,10 +1949,317 @@ renderTable({
 
 )
 )
-# useShinyjs(debug = TRUE)
-# observe({
-#   toggleState("button8vos", condition = input$buttonA)
-#   })
-
-
 ```
+
+
+
+Cuartos de Final
+=======================================================================
+```{r}
+e49<-reactive({#input$buttonA, {
+    etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==49],n=1)
+})
+e50<-reactive({#input$buttonA, {
+  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==50],n=1)
+})
+e51<-reactive({#input$buttonA, {
+  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==51],n=1)
+})
+e52<-reactive({#input$buttonA, {
+  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==52],n=1)
+})
+e53<-reactive({#input$buttonA, {
+  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==53],n=1)
+})
+e54<-reactive({#input$buttonA, {
+  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==54],n=1)
+})
+e55<-reactive({#input$buttonA, {
+  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==55],n=1)
+})
+e56<-reactive({#input$buttonA, {
+  etopn(lista8vos()$data_resumenEquipos[lista8vos()$data_resumenEquipos$Partido==56],n=1)
+})
+
+v4s <- reactiveValues(OK = c(F,F))
+
+observeEvent(input$button8vos, {
+  if(lista8vos()=="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+    v4s$OK[1] <- F
+    v4s$OK[2] <- F
+  }else{
+    v4s$OK[1] <- lista8vos()$marcaBoton
+    v4s$OK[2] <- sum(lista8vos()$data_EquipoPartido$Empate)==0
+  }
+})
+
+alarma4s<-paste0("¡O.O Nos caemos a pedazos!")
+```
+
+Row
+-------------------------------------
+  
+### [W57]
+  
+```{r}
+
+partido1<-49
+partido2<-50
+
+fluidRow(
+  
+  column(4,
+         h2(paste0("W",partido1))
+  ),
+  
+  column(4,
+         numericInput(paste0("W",partido1),
+                      renderUI(
+                        if(lista8vos()!="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+                          if(!is.null(lista8vos()$data_resumenEquipos)){
+                          paste0(e49()[1])}
+                        }else{
+                          tags$span(style="color:red",
+                                    alarma4s##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                          )
+                        }
+                      ),
+                      min=0, max=100, value=0,step=1,
+                      width = '100px')
+  )
+)
+fluidRow(
+  
+  column(4,
+         tags$div(
+           HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+         )),
+  
+  column(4,
+         tags$div(
+           HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+         ))
+  
+)
+
+fluidRow(
+  column(4,
+         h2(paste0("W",partido2))
+  ),
+  
+  column(4,
+         numericInput(paste0("W",partido2),
+                      renderUI(
+                        if(lista8vos()!="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+                          if(!is.null(lista8vos()$data_resumenEquipos)){
+                          paste0(e50()[1])}
+                        }else{
+                          tags$span(style="color:red",
+                                    alarma4s##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                          )
+                        }
+                      ),
+                      min=0, max=100, value=0,step=1,
+                      width = '100px')
+  )
+)
+```
+
+### [W59]
+  
+```{r}
+
+partido1<-51
+partido2<-52
+
+fluidRow(
+  
+  column(4,
+         h2(paste0("W",partido1))
+  ),
+  
+  column(4,
+         numericInput(paste0("W",partido1),
+                      renderUI(
+                       if(lista8vos()!="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+                          if(!is.null(lista8vos()$data_resumenEquipos)){
+                          paste0(e51()[1])}
+                        }else{
+                          tags$span(style="color:red",
+                                    alarma4s##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                          )
+                        }
+                      ),
+                      min=0, max=100, value=0,step=1,
+                      width = '100px')
+  )
+)
+fluidRow(
+  
+  column(4,
+         tags$div(
+           HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+         )),
+  
+  column(4,
+         tags$div(
+           HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+         ))
+  
+)
+
+fluidRow(
+  column(4,
+         h2(paste0("W",partido2))
+  ),
+  
+  column(4,
+         numericInput(paste0("W",partido2),
+                      renderUI(
+                        if(lista8vos()!="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+                          if(!is.null(lista8vos()$data_resumenEquipos)){
+                          paste0(e52()[1])}
+                        }else{
+                          tags$span(style="color:red",
+                                    alarma4s##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                          )
+                        }
+                      ),
+                      min=0, max=100, value=0,step=1,
+                      width = '100px')
+  )
+)
+```
+
+Row
+-------------------------------------
+
+### [W58]
+
+```{r}
+partido1<-53
+partido2<-54
+
+fluidRow(
+  
+  column(4,
+         h2(paste0("W",partido1))
+  ),
+  
+  column(4,
+         numericInput(paste0("W",partido1),
+                      renderUI(
+                        if(lista8vos()!="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+                          if(!is.null(lista8vos()$data_resumenEquipos)){
+                          paste0(e53()[1])}
+                        }else{
+                          tags$span(style="color:red",
+                                    alarma4s##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                          )
+                        }
+                      ),
+                      min=0, max=100, value=0,step=1,
+                      width = '100px')
+  )
+)
+fluidRow(
+  
+  column(4,
+         tags$div(
+           HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+         )),
+  
+  column(4,
+         tags$div(
+           HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+         ))
+  
+)
+
+fluidRow(
+  column(4,
+         h2(paste0("W",partido2))
+  ),
+  
+  column(4,
+         numericInput(paste0("W",partido2),
+                      renderUI(
+                        if(lista8vos()!="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+                          if(!is.null(lista8vos()$data_resumenEquipos)){
+                          paste0(e54()[1])}
+                        }else{
+                          tags$span(style="color:red",
+                                    alarma4s##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                          )
+                        }
+                      ),
+                      min=0, max=100, value=0,step=1,
+                      width = '100px')
+  )
+)
+``` 
+
+### [W60]
+
+```{r}
+partido1<-55
+partido2<-56
+
+fluidRow(
+  
+  column(4,
+         h2(paste0("W",partido1))
+  ),
+  
+  column(4,
+         numericInput(paste0("W",partido1),
+                      renderUI(
+                       if(lista8vos()!="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+                          if(!is.null(lista8vos()$data_resumenEquipos)){
+                          paste0(e55()[1])}
+                        }else{
+                          tags$span(style="color:red",
+                                    alarma4s##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                          )
+                        }
+                      ),
+                      min=0, max=100, value=0,step=1,
+                      width = '100px')
+  )
+)
+fluidRow(
+  
+  column(4,
+         tags$div(
+           HTML(paste(tags$span(style="color:white", "----   "), sep = ""))
+         )),
+  
+  column(4,
+         tags$div(
+           HTML(paste(tags$span(style="color:white", "----"),tags$h3(style="color:red", "vs"), sep = ""))
+         ))
+  
+)
+
+fluidRow(
+  column(4,
+         h2(paste0("W",partido2))
+  ),
+  
+  column(4,
+         numericInput(paste0("W",partido2),
+                      renderUI(
+                        if(lista8vos()!="MENSAJE SIN CONCLUIR PRIMERA FASE"){
+                          if(!is.null(lista8vos()$data_resumenEquipos)){
+                          paste0(e56()[1])}
+                        }else{
+                          tags$span(style="color:red",
+                                    alarma4s##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
+                          )
+                        }
+                      ),
+                      min=0, max=100, value=0,step=1,
+                      width = '100px')
+  )
+)
+``` 
