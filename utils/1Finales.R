@@ -1,7 +1,10 @@
-Finales
+Finales {data-orientation=columns}
 =======================================================================
   
-```{r}
+  Column
+-------------------------------------
+  
+  ```{r}
 e61<-reactive({#input$buttonA, {
   etopn(listaSemis()$data_EquipoPartido[listaSemis()$data_EquipoPartido$Partido==61,],n=2)
 })
@@ -24,12 +27,12 @@ observeEvent(input$buttonSemis, {
 alarmaSemis<-paste0("¡¡O.O Chequemos las fases anteriores DX DX!!")
 ```
 
-Row
--------------------------------------
+<!-- Row -->
+  <!-- ------------------------------------- -->
   
-### [FINAL]
+  ### FINAL
   
-```{r}
+  ```{r}
 
 partido1<-61
 partido2<-62
@@ -93,12 +96,12 @@ fluidRow(
 )
 ```
 
-Row
--------------------------------------
+<!-- Row -->
+  <!-- ------------------------------------- -->
   
-### [SEMIFINAL]
+  ### TERCER LUGAR
   
-```{r}
+  ```{r}
 partido1<-61
 partido2<-62
 
@@ -162,10 +165,12 @@ fluidRow(
 ```
 
 
-Row {data-height=100}
+Column {data-width=150}
 -------------------------------------
   
-  
+  ### G A N A D O R
+  ```{r}
+```  
 ```{r}
 library(shinyjs)
 
@@ -206,7 +211,9 @@ fluidRow(
              if(lista2A()$marcaBoton & lista2B()$marcaBoton){
                if(listaFinales()$marcaBoton){
                  if(sum(listaFinales()$data_EquipoPartido$Empate)==0){
-                   as.matrix(listaFinales()$data_EquipoPartido[1:4,c("Grupo","Partido","Equipo")])
+                   pais<-listaFinales()$data_EquipoPartido[1:2,c("Grupo","Partido","Equipo")]
+                   as.matrix(pais()$Equipo[pais()$Partido==64])
+                   #[,listaFinales()$data_EquipoPartido$Partido==64])
                  }else{
                    m<-matrix("</3 Cámbialo porfiiiiis")
                    colnames(m)<-"¡¡¡NO MAMAR QUE PUSISTE EMPATES!!!!"
