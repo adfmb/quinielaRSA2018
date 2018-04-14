@@ -2836,4 +2836,17 @@ fluidRow(
          
   )
 )
+downloadData <- downloadHandler(
+    filename = function() {
+      paste("data-", Sys.Date(), ".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(listaFinales()$data_EquipoPartido, file)
+    }
+)
+fluidRow(
+  # column(
+  downloadLink("downloadData", "Download")
+  # )
+)
 ```
