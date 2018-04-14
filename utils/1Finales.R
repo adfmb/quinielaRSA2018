@@ -1,44 +1,38 @@
-Semifinales
+Finales
 =======================================================================
   
 ```{r}
-e57<-reactive({#input$buttonA, {
-  etopn(lista4s()$data_EquipoPartido[lista4s()$data_EquipoPartido$Partido==57,],n=1)
+e61<-reactive({#input$buttonA, {
+  etopn(listaSemis()$data_EquipoPartido[listaSemis()$data_EquipoPartido$Partido==61,],n=2)
 })
-e58<-reactive({#input$buttonA, {
-  etopn(lista4s()$data_EquipoPartido[lista4s()$data_EquipoPartido$Partido==58,],n=1)
-})
-e59<-reactive({#input$buttonA, {
-  etopn(lista4s()$data_EquipoPartido[lista4s()$data_EquipoPartido$Partido==59,],n=1)
-})
-e60<-reactive({#input$buttonA, {
-  etopn(lista4s()$data_EquipoPartido[lista4s()$data_EquipoPartido$Partido==60,],n=1)
+e62<-reactive({#input$buttonA, {
+  etopn(listaSemis()$data_EquipoPartido[listaSemis()$data_EquipoPartido$Partido==62,],n=2)
 })
 
-vSemis <- reactiveValues(OK = c(F,F))
+vFinales <- reactiveValues(OK = c(F,F))
 
-observeEvent(input$button4s, {
-  if(lista4s()=="MENSAJE SIN CONCLUIR SEGUNDA FASE"){
-    vSemis$OK[1] <- F
-    vSemis$OK[2] <- F
+observeEvent(input$buttonSemis, {
+  if(listaSemis()=="MENSAJE SIN CONCLUIR FASE DE CUARTOS"){
+    vFinales$OK[1] <- F
+    vFinales$OK[2] <- F
   }else{
-    vSemis$OK[1] <- lista4s()$marcaBoton
-    vSemis$OK[2] <- sum(lista4s()$data_EquipoPartido$Empate)==0
+    vFinales$OK[1] <- listaSemis()$marcaBoton
+    vFinales$OK[2] <- sum(listaSemis()$data_EquipoPartido$Empate)==0
   }
 })
 
-alarmaSemis<-paste0("¡¡O.O Chequemos las fases anteriores DX!!")
+alarmaSemis<-paste0("¡¡O.O Chequemos las fases anteriores DX DX!!")
 ```
 
 Row
 -------------------------------------
   
-### [W61]
+### [FINAL]
   
 ```{r}
 
-partido1<-57
-partido2<-58
+partido1<-61
+partido2<-62
 
 fluidRow(
   
@@ -47,11 +41,11 @@ fluidRow(
   ),
   
   column(4,
-         numericInput(paste0("W",partido1),
+         numericInput(paste0("W",partido1,"E1"),
                       renderUI(
-                        if(lista4s()!="MENSAJE SIN CONCLUIR SEGUNDA FASE"){
-                          if(!is.null(lista4s()$data_resumenEquipos)){
-                            paste0(e57()[1])}
+                        if(listaSemis()!="MENSAJE SIN CONCLUIR FASE DE CUARTOS"){
+                          if(!is.null(listaSemis()$data_resumenEquipos)){
+                            paste0(e61()[1])}
                         }else{
                           tags$span(style="color:red",
                                     alarmaSemis##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
@@ -82,11 +76,11 @@ fluidRow(
   ),
   
   column(4,
-         numericInput(paste0("W",partido2),
+         numericInput(paste0("W",partido2,"E1"),
                       renderUI(
-                        if(lista4s()!="MENSAJE SIN CONCLUIR SEGUNDA FASE"){
-                          if(!is.null(lista4s()$data_resumenEquipos)){
-                            paste0(e58()[1])}
+                        if(listaSemis()!="MENSAJE SIN CONCLUIR FASE DE CUARTOS"){
+                          if(!is.null(listaSemis()$data_resumenEquipos)){
+                            paste0(e62()[1])}
                         }else{
                           tags$span(style="color:red",
                                     alarmaSemis##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
@@ -102,11 +96,11 @@ fluidRow(
 Row
 -------------------------------------
   
-### [W62]
+### [SEMIFINAL]
   
 ```{r}
-partido1<-59
-partido2<-60
+partido1<-61
+partido2<-62
 
 fluidRow(
   
@@ -115,11 +109,11 @@ fluidRow(
   ),
   
   column(4,
-         numericInput(paste0("W",partido1),
+         numericInput(paste0("W",partido1,"E2"),
                       renderUI(
-                        if(lista4s()!="MENSAJE SIN CONCLUIR SEGUNDA FASE"){
-                          if(!is.null(lista4s()$data_resumenEquipos)){
-                            paste0(e59()[1])}
+                        if(listaSemis()!="MENSAJE SIN CONCLUIR FASE DE CUARTOS"){
+                          if(!is.null(listaSemis()$data_resumenEquipos)){
+                            paste0(e61()[2])}
                         }else{
                           tags$span(style="color:red",
                                     alarmaSemis##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
@@ -150,11 +144,11 @@ fluidRow(
   ),
   
   column(4,
-         numericInput(paste0("W",partido2),
+         numericInput(paste0("W",partido2,"E2"),
                       renderUI(
-                        if(lista4s()!="MENSAJE SIN CONCLUIR SEGUNDA FASE"){
-                          if(!is.null(lista4s()$data_resumenEquipos)){
-                            paste0(e60()[1])}
+                        if(listaSemis()!="MENSAJE SIN CONCLUIR FASE DE CUARTOS"){
+                          if(!is.null(listaSemis()$data_resumenEquipos)){
+                            paste0(e62()[2])}
                         }else{
                           tags$span(style="color:red",
                                     alarmaSemis##,unique(lista2A()$data_EquipoPartido$Grupo),"!")
@@ -175,44 +169,44 @@ Row {data-height=100}
 ```{r}
 library(shinyjs)
 
-dataW2s<-reactive({data.frame("Codigo"=c("W_61_E1","W_61_E2",
-                                         "W_62_E1","W_62_E2"),
-                              "Equipo"=c(paste0(e57()[1]),paste0(e58()[1]),
-                                         paste0(e59()[1]),paste0(e60()[1]))
+dataW1s<-reactive({data.frame("Codigo"=c("W_64_E1","W_64_E2",
+                                         "W_63_E1","W_63_E2"),
+                              "Equipo"=c(paste0(e61()[1]),paste0(e62()[1]),
+                                         paste0(e61()[2]),paste0(e62()[2]))
 )
   # eventReactive({ input$buttonA input$buttonB input$buttonC input$buttonD input$buttonE input$buttonF input$buttonG input$buttonH}
 })
 
 
-listaSemis<-eventReactive(input$buttonSemis,{
+listaFinales<-eventReactive(input$buttonFinales,{
   
-  if(vSemis$OK[1] & vSemis$OK[2]){
+  if(vFinales$OK[1] & vFinales$OK[2]){
     # print("holi")
-    calcula_Goles(vectorgoles=c(input[["W57"]],input[["W58"]],#input[[paste0("E1",Grupo1)]],
-                                input[["W59"]],input[["W60"]]),
-                  data=dataW2s()
+    calcula_Goles(vectorgoles=c(input[["W61E1"]],input[["W62E1"]],#input[[paste0("E1",Grupo1)]],
+                                input[["W61E2"]],input[["W62E2"]]),
+                  data=dataW1s()
     )
   }else{
-    "MENSAJE SIN CONCLUIR FASE DE CUARTOS"
+    "MENSAJE SIN CONCLUIR FASE DE SEMIS"
   }
 })
 fluidRow(
   
   column(7,
-         actionButton("buttonSemis","  NO TE VAYAS SIN ACTUALIZARME    :P")
+         actionButton("buttonFinales","  NO TE VAYAS SIN ACTUALIZARME    :P")
   ),
   
   column(7,
          renderTable({
-           if(listaSemis()=="MENSAJE SIN CONCLUIR FASE DE CUARTOS"){
-             m<-matrix("FASE DE CUARTOS SIN CONCLUIR CORRECTAMENTE")
+           if(listaFinales()=="MENSAJE SIN CONCLUIR FASE DE SEMIS"){
+             m<-matrix("FASE DE SEMIFINALES SIN CONCLUIR CORRECTAMENTE")
              colnames(m)<-"¡¡¡O.O!!!!"
              m
-           }else if(!is.null(listaSemis()$data_EquipoPartido)){
+           }else if(!is.null(listaFinales()$data_EquipoPartido)){
              if(lista2A()$marcaBoton & lista2B()$marcaBoton){
-               if(listaSemis()$marcaBoton){
-                 if(sum(listaSemis()$data_EquipoPartido$Empate)==0){
-                   as.matrix(listaSemis()$data_EquipoPartido[1:4,c("Grupo","Partido","Equipo")])
+               if(listaFinales()$marcaBoton){
+                 if(sum(listaFinales()$data_EquipoPartido$Empate)==0){
+                   as.matrix(listaFinales()$data_EquipoPartido[1:4,c("Grupo","Partido","Equipo")])
                  }else{
                    m<-matrix("</3 Cámbialo porfiiiiis")
                    colnames(m)<-"¡¡¡NO MAMAR QUE PUSISTE EMPATES!!!!"
@@ -220,7 +214,7 @@ fluidRow(
                  }
                  
                }else{
-                 m<-matrix("Por favor revisa que las cantidades de la Fase de Cuartos sean correctas :O")
+                 m<-matrix("Por favor revisa que las cantidades de sean correctas :O")
                  colnames(m)<-"¡¡¡AGUAS!!!!"
                  m
                }
