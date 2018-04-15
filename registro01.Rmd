@@ -24,7 +24,7 @@ library(shinyjs)
 useShinyjs()
 ```
 
- Sidebar {.sidebar data-width=200}
+Registro∫ {.sidebar data-width=200}
 =======================================================================
 ```{r fig.width=2, fig.height=2.9,echo=FALSE}
 library(jpeg)
@@ -2759,10 +2759,10 @@ fluidRow(
 ```
 
 
-Column {data-width=150}
+Column {data-width=180}
 -------------------------------------
   
-### G A N A D O R
+### G A N A D O R {data-height=1200}
 
 ```{r}
 library(shinyjs)
@@ -2791,7 +2791,7 @@ listaFinales<-eventReactive(input$buttonFinales,{
 fluidRow(
   
   column(7,
-         actionButton("buttonFinales","  NO TE VAYAS SIN ACTUALIZARME    :P")
+         actionButton("buttonFinales"," ¡TU GANADOR! ")
   ),
   
   column(7,
@@ -2836,20 +2836,94 @@ fluidRow(
          
   )
 )
+
 fluidRow(
-  column(5,
-         renderUI({
-  downloadButton("downloadData1", "1eraFase")
+  
+  column(7,
+         renderTable({
+           if(listaFinales()=="MENSAJE SIN CONCLUIR FASE DE SEMIS"){
+
+           }else if(!is.null(listaFinales()$data_EquipoPartido)){
+             if(lista2A()$marcaBoton & lista2B()$marcaBoton){
+               if(listaFinales()$marcaBoton){
+                 if(sum(listaFinales()$data_EquipoPartido$Empate)==0){
+                   pais<-listaFinales()$data_EquipoPartido[3:4,c("Grupo","Partido","Equipo")]
+                   m<-as.matrix(pais$Equipo[pais$Partido==64])
+                   colnames(m)<-"¡¡¡TU SEGUNDO LUGAR!!!!"
+                   m
+                   #[,listaFinales()$data_EquipoPartido$Partido==64])
+                  }}}}
          })
   )
 )
 
+fluidRow(
+  
+  column(7,
+         renderTable({
+           if(listaFinales()=="MENSAJE SIN CONCLUIR FASE DE SEMIS"){
+
+           }else if(!is.null(listaFinales()$data_EquipoPartido)){
+             if(lista2A()$marcaBoton & lista2B()$marcaBoton){
+               if(listaFinales()$marcaBoton){
+                 if(sum(listaFinales()$data_EquipoPartido$Empate)==0){
+                   pais<-listaFinales()$data_EquipoPartido[1:2,c("Grupo","Partido","Equipo")]
+                   m<-as.matrix(pais$Equipo[pais$Partido==63])
+                   colnames(m)<-"¡¡¡TU TERCER LUGAR!!!!"
+                   m
+                   #[,listaFinales()$data_EquipoPartido$Partido==64])
+                  }}}}
+         })
+  )
+)
+```
+
+### Paso Final
+
+```{r}
+
+fluidRow(
+  # column(5,
+                renderUI({
+                    downloadButton("downloadData1", "Descarga tu quiniela")
+                })
+  # )
+)
+
+pegar1Fase<-function(g1,g2,g3,g4,g5,g6,g7,g8,
+                     w1,w2,w3,w4,
+                     nomequipo,
+                     nomconcursante,
+                     correo){
+  data<-rbind(g1,g2,g3,g4,g5,g6,g7,g8,w1,w2,w3,w4)
+  data$nomequipo<-nomequipo
+  data$nomconcursante<-nomconcursante
+  data$correo<-correo
+  return(data)
+}
+data1F<-reactive({
+  pegar1Fase<-pegar1Fase(lista2A()$data_EquipoPartido,
+                         lista2B()$data_EquipoPartido,
+                         lista2C()$data_EquipoPartido,
+                         lista2D()$data_EquipoPartido,
+                         lista2E()$data_EquipoPartido,
+                        lista2F()$data_EquipoPartido, 
+                        lista2G()$data_EquipoPartido,
+                        lista2H()$data_EquipoPartido,
+                        lista8vos()$data_EquipoPartido,
+                        lista4s()$data_EquipoPartido,
+                        listaSemis()$data_EquipoPartido,
+                        listaFinales()$data_EquipoPartido,
+                        input$nombre_part,
+                        input$nombre_equipo,
+                        input$correo)
+})
 output$downloadData1 <- downloadHandler(
     filename = function() { 
       paste(Sys.time(),input$correo,'.csv', sep='') 
     },
     content = function(file) {
-      write.csv(lista2A()$data_EquipoPartido, file, sep = ".csv",
+      write.csv(data1F(), file, sep = ".csv",
         row.names = FALSE)
     }
   )

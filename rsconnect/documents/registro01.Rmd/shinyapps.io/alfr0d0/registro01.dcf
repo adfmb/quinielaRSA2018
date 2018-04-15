@@ -1,0 +1,12 @@
+name: registro01
+title: registro01
+username:
+account: alfr0d0
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 322641
+bundleId: 1319519
+url: https://alfr0d0.shinyapps.io/registro01/
+when: 1523805256.01427
+asMultiple: FALSE
+asStatic: FALSE
