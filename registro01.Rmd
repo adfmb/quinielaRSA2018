@@ -7,6 +7,7 @@ output:
     # vertical_layout: scroll
     logo: football-soccer-ball-48-183228.png
     theme: cerulean
+    source_code: "https://github.com/adfmb/quinielaRSA2018"
 runtime: shiny
 ---
 <!-- [id]: russia09.png -->
@@ -237,7 +238,11 @@ sidebarLayout(position = "right",
 )
 
 fluidRow(
-  column(2, actionButton("buttonA", "Actualizar")
+  # tags$head(
+  #   tags$style(HTML('#buttonA{background-color:orange}'))
+  # ),
+  column(2, actionButton("buttonA", "Actualizar", icon("paper-plane"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
 
