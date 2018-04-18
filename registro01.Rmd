@@ -25,26 +25,54 @@ library(shinyjs)
 useShinyjs()
 ```
 
-Registro∫ {.sidebar data-width=200}
+Registro {.sidebar data-width=200}
 =======================================================================
-```{r fig.width=2, fig.height=2.9,echo=FALSE}
+[![](www/russia19.jpg){#id .class width=200 height=120px}](http://www.fifa.com/worldcup/)
+<!-- ```{r fig.width=1.9, fig.height=1,echo=FALSE}
 library(jpeg)
 library(png)
 library(grid)
-# img <- readJPEG("www/russia01.jpg")
-img <- readPNG("www/russia02.png")
+img <- readJPEG("www/russia18.jpg")
+# img <- readPNG("www/russia02.png")
 
 grid.raster(img)
  # img(src='www/russia03.png', align = "center")
 ```
+<!-- ```{r fig.width=2, fig.height=2.9,echo=FALSE}
+library(jpeg)
+library(png)
+library(grid)
+img <- readJPEG("www/russia18.jpg")
+# img <- readPNG("www/russia02.png")
+
+grid.raster(img)
+ # img(src='www/russia03.png', align = "center")
+<!-- ``` -->
 
 ```{r echo=FALSE}
 textInput("nombre_part", "Nombre completo del participante")
 
 textInput("nombre_equipo", "Nombre de quien te invitó")
 
+textInput("folio", "Folio proporcionado")
+
 textInput("correo", "Correo electrónico del participante")
 ```
+
+<!-- ### Contact Rate -->
+
+<!-- ```{r} -->
+
+<!-- renderGauge({ -->
+<!--   rate <- 100*sum(c(vDownload$OK,vFinales$OK,vSemis$OK,v4s$OK,v8s$OK))/length(c(vDownload$OK,vFinales$OK,vSemis$OK,v4s$OK,v8s$OK)) -->
+<!--   gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors( -->
+<!--     success = c(80, 100), warning = c(40, 79), danger = c(0, 39) -->
+<!--   )) -->
+<!-- }) -->
+<!-- ``` -->
+
+[**Lee las instrucciones antes de empezar**](#¿Cómo-jugar?)
+
 <!-- Sidebar {.sidebar data-width=200}
 =======================================================================
 <!-- ```{r fig.width=.5, fig.height=.5,echo=FALSE}
@@ -57,6 +85,50 @@ img <- readPNG("www/Sigueme05.png")
 grid.raster(img)
 <!-- ``` -->
 
+¿Cómo jugar?
+=======================================================================
+
+Row  {data-height=150}
+-----------------------------------------------------------------------
+[![](www/ball04.jpg){#id .class width=1150 height=140px}](http://www.fifa.com/worldcup/)
+
+Row  {.tabset} 
+-----------------------------------------------------------------------
+### Instrucciones
+
+1. **TE SUGERIMOS RESPONDER LA QUINIELA DESDE UNA COMPUTADORA, NO EN DISPOSITIVOS MÓVILES**
+
+2. Debes pronosticar el mundial completo desde fase de grupos hasta quien será campeón.
+
+3. Ingresa tu **nombre**, el **nombre de quien te invitó**, el **folio** que te fue proporcinado y **tu correo electrónico**. Posteriormente, ingresa a la pestaña [**Fase de grupos**](#Fase de grupos).
+
+4. Comienza a llenar los marcadores de cada partido por grupos. En cada grupo debes dar clic en el botón de **ACTUALIZAR**.
+
+5. Al terminar la *fase de grupos*, si llenaste y actualizaste todos los grupos, en automático se te mostrarán los equipos en la pestaña [**Octavos de Final**](#Octavos de Final). Llena tus resultados (sin empates), da **click en el botón para actualizar** y pasa a la siguiente fase.
+
+6. A partir de allí, conforme vayas llenando cada fase y actualizando con su respectivo botón, podrás ir capturando tus pronósticos para las siguientes etapas ( [**Cuartos de Final**](#Cuartos de Final), [**Semifinales**](#Semifinales), [**Finales**](#Finales) ). 
+
+7. En la última pestaña, [**Finales**](#Finales), después de ingresar tus predicciones para el partido por el tercer lugar y para la final, da clic en **¡TU GANADOR!** para que se desplieguen tus pronósticos para el primer, segundo y tercer lugar del mundial.
+
+8. Revisa tu quiniela por si hay algún marcador que quieras corregir. En caso de cambiar algo, asegúrate de actualizar tu quiniela haciendo click en los botones de cada fase "afectada".
+Una vez seguro da clic en: **DESCARGAR TU QUINIELA**.
+
+9. El archivo que descargues mándalo al mail de **promo.sigueme@gmail.com**. Es importante que al archivo: **NO le modifiques los datos, el formato, ni nombre de archivo**. De lo contrario no será válida.
+
+10. Si quieres cambiar resultados o realizar algún tipo de modificación, vuelve a generar el archivo en la plataforma, pero toma en cuenta que **sólo será válida la primera quiniela que recibamos en el email de promo.sigueme@gmail.com**.
+
+### ¿Cómo ganas puntos?
+
+#### Fase de grupos
+- 3 puntos por ganador 
+- 2 puntos por empate
+- 5 puntos por marcador
+
+#### De octavos a la final
+- 5 puntos por ganador
+- 8 puntos por campeón
+- 4 puntos por segundo lugar
+- 2 puntos por tercer lugar
 
 Fase de grupos
 =======================================================================
@@ -241,7 +313,7 @@ fluidRow(
   # tags$head(
   #   tags$style(HTML('#buttonA{background-color:orange}'))
   # ),
-  column(2, actionButton("buttonA", "Actualizar", icon("paper-plane"), 
+  column(2, actionButton("buttonA", "Actualizar",  icon = icon("refresh"), 
     style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
@@ -391,7 +463,8 @@ sidebarLayout(position = "right",
 )
 
 fluidRow(
-  column(2, actionButton("buttonB", "Actualizar")
+  column(2, actionButton("buttonB", "Actualizar",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
 
@@ -539,7 +612,8 @@ sidebarLayout(position = "right",
 )
 
 fluidRow(
-  column(2, actionButton("buttonC", "Actualizar")
+  column(2, actionButton("buttonC", "Actualizar",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
 
@@ -688,7 +762,8 @@ sidebarLayout(position = "right",
 )
 
 fluidRow(
-  column(2, actionButton("buttonD", "Actualizar")
+  column(2, actionButton("buttonD", "Actualizar",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
 
@@ -837,7 +912,8 @@ sidebarLayout(position = "right",
 )
 
 fluidRow(
-  column(2, actionButton("buttonE", "Actualizar")
+  column(2, actionButton("buttonE", "Actualizar",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
 
@@ -985,7 +1061,8 @@ sidebarLayout(position = "right",
 )
 
 fluidRow(
-  column(2, actionButton("buttonF", "Actualizar")
+  column(2, actionButton("buttonF", "Actualizar",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
 
@@ -1133,7 +1210,8 @@ sidebarLayout(position = "right",
 )
 
 fluidRow(
-  column(2, actionButton("buttonG", "Actualizar")
+  column(2, actionButton("buttonG", "Actualizar",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
 
@@ -1282,7 +1360,8 @@ sidebarLayout(position = "right",
 )
 
 fluidRow(
-  column(2, actionButton(paste0("button",Grupo), "Actualizar")
+  column(2, actionButton(paste0("button",Grupo), "Actualizar",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ))
 ```
 
@@ -1914,7 +1993,8 @@ lista8vos<-eventReactive(input$button8vos,{
   fluidRow(
         
         column(7,
-          actionButton("button8vos","  NO TE VAYAS SIN ACTUALIZARME    :P")
+          actionButton("button8vos","  NO TE VAYAS SIN ACTUALIZARME    :P",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
         ),
 
 column(7,
@@ -2310,7 +2390,8 @@ lista4s<-eventReactive(input$button4s,{
 fluidRow(
   
   column(7,
-         actionButton("button4s","  NO TE VAYAS SIN ACTUALIZARME    :P")
+         actionButton("button4s","  NO TE VAYAS SIN ACTUALIZARME    :P",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ),
   
   column(7,
@@ -2554,7 +2635,8 @@ listaSemis<-eventReactive(input$buttonSemis,{
 fluidRow(
   
   column(7,
-         actionButton("buttonSemis","  NO TE VAYAS SIN ACTUALIZARME    :P")
+         actionButton("buttonSemis","  NO TE VAYAS SIN ACTUALIZARME    :P",  icon = icon("refresh"), 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ),
   
   column(7,
@@ -2707,7 +2789,7 @@ partido2<-62
 fluidRow(
   
   column(4,
-         h2(paste0("W",partido1))
+         h2(paste0("L",partido1))
   ),
   
   column(4,
@@ -2742,7 +2824,7 @@ fluidRow(
 
 fluidRow(
   column(4,
-         h2(paste0("W",partido2))
+         h2(paste0("L",partido2))
   ),
   
   column(4,
@@ -2796,7 +2878,8 @@ listaFinales<-eventReactive(input$buttonFinales,{
 fluidRow(
   
   column(7,
-         actionButton("buttonFinales"," ¡TU GANADOR! ")
+         actionButton("buttonFinales"," ¡TU GANADOR! ", 
+    style="color: #0066ff;background-image:-webkit-linear-gradient(#fff, #fff 60%, #f5f5f5)")
   ),
   
   column(7,
@@ -2886,6 +2969,17 @@ fluidRow(
 ### Paso Final
 
 ```{r}
+vDownload <- reactiveValues(OK = c(F,F))
+
+observeEvent(input$buttonFinales, {
+  if(listaFinales()=="MENSAJE SIN CONCLUIR FASE DE SEMIS"){
+    vDownload$OK[1] <- F
+    vDownload$OK[2] <- F
+  }else{
+    vDownload$OK[1] <- listaFinales()$marcaBoton
+    vDownload$OK[2] <- sum(listaFinales()$data_EquipoPartido$Empate)==0
+  }
+})
 
 fluidRow(
   # column(5,
@@ -2899,10 +2993,12 @@ pegar1Fase<-function(g1,g2,g3,g4,g5,g6,g7,g8,
                      w1,w2,w3,w4,
                      nomequipo,
                      nomconcursante,
+                     folio,
                      correo){
   data<-rbind(g1,g2,g3,g4,g5,g6,g7,g8,w1,w2,w3,w4)
   data$nomequipo<-nomequipo
   data$nomconcursante<-nomconcursante
+  data$folio<-folio
   data$correo<-correo
   return(data)
 }
@@ -2919,13 +3015,14 @@ data1F<-reactive({
                         lista4s()$data_EquipoPartido,
                         listaSemis()$data_EquipoPartido,
                         listaFinales()$data_EquipoPartido,
-                        input$nombre_part,
                         input$nombre_equipo,
+                        input$nombre_part,
+                        input$folio,
                         input$correo)
 })
 output$downloadData1 <- downloadHandler(
     filename = function() { 
-      paste(Sys.time(),input$correo,'.csv', sep='') 
+      paste(Sys.time(),input$correo,input$folio,'.csv', sep='') 
     },
     content = function(file) {
       write.csv(data1F(), file, sep = ".csv",
