@@ -27,7 +27,7 @@ useShinyjs()
 
 Registro {.sidebar data-width=200}
 =======================================================================
-[![](www/russia19.jpg){#id .class width=200 height=120px}](http://www.fifa.com/worldcup/)
+![](www/russia19.jpg){#id .class width=200 height=120px}
 <!-- ```{r fig.width=1.9, fig.height=1,echo=FALSE}
 library(jpeg)
 library(png)
