@@ -27,7 +27,7 @@ useShinyjs()
 
 Registro {.sidebar data-width=200}
 =======================================================================
-![](www/russia19.jpg){#id .class width=200 height=120px}
+[![](www/russia19.jpg){#id .class width=200 height=120px}](http://www.fifa.com/worldcup/)
 <!-- ```{r fig.width=1.9, fig.height=1,echo=FALSE}
 library(jpeg)
 library(png)
@@ -149,7 +149,7 @@ library(grid)
 <!-- ``` -->
 <!-- ![](www/russia09.png){#id .class width=1200 height=320px} -->
 <!-- ![](www/russia09.png){ width=100% height=30% } -->
-[![](www/russia14.jpg){#id .class width=1150 height=200px}](http://www.fifa.com/worldcup/)
+![](www/russia14.jpg){#id .class width=1150 height=240px}
 <!-- ![](www/russia12.jpg){#id .class width=1150 height=300px} -->
 <!-- ![](www/russia15.png){#id .class width=1150 height=300px} -->
 <!-- http://www.squawka.com/news/world-cup-2018-russias-stadiums-in-pictures/201955#2oEbD5Hqu7cCUy2y.97 -->
