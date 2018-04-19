@@ -100,15 +100,15 @@ Row  {.tabset}
 
 2. Debes pronosticar el mundial completo desde fase de grupos hasta quien será campeón.
 
-3. Ingresa tu **nombre**, el **nombre de quien te invitó**, el **folio** que te fue proporcinado y **tu correo electrónico**. Posteriormente, ingresa a la pestaña [**Fase de grupos**](#Fase de grupos).
+3. Ingresa tu **nombre**, el **nombre de quien te invitó**, el **folio** que te fue proporcinado y **tu correo electrónico**. Posteriormente, ingresa a la pestaña [**Fase de grupos**](#section-fase-de-grupos-1).
 
 4. Comienza a llenar los marcadores de cada partido por grupos. En cada grupo debes dar clic en el botón de **ACTUALIZAR**.
 
-5. Al terminar la *fase de grupos*, si llenaste y actualizaste todos los grupos, en automático se te mostrarán los equipos en la pestaña [**Octavos de Final**](#Octavos de Final). Llena tus resultados (sin empates), da **click en el botón para actualizar** y pasa a la siguiente fase.
+5. Al terminar la *fase de grupos*, si llenaste y actualizaste todos los grupos, en automático se te mostrarán los equipos en la pestaña [**Octavos de Final**](#section-octavos-de-final). Llena tus resultados (sin empates), da **click en el botón para actualizar** y pasa a la siguiente fase.
 
-6. A partir de allí, conforme vayas llenando cada fase y actualizando con su respectivo botón, podrás ir capturando tus pronósticos para las siguientes etapas ( [**Cuartos de Final**](#Cuartos de Final), [**Semifinales**](#Semifinales), [**Finales**](#Finales) ). 
+6. A partir de allí, conforme vayas llenando cada fase y actualizando con su respectivo botón, podrás ir capturando tus pronósticos para las siguientes etapas ( [**Cuartos de Final**](#section-cuartos-de-final), [**Semifinales**](#section-semifinales), [**Finales**](#section-finales) ). 
 
-7. En la última pestaña, [**Finales**](#Finales), después de ingresar tus predicciones para el partido por el tercer lugar y para la final, da clic en **¡TU GANADOR!** para que se desplieguen tus pronósticos para el primer, segundo y tercer lugar del mundial.
+7. En la última pestaña, [**Finales**](#section-finales), después de ingresar tus predicciones para el partido por el tercer lugar y para la final, da clic en **¡TU GANADOR!** para que se desplieguen tus pronósticos para el primer, segundo y tercer lugar del mundial.
 
 8. Revisa tu quiniela por si hay algún marcador que quieras corregir. En caso de cambiar algo, asegúrate de actualizar tu quiniela haciendo click en los botones de cada fase "afectada".
 Una vez seguro da clic en: **DESCARGAR TU QUINIELA**.
@@ -149,7 +149,7 @@ library(grid)
 <!-- ``` -->
 <!-- ![](www/russia09.png){#id .class width=1200 height=320px} -->
 <!-- ![](www/russia09.png){ width=100% height=30% } -->
-[![](www/russia14.jpg){#id .class width=1150 height=230px}](http://www.fifa.com/worldcup/)
+[![](www/russia14.jpg){#id .class width=1150 height=200px}](http://www.fifa.com/worldcup/)
 <!-- ![](www/russia12.jpg){#id .class width=1150 height=300px} -->
 <!-- ![](www/russia15.png){#id .class width=1150 height=300px} -->
 <!-- http://www.squawka.com/news/world-cup-2018-russias-stadiums-in-pictures/201955#2oEbD5Hqu7cCUy2y.97 -->
