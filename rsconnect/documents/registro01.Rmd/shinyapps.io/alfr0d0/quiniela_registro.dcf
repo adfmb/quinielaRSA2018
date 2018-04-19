@@ -5,9 +5,9 @@ account: alfr0d0
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 325682
-bundleId: 1327737
+bundleId: 1327755
 url: https://alfr0d0.shinyapps.io/quiniela_registro/
-when: 1524152428.70347
+when: 1524152943.62196
 asMultiple: TRUE
 asStatic: FALSE
 ignoredFiles: Untitled.Rmd

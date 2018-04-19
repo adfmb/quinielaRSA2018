@@ -133,7 +133,7 @@ Una vez seguro da clic en: **DESCARGAR TU QUINIELA**.
 Fase de grupos
 =======================================================================
 
-Row {data-height=270}
+Row {data-height=285}
 -----------------------------------------------------------------------
 <!-- ```{r fig.width=20, fig.height=4,echo=FALSE}
 library(jpeg)
@@ -154,7 +154,7 @@ library(grid)
 <!-- ![](www/russia15.png){#id .class width=1150 height=300px} -->
 <!-- http://www.squawka.com/news/world-cup-2018-russias-stadiums-in-pictures/201955#2oEbD5Hqu7cCUy2y.97 -->
 
-Row {data-height=280} {.tabset}
+Row {data-height=265} {.tabset}
 -----------------------------------------------------------------------
 
 ### Grupo A
