@@ -3010,7 +3010,7 @@ data1F<-reactive({
 })
 output$downloadData1 <- downloadHandler(
     filename = function() { 
-      paste(Sys.time(),input$correo,"_",input$folio,'.csv', sep='') 
+      paste(Sys.time(),"_",input$correo,"_",input$folio,'.csv', sep='') 
     },
     content = function(file) {
       write.csv(data1F(), file, sep = ".csv",
