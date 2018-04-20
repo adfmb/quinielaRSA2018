@@ -3001,7 +3001,8 @@ pegar1Fase<-function(g1,g2,g3,g4,g5,g6,g7,g8,
   x3<-gsub(pattern ="í","i",x = x2)
   x4<-gsub(pattern ="ó","o",x = x3)
   x5<-gsub(pattern ="ú","u",x = x4)
-  data$Equipo_gsub<-x5
+  x6<-gsub(pattern ="ñ","n",x = x5)
+  data$Equipo_gsub<-x6
   data$nomequipo<-nomequipo
   data$nomconcursante<-nomconcursante
   data$folio<-folio
@@ -3028,7 +3029,7 @@ data1F<-reactive({
 })
 output$downloadData1 <- downloadHandler(
     filename = function() { 
-      paste(Sys.time(),input$correo,input$folio,'.csv', sep='') 
+      paste(Sys.time(),input$correo,"_",input$folio,'.csv', sep='') 
     },
     content = function(file) {
       write.csv(data1F(), file, sep = ".csv",
