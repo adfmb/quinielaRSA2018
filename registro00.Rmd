@@ -38,3 +38,6 @@ options(digits = 0)
 ```{r , child = 'octavos_de_final.Rmd'}
 ```
 
+```{r , child = 'cuartos_de_final.Rmd'}
+```
+
