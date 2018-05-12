@@ -31,3 +31,6 @@ options(digits = 0)
 
 ```{r , child = 'como_jugar.Rmd'}
 ```
+
+```{r , child = 'fase_de_grupos.Rmd'}
+```
