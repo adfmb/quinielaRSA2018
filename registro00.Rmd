@@ -34,3 +34,7 @@ options(digits = 0)
 
 ```{r , child = 'fase_de_grupos.Rmd'}
 ```
+
+```{r , child = 'octavos_de_final.Rmd'}
+```
+
