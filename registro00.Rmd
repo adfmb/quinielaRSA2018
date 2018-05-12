@@ -1,0 +1,33 @@
+---
+title: "QUINIELA RUSIA 2018"
+subtitle: "Sígueme A 2018"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    # vertical_layout: scroll
+    logo: football-soccer-ball-48-183228.png
+    theme: cerulean
+    source_code: "https://github.com/adfmb/quinielaRSA2018"
+runtime: shiny
+---
+<!-- [id]: russia09.png -->
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(shiny)
+library(png)
+library(dplyr)
+source("utils/calcula_goles.R")
+source("utils/etopn.R")
+options(warn = 0)
+options(digits = 0)
+# library(shinyjs)
+# useShinyjs()
+```
+
+```{r , child = 'registro02.Rmd'}
+```
+
+
+```{r , child = 'como_jugar.Rmd'}
+```
