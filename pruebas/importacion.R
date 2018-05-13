@@ -9,14 +9,14 @@ for(docname in docsnames){
 }
 
 View(alldocs)
-alldocs$Grupo<-as.character(alldocs$Grupo)
-alldocs$Equipo<-as.character(alldocs$Equipo)
+doc$Grupo<-as.character(doc$Grupo)
+doc$Equipo<-as.character(doc$Equipo)
 
 library(dplyr)
 View(doc%>%
 arrange(Grupo,Partido,E1E2))
 
-names(alldocs)
+names(doc)
 
 to_zero<-function(x){
   
@@ -25,7 +25,7 @@ to_zero<-function(x){
 
 cols_ids<-c("Codigo","Grupo","Partido","E1E2","Equipo")
 cols_resultados<-c("GolesFavor","GolesContra","Pts","DiferenciaGoles","Ganado","Perdido","Empate")
-resultados_reales<-alldocs%>%
+resultados_reales<-doc%>%
   select(one_of(c(cols_ids,cols_resultados)))%>%
   mutate_at(vars(one_of(cols_resultados)),to_zero)%>%
   arrange(Grupo,Partido,E1E2)%>%
