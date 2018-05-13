@@ -25,26 +25,26 @@ options(digits = 0)
 # useShinyjs()
 ```
 
-```{r , child = 'registro02.Rmd'}
+```{r , child = '00_registro.Rmd'}
 ```
 
 
-```{r , child = 'como_jugar.Rmd'}
+```{r , child = '01_como_jugar.Rmd'}
 ```
 
-```{r , child = 'fase_de_grupos.Rmd'}
+```{r , child = '02_fase_de_grupos.Rmd'}
 ```
 
-```{r , child = 'octavos_de_final.Rmd'}
+```{r , child = '03_octavos_de_final.Rmd'}
 ```
 
-```{r , child = 'cuartos_de_final.Rmd'}
+```{r , child = '04_cuartos_de_final.Rmd'}
 ```
 
-```{r , child = 'semifinales.Rmd'}
+```{r , child = '05_semifinales.Rmd'}
 ```
 
-```{r , child = 'finales.Rmd'}
+```{r , child = '06_finales.Rmd'}
 ```
 
 
