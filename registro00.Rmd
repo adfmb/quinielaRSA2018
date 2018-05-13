@@ -44,3 +44,6 @@ options(digits = 0)
 ```{r , child = 'semifinales.Rmd'}
 ```
 
+```{r , child = 'finales.Rmd'}
+```
+
