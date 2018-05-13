@@ -41,3 +41,6 @@ options(digits = 0)
 ```{r , child = 'cuartos_de_final.Rmd'}
 ```
 
+```{r , child = 'semifinales.Rmd'}
+```
+
