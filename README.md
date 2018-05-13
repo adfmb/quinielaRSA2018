@@ -4,7 +4,7 @@ APP QUINIELA RUSIA 2018
 ================
 
 
-- [**Visita la App**](http://shinyapps.io/quiniela_registro/)
+- [**Visita la App**](https://alfr0d0.shinyapps.io/quiniela_registro/)
 
 App para capturar los pronósticos de los concursantes de la quiniela para Rusia 2018
 
