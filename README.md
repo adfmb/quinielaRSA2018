@@ -1,4 +1,4 @@
-![ball01](www/ball01.png){#id .class width=1150 height=240px}
+![ball01](www/ball01.png)
 
 APP QUINIELA RUSIA 2018
 ================
