@@ -10,7 +10,6 @@ output:
     source_code: "https://github.com/adfmb/quinielaRSA2018"
 runtime: shiny
 ---
-<!-- [id]: russia09.png -->
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
@@ -27,7 +26,6 @@ options(digits = 0)
 
 ```{r , child = '00_registro.Rmd'}
 ```
-
 
 ```{r , child = '01_como_jugar.Rmd'}
 ```

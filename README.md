@@ -1,2 +1,16 @@
-# quinielaRSA2018
+![ball01](www/ball01.png){#id .class width=1150 height=240px}
+
+APP QUINIELA RUSIA 2018
+================
+
+
+- [**Visita la App**](http://shinyapps.io/quiniela_registro/)
+
 App para capturar los pronósticos de los concursantes de la quiniela para Rusia 2018
+
+<br>
+
+Lanzar app
+===========
+- Clonar este [**repo**](https://github.com/adfmb/quinielaRSA2018.git)
+- `Ctrl` + `Shift` + `K` en el archivo **00_maindoc.Rmd**
