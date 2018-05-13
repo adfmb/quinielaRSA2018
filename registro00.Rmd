@@ -47,3 +47,4 @@ options(digits = 0)
 ```{r , child = 'finales.Rmd'}
 ```
 
+
