@@ -10,41 +10,19 @@ output:
     source_code: "https://github.com/adfmb/quinielaRSA2018"
 runtime: shiny
 ---
-<!-- [id]: russia09.png -->
 
-```{r setup, include=FALSE}
-library(flexdashboard)
-library(shiny)
-library(png)
-library(dplyr)
-source("utils/calcula_goles.R")
-source("utils/etopn.R")
-options(warn = 0)
-options(digits = 0)
-# library(shinyjs)
-# useShinyjs()
+Registro {.sidebar data-width=200}
+=======================================================================
+![](www/russia19.jpg){#id .class width=200 height=120px}
+
+```{r echo=FALSE}
+textInput("nombre_part", "Nombre completo del participante")
+
+textInput("nombre_equipo", "Nombre de quien te invitó")
+
+textInput("folio", "Folio proporcionado")
+
+textInput("correo", "Correo electrónico del participante")
 ```
 
-```{r , child = 'registro02.Rmd'}
-```
-
-
-```{r , child = 'como_jugar.Rmd'}
-```
-
-```{r , child = 'fase_de_grupos.Rmd'}
-```
-
-```{r , child = 'octavos_de_final.Rmd'}
-```
-
-```{r , child = 'cuartos_de_final.Rmd'}
-```
-
-```{r , child = 'semifinales.Rmd'}
-```
-
-```{r , child = 'finales.Rmd'}
-```
-
-
+[**Lee las instrucciones antes de empezar**](#¿Cómo-jugar?)

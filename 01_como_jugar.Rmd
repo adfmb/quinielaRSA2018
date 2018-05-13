@@ -1,0 +1,57 @@
+---
+title: "QUINIELA RUSIA 2018"
+subtitle: "Sígueme A 2018"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    # vertical_layout: scroll
+    logo: football-soccer-ball-48-183228.png
+    theme: cerulean
+    source_code: "https://github.com/adfmb/quinielaRSA2018"
+runtime: shiny
+---
+
+¿Cómo jugar?
+=======================================================================
+
+Row  {data-height=150}
+-----------------------------------------------------------------------
+[![](www/ball04.jpg){#id .class width=1150 height=140px}](http://www.fifa.com/worldcup/)
+
+Row  {.tabset} 
+-----------------------------------------------------------------------
+### Instrucciones
+
+1. **TE SUGERIMOS RESPONDER LA QUINIELA DESDE UNA COMPUTADORA, NO EN DISPOSITIVOS MÓVILES**
+
+2. Debes pronosticar el mundial completo desde fase de grupos hasta quien será campeón.
+
+3. Ingresa tu **nombre**, el **nombre de quien te invitó**, el **folio** que te fue proporcinado y **tu correo electrónico**. Posteriormente, ingresa a la pestaña [**Fase de grupos**](#section-fase-de-grupos-1).
+
+4. Comienza a llenar los marcadores de cada partido por grupos. En cada grupo debes dar clic en el botón de **ACTUALIZAR**.
+
+5. Al terminar la *fase de grupos*, si llenaste y actualizaste todos los grupos, en automático se te mostrarán los equipos en la pestaña [**Octavos de Final**](#section-octavos-de-final). Llena tus resultados (sin empates), da **click en el botón para actualizar** y pasa a la siguiente fase.
+
+6. A partir de allí, conforme vayas llenando cada fase y actualizando con su respectivo botón, podrás ir capturando tus pronósticos para las siguientes etapas ( [**Cuartos de Final**](#section-cuartos-de-final), [**Semifinales**](#section-semifinales), [**Finales**](#section-finales) ). 
+
+7. En la última pestaña, [**Finales**](#section-finales), después de ingresar tus predicciones para el partido por el tercer lugar y para la final, da clic en **¡TU GANADOR!** para que se desplieguen tus pronósticos para el primer, segundo y tercer lugar del mundial.
+
+8. Revisa tu quiniela por si hay algún marcador que quieras corregir. En caso de cambiar algo, asegúrate de actualizar tu quiniela haciendo click en los botones de cada fase "afectada".
+Una vez seguro da clic en: **DESCARGAR TU QUINIELA**.
+
+9. El archivo que descargues mándalo al mail de **promo.sigueme@gmail.com**. Es importante que al archivo: **NO le modifiques los datos, el formato, ni nombre de archivo**. De lo contrario no será válida.
+
+10. Si quieres cambiar resultados o realizar algún tipo de modificación, vuelve a generar el archivo en la plataforma, pero toma en cuenta que **sólo será válida la primera quiniela que recibamos en el email de promo.sigueme@gmail.com**.
+
+### ¿Cómo ganas puntos?
+
+#### Fase de grupos
+- 3 puntos por ganador 
+- 2 puntos por empate
+- 5 puntos por marcador
+
+#### De octavos a la final
+- 5 puntos por ganador
+- 8 puntos por campeón
+- 4 puntos por segundo lugar
+- 2 puntos por tercer lugar
