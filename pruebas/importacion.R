@@ -10,11 +10,12 @@ for(docname in docsnames){
 }
 
 View(alldocs)
-doc$Grupo<-as.character(doc$Grupo)
-doc$Equipo<-as.character(doc$Equipo)
+alldocs$Grupo<-as.character(alldocs$Grupo)
+alldocs$Partido<-as.character(alldocs$Partido)
+alldocs$E1E2<-as.character(alldocs$E1E2)
+alldocs$Equipo<-as.character(alldocs$Equipo)
+alldocs$nomconcursante<-as.character(alldocs$nomconcursante)
+alldocs$folio<-as.character(alldocs$folio)
 
-library(dplyr)
-View(doc%>%
-arrange(Grupo,Partido,E1E2))
-
-names(doc)
+alldocs<-alldocs%>%
+  arrange(Grupo,Partido,E1E2)

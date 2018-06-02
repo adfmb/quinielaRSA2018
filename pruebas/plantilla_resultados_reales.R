@@ -17,8 +17,9 @@ resultados_reales<-doc%>%
   select(one_of(c(cols_ids,cols_resultados)))%>%
   mutate_at(vars(one_of(cols_resultados)),to_zero)%>%
   arrange(Grupo,Partido,E1E2)%>%
-  mutate(Equipo=replace(Equipo, Grupo=="W", "por_definir"))
+  mutate(Equipo=replace(Equipo, Grupo=="W", "por_definir"),
+         status_juego="por_jugar")
 
 View(resultados_reales)
 write.csv(resultados_reales,"data/resultados_reales.csv",row.names = F)
-resultados_reales<-read.csv("data/resultados_reales.csv",header=T)
+# resultados_reales<-read.csv("data/resultados_reales.csv",header=T)
