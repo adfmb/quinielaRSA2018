@@ -56,6 +56,8 @@ gb_nomb_grupopartido<-alldocs_selecF01_pterminados%>%
             min_Difgolesfavor=min(Dif_GF),
             max_Difgolesfavor=max(Dif_GF),
             Marcador_correcto_partido=if_else(min_Difgolesfavor==0 & max_Difgolesfavor==0,1,0),
-            Puntos_Resultado=if_else(Resultado_correcto_partido==1))
+            Puntos_Resultado = 3*Resultado_correcto_partido_Ganador + 2*Resultado_correcto_partido_Empate,
+            Puntos_Marcador = if_else(Puntos_Resultado>0 & Marcador_correcto_partido==1,5,0),
+            Puntos_Partido = Puntos_Resultado + Puntos_Marcador)
 
 names(doc)
