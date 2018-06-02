@@ -1,4 +1,5 @@
 docsnames<-list.files("data/")
+docsnames<-docsnames[grep("@",docsnames)]
 alldocs<-data.frame()
 
 for(docname in docsnames){
