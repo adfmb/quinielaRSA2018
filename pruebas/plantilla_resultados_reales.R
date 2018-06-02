@@ -4,7 +4,12 @@ to_zero<-function(x){
   return(0)
 }
 docsnames<-list.files("data/")
+docsnames<-docsnames[grep("@",docsnames)]
 doc<-read.csv(paste0("data/",docsnames[1]),header=T)
+doc$Grupo<-as.character(doc$Grupo)
+doc$Partido<-as.character(doc$Partido)
+doc$E1E2<-as.character(doc$E1E2)
+doc$Equipo<-as.character(doc$Equipo)
 
 cols_ids<-c("Codigo","Grupo","Partido","E1E2","Equipo")
 cols_resultados<-c("GolesFavor","GolesContra","Pts","DiferenciaGoles","Ganado","Perdido","Empate")
