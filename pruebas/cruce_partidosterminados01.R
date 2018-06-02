@@ -60,4 +60,13 @@ gb_nomb_grupopartido<-alldocs_selecF01_pterminados%>%
             Puntos_Marcador = if_else(Puntos_Resultado>0 & Marcador_correcto_partido==1,5,0),
             Puntos_Partido = Puntos_Resultado + Puntos_Marcador)
 
+gb_nomb<-gb_nomb_grupopartido%>%
+  ungroup()%>%
+  group_by(nomconcursante,folio)%>%
+  summarise(Suma_Puntos_Resultado=sum(Puntos_Resultado),
+            Suma_Puntos_Marcador=sum(Puntos_Marcador),
+            Suma_Puntos_Partido=sum(Puntos_Partido))%>%
+  arrange(desc(Suma_Puntos_Partido))
+
+
 names(doc)
