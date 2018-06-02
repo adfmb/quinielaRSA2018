@@ -14,6 +14,17 @@ resultados_reales$status_juego[1:2]<-"terminado"
 resultados_reales_F01_pterminados<-resultados_reales%>%
   filter(Grupo!="W" & status_juego!="por_jugar")
 
+# alldocs_selecF01_pterminados<-alldocs_selecF01%>%
+#   right_join(resultados_reales_F01_pterminados)%>%
+#   arrange(Grupo,Partido,nomconcursante,E1E2)%>%
+#   mutate(Dif_GF=GolesFavor-GolesFavor_real,
+#          I_Ganados=Ganado*Ganado_real,
+#          I_Perdido=Perdido*Perdido_real,
+#          I_Empate=Empate*Empate_real)%>%
+#   rowwise()%>%
+#   mutate(Resultado_correcto_equipo=sum(I_Ganados,I_Perdido,I_Empate))%>%
+#   ungroup()
+
 alldocs_selecF01_pterminados<-alldocs_selecF01%>%
   right_join(resultados_reales_F01_pterminados)%>%
   arrange(Grupo,Partido,nomconcursante,E1E2)%>%
@@ -22,8 +33,11 @@ alldocs_selecF01_pterminados<-alldocs_selecF01%>%
          I_Perdido=Perdido*Perdido_real,
          I_Empate=Empate*Empate_real)%>%
   rowwise()%>%
-  mutate(Resultado_correcto_equipo=sum(I_Ganados,I_Perdido,I_Empate))%>%
+  mutate(Resultado_correcto_equipo=sum(I_Ganados,I_Perdido,I_Empate),
+         Resultado_correcto_equipo_Ganador=Resultado_correcto_equipo*sum(I_Ganados,I_Perdido),
+         Resultado_correcto_equipo_Empate=Resultado_correcto_equipo*sum(I_Empate))%>%
   ungroup()
+
 
 View(alldocs_selecF01_pterminados)
 
