@@ -25,6 +25,14 @@ resultados_reales_F01_pterminados<-resultados_reales%>%
 #   mutate(Resultado_correcto_equipo=sum(I_Ganados,I_Perdido,I_Empate))%>%
 #   ungroup()
 
+# gb_nomb_grupopartido<-alldocs_selecF01_pterminados%>%
+#   group_by(nomconcursante,folio,Grupo,Partido)%>%
+#   summarise(Resultado_correcto_partido=as.integer(sum(Resultado_correcto_equipo)/2),
+#             min_Difgolesfavor=min(Dif_GF),
+#             max_Difgolesfavor=max(Dif_GF),
+#             Marcador_correcto_partido=if_else(min_Difgolesfavor==0 & max_Difgolesfavor==0,1,0),
+#             Puntos_Resultado=if_else(Resultado_correcto_partido==1))
+
 alldocs_selecF01_pterminados<-alldocs_selecF01%>%
   right_join(resultados_reales_F01_pterminados)%>%
   arrange(Grupo,Partido,nomconcursante,E1E2)%>%
@@ -43,7 +51,8 @@ View(alldocs_selecF01_pterminados)
 
 gb_nomb_grupopartido<-alldocs_selecF01_pterminados%>%
   group_by(nomconcursante,folio,Grupo,Partido)%>%
-  summarise(Resultado_correcto_partido=as.integer(sum(Resultado_correcto_equipo)/2),
+  summarise(Resultado_correcto_partido_Ganador=as.integer(sum(Resultado_correcto_equipo_Ganador)/2),
+            Resultado_correcto_partido_Empate=as.integer(sum(Resultado_correcto_equipo_Empate)/2),
             min_Difgolesfavor=min(Dif_GF),
             max_Difgolesfavor=max(Dif_GF),
             Marcador_correcto_partido=if_else(min_Difgolesfavor==0 & max_Difgolesfavor==0,1,0),
