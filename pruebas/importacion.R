@@ -19,3 +19,5 @@ alldocs$folio<-as.character(alldocs$folio)
 
 alldocs<-alldocs%>%
   arrange(Grupo,Partido,E1E2)
+
+saveRDS(alldocs,"data/alldocs.rds")

@@ -1,4 +1,4 @@
-"Codigo","Grupo","Partido","E1E2","Equipo","GolesFavor","GolesContra","Pts","DiferenciaGoles","Ganado","Perdido","Empate","status_juego"
+"Codigo","Grupo","Partido","E1E2","Equipo","GolesFavor_real","GolesContra_real","Pts_real","DiferenciaGoles_real","Ganado_real","Perdido_real","Empate_real","status_juego"
 "A_p1_e2","A","p1","e1","Rusia",0,0,0,0,0,0,0,"por_jugar"
 "A_p1_e2","A","p1","e2","Arabia S",0,0,0,0,0,0,0,"por_jugar"
 "A_p2_e2","A","p2","e1","Egipto",0,0,0,0,0,0,0,"por_jugar"
