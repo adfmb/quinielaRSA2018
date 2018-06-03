@@ -9,7 +9,7 @@ for(docname in docsnames){
   
 }
 
-View(alldocs)
+# View(alldocs)
 alldocs$Grupo<-as.character(alldocs$Grupo)
 alldocs$Partido<-as.character(alldocs$Partido)
 alldocs$E1E2<-as.character(alldocs$E1E2)
