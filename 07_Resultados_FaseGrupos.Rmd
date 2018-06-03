@@ -11,39 +11,18 @@ output:
 runtime: shiny
 ---
 
-Finales {data-orientation=columns}
+Resultados Fase de Grupos {data-orientation=columns}
 =======================================================================
   
   Column
 -------------------------------------
   
 ```{r}
-e61<-reactive({#input$buttonA, {
-  etopn(listaSemis()$data_EquipoPartido[listaSemis()$data_EquipoPartido$Partido==61,],n=2)
-})
-e62<-reactive({#input$buttonA, {
-  etopn(listaSemis()$data_EquipoPartido[listaSemis()$data_EquipoPartido$Partido==62,],n=2)
-})
-
-vFinales <- reactiveValues(OK = c(F,F))
-
-observeEvent(input$buttonSemis, {
-  if(listaSemis()=="MENSAJE SIN CONCLUIR FASE DE CUARTOS"){
-    vFinales$OK[1] <- F
-    vFinales$OK[2] <- F
-  }else{
-    vFinales$OK[1] <- listaSemis()$marcaBoton
-    vFinales$OK[2] <- sum(listaSemis()$data_EquipoPartido$Empate)==0
-  }
-})
-
-alarmaSemis<-paste0("¡¡O.O Chequemos las fases anteriores DX DX!!")
+source("utils/importacion.R")
 ```
 
-<!-- Row -->
-  <!-- ------------------------------------- -->
-  
-### FINAL
+
+### 
   
 ```{r}
 
