@@ -36,7 +36,7 @@ resultados_reales_F01_pterminados<-resultados_reales%>%
 alldocs_selecF01_pterminados<-alldocs_selecF01%>%
   right_join(resultados_reales_F01_pterminados)%>%
   arrange(Grupo,Partido,nomconcursante,E1E2)%>%
-  mutate(Dif_GF=GolesFavor-GolesFavor_real,
+  mutate(Dif_GF=as.integer(GolesFavor-GolesFavor_real),
          I_Ganados=Ganado*Ganado_real,
          I_Perdido=Perdido*Perdido_real,
          I_Empate=Empate*Empate_real)%>%
@@ -53,8 +53,8 @@ gb_nomb_grupopartido<-alldocs_selecF01_pterminados%>%
   group_by(nomconcursante,folio,Grupo,Partido)%>%
   summarise(Resultado_correcto_partido_Ganador=as.integer(sum(Resultado_correcto_equipo_Ganador)/2),
             Resultado_correcto_partido_Empate=as.integer(sum(Resultado_correcto_equipo_Empate)/2),
-            min_Difgolesfavor=min(Dif_GF),
-            max_Difgolesfavor=max(Dif_GF),
+            min_Difgolesfavor=as.integer(min(Dif_GF)),
+            max_Difgolesfavor=as.integer(max(Dif_GF)),
             Marcador_correcto_partido=if_else(min_Difgolesfavor==0 & max_Difgolesfavor==0,1,0),
             Puntos_Resultado = 3*Resultado_correcto_partido_Ganador + 2*Resultado_correcto_partido_Empate,
             Puntos_Marcador = if_else(Puntos_Resultado>0 & Marcador_correcto_partido==1,5,0),
