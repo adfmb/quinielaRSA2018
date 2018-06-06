@@ -100,7 +100,7 @@ generate_gbs_F01<-function(alldocs=alldocs,resultados_reales=resultados_reales){
     ungroup()
   
   
-  ###FALTA EL IF_ELSE Fase="Grupos")
+  ###FALTA EL IF_ELSE Fase="Grupos") ---- Por ahora esta funcion será solo para Fase de Grupos
   gb_nomb_grupopartido<-alldocs_selecF01_pterminados%>%
     group_by(nomconcursante,folio,Grupo,Partido)%>%
     summarise(Resultado_correcto_partido_Ganador=as.integer(sum(Resultado_correcto_equipo_Ganador)/2),
@@ -120,5 +120,6 @@ generate_gbs_F01<-function(alldocs=alldocs,resultados_reales=resultados_reales){
               Suma_Puntos_Partido=sum(Puntos_Partido))%>%
     arrange(desc(Suma_Puntos_Partido))
   
-  
+  return(list("gb_nomb_grupopartido"=gb_nomb_grupopartido,
+              "gb_nomb"=gb_nomb))
 }
