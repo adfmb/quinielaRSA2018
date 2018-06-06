@@ -6,10 +6,13 @@ to_zero<-function(x){
 docsnames<-list.files("data/")
 docsnames<-docsnames[grep("@",docsnames)]
 doc<-read.csv(paste0("data/",docsnames[1]),header=T)
-doc$Grupo<-as.character(doc$Grupo)
-doc$Partido<-as.character(doc$Partido)
-doc$E1E2<-as.character(doc$E1E2)
-doc$Equipo<-as.character(doc$Equipo)
+doc<-doc%>%
+  mutate_at(vars(Grupo,Partido,E1E2,Equipo,Equipo_gsub),.funs = funs(as.character))
+
+# doc$Grupo<-as.character(doc$Grupo)
+# doc$Partido<-as.character(doc$Partido)
+# doc$E1E2<-as.character(doc$E1E2)
+# doc$Equipo<-as.character(doc$Equipo)
 
 cols_ids<-c("Codigo","Grupo","Partido","E1E2","Equipo","Equipo_gsub")
 cols_resultados<-c("GolesFavor","GolesContra","Pts","DiferenciaGoles","Ganado","Perdido","Empate")
