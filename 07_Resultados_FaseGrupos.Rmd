@@ -103,7 +103,18 @@ fluidRow(
 
 
 
-Column {data-width=200}
+Column {data-width=400}
 -------------------------------------
   
 ### Tabla de Posiciones
+
+```{r}
+# renderTable({
+#   
+#   as.matrix(gbs$gb_nomb)
+#   
+#   })
+tb1<-gbs$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_Marcador),desc(Suma_Puntos_Resultado))
+names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts Totales")
+knitr::kable(tb1)
+```
