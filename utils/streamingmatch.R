@@ -22,6 +22,6 @@ streamingmatch<-function(Grupo_sm="A",Partido_sm="p1",alldocs=alldocs,resultados
   sm<-prediccones_sm01%>%
     left_join(pts_sm00)
   
-    
+  return(sm)
   
 }
