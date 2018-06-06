@@ -8,8 +8,10 @@ alldocs_selecF01<-alldocs%>%
 
 resultados_reales<-read.csv("data/resultados_reales.csv",header=T)
 resultados_reales$Empate_real[1:2]<-1
-resultados_reales$status_juego<-as.character(resultados_reales$status_juego)
-resultados_reales$status_juego[1:2]<-"terminado"
+resultados_reales<-resultados_reales%>%
+  mutate_at(vars(Grupo,Partido,E1E2,status_juego),.funs = funs(as.character))
+# resultados_reales$status_juego<-as.character(resultados_reales$status_juego)
+# resultados_reales$status_juego[1:2]<-"terminado"
 
 resultados_reales_F01_pterminados<-resultados_reales%>%
   filter(Grupo!="W" & status_juego!="por_jugar")
@@ -72,12 +74,20 @@ gb_nomb<-gb_nomb_grupopartido%>%
 
 names(doc)
 
-generate_gbs<-function(sub_alldocs=alldocs_selecF01,sub_resultados_reales=resultados_reales_F01_pterminados,
-                                        Fase="Grupos"){
+generate_gbs_F01<-function(alldocs=alldocs,resultados_reales=resultados_reales){#,
+                                        # Fase="Grupos"){
   
-  alldocs_selecF01_pterminados<-sub_alldocs%>%
-    right_join(sub_resultados_reales%>%
-                 mutate_at(c("Grupo","Partido","E1E2"),funs(as.character)))%>%
+  alldocs_selecF01<-alldocs%>%
+    select(nomconcursante,folio,Grupo,Partido,E1E2,GolesFavor,Ganado,Perdido,Empate)%>%
+    mutate_at(vars(Grupo,Partido,E1E2),.funs = funs(as.character))%>%
+    filter(Grupo!="W")
+  
+  resultados_reales_F01_pterminados<-resultados_reales%>%
+    mutate_at(vars(Grupo,Partido,E1E2,status_juego),.funs = funs(as.character))%>%
+    filter(Grupo!="W" & status_juego!="por_jugar")
+  
+  alldocs_selecF01_pterminados<-alldocs_selecF01%>%
+    right_join(resultados_reales_F01_pterminados)%>%
     arrange(Grupo,Partido,nomconcursante,E1E2)%>%
     mutate(Dif_GF=as.integer(GolesFavor-GolesFavor_real),
            I_Ganados=Ganado*Ganado_real,
