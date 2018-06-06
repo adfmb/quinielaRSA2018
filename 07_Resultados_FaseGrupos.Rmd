@@ -19,8 +19,10 @@ Resultados Fase de Grupos {data-orientation=columns}
   
 ```{r}
 source("utils/importacion.R")
+source("utils/generate_gbs_F01.R")
 resultados_reales<-read.csv("data/resultados_reales.csv",header=T)
-gbs<-generate_gbs_F01(alldocs)
+gbs<-generate_gbs_F01(alldocs = alldocs,resultados_reales = resultados_reales)
+gbs$gb_nomb_grupopartido
 ```
 
 
