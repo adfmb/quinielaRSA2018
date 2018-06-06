@@ -45,5 +45,6 @@ generate_gbs_F01<-function(alldocs=alldocs,resultados_reales=resultados_reales){
     arrange(desc(Suma_Puntos_Partido))
   
   return(list("gb_nomb_grupopartido"=gb_nomb_grupopartido,
-              "gb_nomb"=gb_nomb))
+              "gb_nomb"=gb_nomb,
+              "alldocs_selecF01_pterminados"=alldocs_selecF01_pterminados))
 }
