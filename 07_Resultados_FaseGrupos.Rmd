@@ -19,6 +19,8 @@ Resultados Fase de Grupos {data-orientation=columns}
   
 ```{r}
 source("utils/importacion.R")
+resultados_reales<-read.csv("data/resultados_reales.csv",header=T)
+gbs<-generate_gbs_F01(alldocs)
 ```
 
 
