@@ -53,14 +53,18 @@ library(DT)
 datatable(sm$sm%>%select(-nomconcursante,-Partido),
           extensions = 'FixedColumns',
           options=list(
-            pageLength=5,
-            fixedColumns=list(leftColumns=2)
+            dom = 'RMDCT<"clear">lfrtip',
+            searchHighlight = TRUE,
+            # tableTools = list(sSwfPath = copySWF('www')),
+            pageLength = 5,
+            scrollX = TRUE,
+            fixedColumns =list(leftColumns=2)
             ),
           rownames=F)#%>%
             # rename(Concursante=nomconcursante)
 ```
 
-Column {data-width=300}
+Column {data-width=350}
 -------------------------------------
   
 ### Tabla de Posiciones
