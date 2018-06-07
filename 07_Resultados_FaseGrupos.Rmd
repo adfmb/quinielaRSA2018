@@ -50,7 +50,7 @@ kable(sm$show_tblsm)
 # library(knitr)
 # kable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante))
 library(DT)
-datatable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante),options=list(pageLength=5))
+datatable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante),options=list(pageLength=3))
 ```
 
 Column {data-width=300}
