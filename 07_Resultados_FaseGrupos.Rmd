@@ -47,8 +47,10 @@ kable(sm$show_tblsm)
 
 ### Pronósticos
 ```{r echo = FALSE, results = 'asis'}
-library(knitr)
-kable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante))
+# library(knitr)
+# kable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante))
+library(DT)
+datatable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante),options=list(pageLength=5))
 ```
 
 Column {data-width=300}
