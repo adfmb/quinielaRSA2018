@@ -48,10 +48,10 @@ kable(sm$show_tblsm)
 ### Pronósticos
 ```{r echo = FALSE, results = 'asis'}
 library(knitr)
-kable(sm$sm)
+kable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante))
 ```
 
-Column {data-width=400}
+Column {data-width=300}
 -------------------------------------
   
 ### Tabla de Posiciones
