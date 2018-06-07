@@ -35,78 +35,21 @@ gbs<-generate_gbs_F01(alldocs = alldocs,resultados_reales = resultados_reales)
 ```
 
 ```{r}
-Grupo_sm1<-"A"
-Partido_sm1<-"p1"
-p1e1<-0
-p1e2<-0
-sm1<-streamingmatch(Grupo_sm1,Partido_sm1,alldocs = alldocs,resultados_reales = resultados_reales)
-
-Grupo_sm2<-"B"
-Partido_sm2<-"p1"
-p2e1<-0
-p2e2<-0
-sm2<-streamingmatch(Grupo_sm2,Partido_sm2,alldocs = alldocs,resultados_reales = resultados_reales)
+sm<-streamingmatch(alldocs = alldocs,resultados_reales = resultados_reales)
 ```
 
 
-### Partido 1
-  
-```{r}
-tbsm1<-sm1$sm%>%rename(Concursante=nomconcursante)%>%select(1:4)
-fluidRow(
-  
-  # column(4,
-  #        h2(paste0("W",partido1))
-  # ),
-  # 
-  column(12,
-          tags$div(
-             HTML(
-               paste(
-                 tags$span(style="color:black", sm1$E1),
-                 tags$span(style="color:white", "--"),
-                 tags$span(style="color:red", p1e1),
-                 tags$span(style="color:white", "-------"),
-                 tags$span(style="color:black", "vs"),
-                 tags$span(style="color:white", "-------"),
-                 tags$span(style="color:black", sm1$E2),
-                 tags$span(style="color:white", "--"),
-                 tags$span(style="color:red", p1e2),
-                 sep = ""))
-          )
-         )
-)
-
-knitr::kable(tbsm1)
+### Partidos en juego
+```{r echo = FALSE, results = 'asis'}
+library(knitr)
+kable(sm$show_tblsm)
 ```
 
-### Partido 2
-```{r}
-tbsm2<-sm2$sm%>%rename(Concursante=nomconcursante)%>%select(1:4)
-
-fluidRow(
-  column(12,
-          tags$div(
-             HTML(
-               paste(
-                 tags$span(style="color:black", sm2$E1),
-                 tags$span(style="color:white", "--"),
-                 tags$span(style="color:red", p2e1),
-                 tags$span(style="color:white", "-------"),
-                 tags$span(style="color:black", "vs"),
-                 tags$span(style="color:white", "-------"),
-                 tags$span(style="color:black", sm2$E2),
-                 tags$span(style="color:white", "--"),
-                 tags$span(style="color:red", p2e2),
-                 sep = ""))
-          )
-         )
-)
-
-knitr::kable(tbsm2)
+### Pronósticos
+```{r echo = FALSE, results = 'asis'}
+library(knitr)
+kable(sm$sm)
 ```
-
-
 
 Column {data-width=400}
 -------------------------------------
@@ -123,3 +66,84 @@ tb1<-gbs$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_Marcador),
 names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts Totales")
 knitr::kable(tb1)
 ```
+
+
+
+
+
+
+
+
+
+
+<!-- ```{r} -->
+<!-- Grupo_sm1<-"A" -->
+<!-- Partido_sm1<-"p1" -->
+<!-- p1e1<-0 -->
+<!-- p1e2<-0 -->
+<!-- sm1<-streamingmatch(Grupo_sm1,Partido_sm1,alldocs = alldocs,resultados_reales = resultados_reales) -->
+
+<!-- Grupo_sm2<-"B" -->
+<!-- Partido_sm2<-"p1" -->
+<!-- p2e1<-0 -->
+<!-- p2e2<-0 -->
+<!-- sm2<-streamingmatch(Grupo_sm2,Partido_sm2,alldocs = alldocs,resultados_reales = resultados_reales) -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- tbsm1<-sm1$sm%>%rename(Concursante=nomconcursante)%>%select(1:4) -->
+<!-- fluidRow( -->
+
+<!--   # column(4, -->
+<!--   #        h2(paste0("W",partido1)) -->
+<!--   # ), -->
+<!--   #  -->
+<!--   column(12, -->
+<!--           tags$div( -->
+<!--              HTML( -->
+<!--                paste( -->
+<!--                  tags$span(style="color:black", sm1$E1), -->
+<!--                  tags$span(style="color:white", "--"), -->
+<!--                  tags$span(style="color:red", p1e1), -->
+<!--                  tags$span(style="color:white", "-------"), -->
+<!--                  tags$span(style="color:black", "vs"), -->
+<!--                  tags$span(style="color:white", "-------"), -->
+<!--                  tags$span(style="color:black", sm1$E2), -->
+<!--                  tags$span(style="color:white", "--"), -->
+<!--                  tags$span(style="color:red", p1e2), -->
+<!--                  sep = "")) -->
+<!--           ) -->
+<!--          ) -->
+<!-- ) -->
+
+<!-- knitr::kable(tbsm1) -->
+<!-- ``` -->
+
+<!-- ### Partido 2 -->
+<!-- ```{r} -->
+<!-- tbsm2<-sm2$sm%>%rename(Concursante=nomconcursante)%>%select(1:4) -->
+
+<!-- fluidRow( -->
+<!--   column(12, -->
+<!--           tags$div( -->
+<!--              HTML( -->
+<!--                paste( -->
+<!--                  tags$span(style="color:black", sm2$E1), -->
+<!--                  tags$span(style="color:white", "--"), -->
+<!--                  tags$span(style="color:red", p2e1), -->
+<!--                  tags$span(style="color:white", "-------"), -->
+<!--                  tags$span(style="color:black", "vs"), -->
+<!--                  tags$span(style="color:white", "-------"), -->
+<!--                  tags$span(style="color:black", sm2$E2), -->
+<!--                  tags$span(style="color:white", "--"), -->
+<!--                  tags$span(style="color:red", p2e2), -->
+<!--                  sep = "")) -->
+<!--           ) -->
+<!--          ) -->
+<!-- ) -->
+
+<!-- knitr::kable(tbsm2) -->
+<!-- ``` -->
+
+
