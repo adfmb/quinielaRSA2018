@@ -52,7 +52,7 @@ sm2<-streamingmatch(Grupo_sm2,Partido_sm2,alldocs = alldocs,resultados_reales = 
 ### Partido 1
   
 ```{r}
-
+tbsm1<-sm1$sm%>%rename(Concursante=nomconcursante)%>%select(1:4)
 fluidRow(
   
   # column(4,
@@ -76,10 +76,13 @@ fluidRow(
           )
          )
 )
+
+knitr::kable(tbsm1)
 ```
 
 ### Partido 2
 ```{r}
+tbsm2<-sm2$sm%>%rename(Concursante=nomconcursante)%>%select(1:4)
 
 fluidRow(
   column(12,
@@ -99,6 +102,8 @@ fluidRow(
           )
          )
 )
+
+knitr::kable(tbsm2)
 ```
 
 
