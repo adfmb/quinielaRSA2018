@@ -39,18 +39,19 @@ sm<-streamingmatch(alldocs = alldocs,resultados_reales = resultados_reales)
 ```
 
 
-### Partidos en juego
+### Partidos en juego {data-height=400}
 ```{r echo = FALSE, results = 'asis'}
 library(knitr)
 kable(sm$show_tblsm)
 ```
 
-### Pronósticos
+### Pronósticos {data-height=800}
 ```{r echo = FALSE, results = 'asis'}
 # library(knitr)
 # kable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante))
 library(DT)
-datatable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante),options=list(pageLength=3))
+datatable(sm$sm%>%select(-nomconcursante,-Partido),options=list(pageLength=5),rownames=F)#%>%
+            # rename(Concursante=nomconcursante)
 ```
 
 Column {data-width=300}
