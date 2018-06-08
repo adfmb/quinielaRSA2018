@@ -77,16 +77,16 @@ Column {data-width=400}
 #   })
 tb1<-gbs$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_Marcador),desc(Suma_Puntos_Resultado))
 names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts Totales")
-datatable(tb1,
-          extensions = 'FixedColumns',
-          options=list(
-            dom = 'RMDCT<"clear">lfrtip',
-            searchHighlight = TRUE,
-            # tableTools = list(sSwfPath = copySWF('www')),
-            pageLength = 15,
-            scrollX = TRUE,
-            fixedColumns =list(leftColumns=2)
-            ),
-          rownames=F)
-# knitr::kable(tb1)
+# datatable(tb1,
+#           extensions = 'FixedColumns',
+#           options=list(
+#             dom = 'RMDCT<"clear">lfrtip',
+#             searchHighlight = TRUE,
+#             # tableTools = list(sSwfPath = copySWF('www')),
+#             pageLength = 15,
+#             scrollX = TRUE,
+#             fixedColumns =list(leftColumns=2)
+#             ),
+#           rownames=F)
+knitr::kable(tb1)
 ```
