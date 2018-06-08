@@ -1,14 +1,19 @@
 ---
 title: "QUINIELA RUSIA 2018"
-subtitle: "Sígueme A 2018"
-output: 
-  flexdashboard::flex_dashboard:
-    orientation: rows
-    # vertical_layout: scroll
-    logo: football-soccer-ball-48-183228.png
-    theme: cerulean
-    source_code: "https://github.com/adfmb/quinielaRSA2018"
+resource_files:
+- data/2018-04-15 16_36_55holi____hotmail.com.csv
+- data/2018-06-02 16_37_53_participante@gmail.com_Z99.csv
+- data/2018-06-02 19_48_43_holicomoestas@biengracias.com_Y99.csv
+- data/2018-06-05 14_35_11_d_c.csv
+- data/2018-06-05 19_42_42_holiparticipante3@yahoo.com_x98.csv
 runtime: shiny
+output:
+  flexdashboard::flex_dashboard:
+    logo: football-soccer-ball-48-183228.png
+    orientation: rows
+    source_code: https://github.com/adfmb/quinielaRSA2018
+    theme: cerulean
+subtitle: Sígueme A 2018
 ---
 
 ```{r setup, include=FALSE}
@@ -46,7 +51,7 @@ options(digits = 0)
 ```{r , child = '06_finales.Rmd'}
 ```
 
-```{r , child = '07_Resultados_FaseGrupos.Rmd'}
-```
+<!-- ```{r , child = '07_Resultados_FaseGrupos.Rmd'} -->
+<!-- ``` -->
 
 

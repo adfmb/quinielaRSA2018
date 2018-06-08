@@ -18,6 +18,7 @@ Fase de Grupos {data-orientation=columns data-navmenu="Resultados del día"}
 -------------------------------------
   
 ```{r, include=FALSE}
+# options(shiny.sanitize.errors = TRUE)
 library(dplyr)
 library(knitr)
 library(DT)
