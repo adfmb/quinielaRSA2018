@@ -19,6 +19,8 @@ Fase de Grupos {data-orientation=columns data-navmenu="Resultados del día"}
   
 ```{r, include=FALSE}
 library(dplyr)
+library(knitr)
+library(DT)
 source("utils/importacion.R")
 source("utils/generate_gbs_F01.R")
 source("utils/streamingmatch.R")
@@ -41,15 +43,17 @@ sm<-streamingmatch(alldocs = alldocs,resultados_reales = resultados_reales)
 
 ### Partidos en juego {data-height=400}
 ```{r echo = FALSE, results = 'asis'}
-library(knitr)
-kable(sm$show_tblsm)
+if(nrow(sm$show_tblsm)==0){
+  datatable(sm$show_tblsm)
+}else{
+  kable(sm$show_tblsm)
+}
 ```
 
 ### Pronósticos {data-height=800}
 ```{r echo = FALSE, results = 'asis'}
 # library(knitr)
 # kable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante))
-library(DT)
 datatable(sm$sm%>%select(-nomconcursante,-Partido),
           extensions = 'FixedColumns',
           options=list(
