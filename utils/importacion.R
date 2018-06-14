@@ -1,14 +1,18 @@
 importa_alldocs<-function(){
   
   library(dplyr)
-  docsnames<-list.files("data/")
+  docsnames<-list.files("Quinielas_Grupo_A/")
   docsnames<-docsnames[grep("@",docsnames)]
   alldocs<-data.frame()
-  
+  # options(warn=1)
   for(docname in docsnames){
     print(docname)
-    doc<-read.csv(paste0("data/",docname),header=T)
-    alldocs<-rbind(alldocs,doc)
+    doc<-read.csv(paste0("Quinielas_Grupo_A/",docname),header=T)
+    doc<-doc%>%
+      mutate_at(.vars = c("Codigo","Grupo","Partido","E1E2","Equipo",
+                          "Equipo_gsub","nomequipo",
+                          "nomconcursante","folio","correo"),.funs = as.character)
+    alldocs<-bind_rows(alldocs,doc)#rbind(alldocs,doc)
     
   }
   

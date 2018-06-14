@@ -28,7 +28,7 @@ streamingmatch<-function(alldocs=alldocs,resultados_reales=resultados_reales){
   gbs_sm00<-generate_gbs_F01(prediccones_sm00,reales_sm)
   
   equipos_orden<-as.character(as.data.frame(reales_sm%>%arrange(Grupo,Partido,E1E2))$Equipo_gsub)
-  prediccones_sm01<-prediccones_sm00%>%
+  predicciones_sm01<-prediccones_sm00%>%
     select(nomconcursante,folio,Grupo,Partido,Equipo_gsub,GolesFavor)%>%
     spread(Equipo_gsub,GolesFavor,fill = "-")%>%
     select(nomconcursante,folio,Grupo,Partido,one_of(equipos_orden))%>%
@@ -38,7 +38,7 @@ streamingmatch<-function(alldocs=alldocs,resultados_reales=resultados_reales){
     ungroup()%>%
     select(nomconcursante,folio,Grupo,Partido,Puntos_Resultado,Puntos_Marcador,Puntos_Partido)
   
-  sm<-prediccones_sm01%>%
+  sm<-predicciones_sm01%>%
     left_join(pts_sm00)
   
   return(list("sm"=sm,"show_tblsm"=show_tblsm))
