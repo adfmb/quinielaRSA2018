@@ -8,17 +8,19 @@ streamingmatch<-function(alldocs=alldocs,resultados_reales=resultados_reales){
     filter(Grupo!="W" & status_juego=="jugando")
   
   show_tblsm<-reales_sm%>%distinct(Grupo,Partido)%>%
-    mutate(Goles_e1=0)%>%
+    # mutate(Goles_e1=0)%>%
     left_join(reales_sm%>%
                 filter(E1E2=="e1")%>%
-                select(Grupo,Partido,Equipo_gsub)%>%
-                rename(Equipo1=Equipo_gsub))%>%
+                select(Grupo,Partido,GolesFavor_real,Equipo_gsub)%>%
+                rename(Equipo1=Equipo_gsub)%>%
+                rename(Goles_e1=GolesFavor_real))%>%
     mutate(vs="vs")%>%
     left_join(reales_sm%>%
                 filter(E1E2=="e2")%>%
-                select(Grupo,Partido,Equipo_gsub)%>%
-                rename(Equipo2=Equipo_gsub))%>%
-    mutate(Goles_e2=0)
+                select(Grupo,Partido,Equipo_gsub,GolesFavor_real)%>%
+                rename(Equipo2=Equipo_gsub)%>%
+                rename(Goles_e2=GolesFavor_real))#%>%
+    # mutate(Goles_e2=0)
   
   prediccones_sm00<-alldocs%>%
     # filter(Grupo==Grupo_sm & Partido==Partido_sm)  
