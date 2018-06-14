@@ -33,6 +33,9 @@ options(digits = 0)
 ```{r , child = '00_registro.Rmd'}
 ```
 
+```{r , child = '07_Resultados_FaseGrupos.Rmd'}
+```
+
 ```{r , child = '01_como_jugar.Rmd'}
 ```
 
@@ -49,9 +52,6 @@ options(digits = 0)
 ```
 
 ```{r , child = '06_finales.Rmd'}
-```
-
-```{r , child = '07_Resultados_FaseGrupos.Rmd'}
 ```
 
 
