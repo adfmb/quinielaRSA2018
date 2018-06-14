@@ -61,7 +61,7 @@ datatable(sm$sm%>%select(-nomconcursante,-Partido),
             dom = 'RMDCT<"clear">lfrtip',
             searchHighlight = TRUE,
             # tableTools = list(sSwfPath = copySWF('www')),
-            pageLength = 5,
+            pageLength = 10,
             scrollX = TRUE,
             fixedColumns =list(leftColumns=2)
             ),
@@ -93,9 +93,9 @@ names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts T
 #             fixedColumns =list(leftColumns=2)
 #             ),
 #           rownames=F)
-if(nrow(tb1)==0){
+# if(nrow(tb1)==0){
   datatable(tb1)
-}else{
-  kable(tb1)
-}
+# }else{
+#   kable(tb1)
+# }
 ```
