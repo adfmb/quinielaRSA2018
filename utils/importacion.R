@@ -11,6 +11,9 @@ importa_alldocs<-function(overwrite=F){
       #2018-06-12 00_39_59_o.lopezarellanos@gmail.com_A035.csv
       #2018-06-12 01_13_16_rios.fabiola@hotmail.com_A065.csv
       #Rusia 2018 - Quiniela ANnie@.csv
+      
+      ##quiniela mundial FOLIO A016.csv
+      ##2018-06-14 17_21_56__.csv
       print(docname)
       doc<-read.csv(paste0("Quinielas_Grupo_A/",docname),header=T) 
       doc<-doc%>%
