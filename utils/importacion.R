@@ -10,6 +10,7 @@ importa_alldocs<-function(overwrite=F){
     for(docname in docsnames){
       #2018-06-12 00_39_59_o.lopezarellanos@gmail.com_A035.csv
       #2018-06-12 01_13_16_rios.fabiola@hotmail.com_A065.csv
+      #Rusia 2018 - Quiniela ANnie@.csv
       print(docname)
       doc<-read.csv(paste0("Quinielas_Grupo_A/",docname),header=T) 
       doc<-doc%>%
