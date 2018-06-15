@@ -8,8 +8,10 @@ importa_alldocs<-function(overwrite=F){
     alldocs<-data.frame()
     # options(warn=1)
     for(docname in docsnames){
+      #2018-06-12 00_39_59_o.lopezarellanos@gmail.com_A035.csv
+      #2018-06-12 01_13_16_rios.fabiola@hotmail.com_A065.csv
       print(docname)
-      doc<-read.csv(paste0("Quinielas_Grupo_A/",docname),header=T)
+      doc<-read.csv(paste0("Quinielas_Grupo_A/",docname),header=T) 
       doc<-doc%>%
         mutate_at(.vars = c("Codigo","Grupo","Partido","E1E2","Equipo",
                             "Equipo_gsub","nomequipo",
