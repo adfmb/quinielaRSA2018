@@ -101,3 +101,11 @@ names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts T
 #   kable(tb1)
 # }
 ```
+
+### Tabla de Posiciones Grupo B
+```{r}
+  datatable(tb1%>%filter(grepl("B",folio)))
+# }else{
+#   kable(tb1)
+# }
+```
