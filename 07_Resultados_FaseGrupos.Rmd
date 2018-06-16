@@ -71,8 +71,6 @@ datatable(sm$sm%>%select(-nomconcursante,-Partido),
 
 Column {data-width=400}
 -------------------------------------
-  
-### Tabla de Posiciones
 
 ```{r}
 # renderTable({
@@ -80,7 +78,7 @@ Column {data-width=400}
 #   as.matrix(gbs$gb_nomb)
 #   
 #   })
-tb1<-gbs$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_Marcador),desc(Suma_Puntos_Resultado))
+tb1<-gbs$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_Marcador),desc(Suma_Puntos_Resultado))%>%ungroup()
 names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts Totales")
 # datatable(tb1,
 #           extensions = 'FixedColumns',
@@ -94,7 +92,11 @@ names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts T
 #             ),
 #           rownames=F)
 # if(nrow(tb1)==0){
-  datatable(tb1)
+```
+
+### Tabla de Posiciones Grupo A
+```{r}
+  datatable(tb1%>%filter(grepl("A",folio)))
 # }else{
 #   kable(tb1)
 # }
