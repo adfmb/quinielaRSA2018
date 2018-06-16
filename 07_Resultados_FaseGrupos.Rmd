@@ -25,7 +25,7 @@ library(DT)
 source("utils/importacion.R")
 source("utils/generate_gbs_F01.R")
 source("utils/streamingmatch.R")
-alldocs<-importa_alldocs(F)#readRDS("data/alldocs.rds")
+alldocs<-importa_alldocs(T)#readRDS("data/alldocs.rds")
 resultados_reales<-read.csv("data/resultados_reales.csv",header=T)
 resultados_reales<-resultados_reales%>%
   mutate_at(vars(Grupo,Partido,E1E2,status_juego),.funs = funs(as.character))
