@@ -15,14 +15,14 @@ Registro {.sidebar data-width=200}
 =======================================================================
 ![](www/russia19.jpg){#id .class width=200 height=120px}
 
-<!-- ```{r echo=FALSE} -->
-<!-- textInput("nombre_part", "Nombre completo del participante") -->
+```{r echo=FALSE}
+textInput("nombre_part", "Nombre completo del participante")
 
-<!-- textInput("nombre_equipo", "Nombre de quien te invitó") -->
+textInput("nombre_equipo", "Nombre de quien te invitó")
 
-<!-- textInput("folio", "Folio proporcionado") -->
+textInput("folio", "Folio proporcionado")
 
-<!-- textInput("correo", "Correo electrónico del participante") -->
-<!-- ``` -->
+textInput("correo", "Correo electrónico del participante")
+```
 
 [**Lee las instrucciones antes de empezar**](#¿Cómo-jugar?)
