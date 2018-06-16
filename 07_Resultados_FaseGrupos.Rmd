@@ -96,7 +96,7 @@ names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts T
 
 ### Tabla de Posiciones Grupo A
 ```{r}
-  datatable(tb1%>%filter(grepl("A",folio)))
+  datatable(tb1%>%filter(grepl("A",folio) | grepl("a",folio)))
 # }else{
 #   kable(tb1)
 # }
@@ -104,7 +104,7 @@ names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts T
 
 ### Tabla de Posiciones Grupo B
 ```{r}
-  datatable(tb1%>%filter(grepl("B",folio)))
+  datatable(tb1%>%filter(grepl("B",folio) | grepl("b",folio)))
 # }else{
 #   kable(tb1)
 # }
