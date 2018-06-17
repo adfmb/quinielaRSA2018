@@ -26,10 +26,14 @@ library(googlesheets)
 source("utils/importacion.R")
 source("utils/generate_gbs_F01.R")
 source("utils/streamingmatch.R")
+options(googlesheets.client_id = "",
+        googlesheets.client_secret = "",
+        googlesheets.httr_oauth_cache = FALSE)
 alldocs<-importa_alldocs(F)#readRDS("data/alldocs.rds")
 # resultados_reales<-read.csv("data/resultados_reales.csv",header=T)
+gs_auth(new_user = T)
 for_gs <- gs_title("resultados_reales")
-for_gs2<-gs_key("1I-Fmc-rEsjqrKwmoddgf5vhoNpgtcfgb9lFy-I6SujM")
+# for_gs2<-gs_key("1I-Fmc-rEsjqrKwmoddgf5vhoNpgtcfgb9lFy-I6SujM")
 resultados_reales <- gs_read(for_gs)
 resultados_reales<-resultados_reales%>%
   mutate_at(vars(Grupo,Partido,E1E2,status_juego),.funs = funs(as.character))
