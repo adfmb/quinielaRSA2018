@@ -2,12 +2,12 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
   # Fase="Grupos"){
   
   alldocs_selecF02<-alldocs%>%
-    select(nomconcursante,folio,Grupo,Partido,E1E2,GolesFavor,Ganado,Perdido,Empate)%>%
+    select(nomconcursante,folio,Grupo,Partido,E1E2,Equipo_gsub,GolesFavor,Ganado,Perdido,Empate)%>%
     mutate_at(vars(Grupo,Partido,E1E2),.funs = funs(as.character))%>%
-    filter(Grupo=="W")
+    filter(Grupo=="W" & Ganado==1)
   
   resultados_reales_F01_pterminados<-resultados_reales%>%
-    mutate_at(vars(Grupo,Partido,E1E2,status_juego),.funs = funs(as.character))%>%
+    mutate_at(vars(Grupo,Partido,E1E2,Equipo_gsub,status_juego),.funs = funs(as.character))%>%
     filter(Grupo=="W" & status_juego!="por_jugar")
   
   alldocs_selecF02_pterminados<-alldocs_selecF02%>%
