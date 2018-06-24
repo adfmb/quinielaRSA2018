@@ -7,4 +7,4 @@ for_gs_sheet <- gs_read(for_gs)
 
 gap_ss <- gs_gap()
 # shiny_token <- gs_auth() # authenticate w/ your desired Google identity here
-# saveRDS(shiny_token, "shiny_app_token.rds")
+# saveRDS(shiny_token, "Quinielas_Grupo_A/shiny_app_token.rds")
