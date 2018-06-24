@@ -33,6 +33,17 @@ importa_alldocs<-function(overwrite=F){
     alldocs$folio<-as.character(alldocs$folio)
     
     alldocs<-alldocs%>%
+      mutate(Codigo2=Codigo)%>%
+      mutate(Codigo2=replace(Codigo2,Grupo=="W"&Partido%in%seq(49,56),"Octavos"))%>%
+      mutate(Codigo2=replace(Codigo2,Grupo=="W"&Partido%in%seq(57,60),"Cuartos"))%>%
+      mutate(Codigo2=replace(Codigo2,Grupo=="W"&Partido%in%seq(61,62),"Semifinal"))%>%
+      mutate(Codigo2=replace(Codigo2,Grupo=="W"&Partido==63,"Tercer"))%>%
+      mutate(Codigo2=replace(Codigo2,Grupo=="W"&Partido==64,"Final"))%>%
+      mutate_at(vars(Codigo2),as.character)
+    
+    # View(alldocs%>%group_by(Codigo2,Grupo,Partido)%>%summarise(n=n()))
+    
+    alldocs<-alldocs%>%
       arrange(Grupo,Partido,E1E2)
     
     saveRDS(alldocs,"data/alldocs.rds")
