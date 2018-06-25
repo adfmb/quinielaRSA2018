@@ -14,8 +14,8 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
   alldocs_selecF02_pterminados<-alldocs_selecF02%>%
     right_join(resultados_reales_F02_pterminados%>%select(-Codigo,-Grupo,-Partido,-E1E2))%>% #Joining, by = c("Codigo2", "Equipo_gsub") -> Para considerar a todos los que están en juego
     arrange(Grupo,Partido,nomconcursante,E1E2)%>%
-    mutate(I_Ganados=Ganado*Ganado_real)#%>%,
-           # I_Perdido=Perdido*Perdido_real,
+    mutate(I_Ganados=Ganado*Ganado_real,#%>%,
+           I_Perdido=Perdido*Perdido_real)#,
            # I_Empate=Empate*Empate_real
            
     # rowwise()%>%
@@ -34,7 +34,7 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
               # Resultado_correcto_partido_Empate=as.integer(sum(Resultado_correcto_equipo_Empate)/2),
               # min_Difgolesfavor=as.integer(min(Dif_GF)),
               # max_Difgolesfavor=as.integer(max(Dif_GF)),
-              Marcador_correcto_partido=if_else(min_Difgolesfavor==0 & max_Difgolesfavor==0,1,0),
+              Puntos=if_else(min_Difgolesfavor==0 & max_Difgolesfavor==0,1,0),
               # Puntos_Resultado = 3*Resultado_correcto_partido_Ganador + 2*Resultado_correcto_partido_Empate,
               # Puntos_Marcador = if_else(Puntos_Resultado>0 & Marcador_correcto_partido==1,5,0),
               Puntos_Partido = Puntos_Resultado + Puntos_Marcador
