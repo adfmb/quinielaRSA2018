@@ -43,15 +43,17 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
               Puntos_Partido = 5*Resultado_correcto_partido_Ganador + Puntos_primlugar+Puntos_seglugar+Puntos_terlugar
               )
   
-  gb_nomb<-gb_nomb_grupopartido%>%
+  gb_nomb<-gb_nomb_codigo2%>%
     ungroup()%>%
     group_by(nomconcursante,folio)%>%
-    summarise(Suma_Puntos_Resultado=sum(Puntos_Resultado),
-              Suma_Puntos_Marcador=sum(Puntos_Marcador),
+    summarise(Suma_Puntos_Resultado=sum(Resultado_correcto_partido_Ganador),
+              Suma_Puntos_1erL=sum(Puntos_primlugar),
+              Suma_Puntos_2doL=sum(Puntos_seglugar),
+              Suma_Puntos_3erL=sum(Puntos_terlugar),
               Suma_Puntos_Partido=sum(Puntos_Partido))%>%
     arrange(desc(Suma_Puntos_Partido))
   
-  return(list("gb_nomb_grupopartido"=gb_nomb_grupopartido,
+  return(list("gb_nomb_codigo2"=gb_nomb_codigo2,
               "gb_nomb"=gb_nomb,
               "alldocs_selecF02_pterminados"=alldocs_selecF02_pterminados))
 }
