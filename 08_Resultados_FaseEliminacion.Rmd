@@ -81,7 +81,7 @@ Column {data-width=400}
 #   
 #   })
 tb1<-gbs$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_1erL),desc(Suma_Puntos_2doL),desc(Suma_Puntos_3erL))%>%ungroup()
-names(tb1)<-c("Concursante","folio","Pts x ganadores","Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar")
+names(tb1)<-c("Concursante","folio","Pts x ganadores","Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar","Pts Totales")
 # datatable(tb1,
 #           extensions = 'FixedColumns',
 #           options=list(
