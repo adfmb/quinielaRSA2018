@@ -8,7 +8,7 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
   
   resultados_reales_F01_pterminados<-resultados_reales%>%
     mutate_at(vars(Grupo,Partido,E1E2,Equipo_gsub,status_juego,Codigo2),.funs = funs(as.character))%>%
-    filter(Grupo=="W" & status_juego!="por_jugar" & Ganado_real==1)
+    filter(Grupo=="W" & status_juego!="por_jugar")# & Ganado_real==1)
   
   alldocs_selecF02_pterminados<-alldocs_selecF02%>%
     right_join(resultados_reales_F01_pterminados%>%select(-Codigo,-Grupo,-Partido,-E1E2))%>%
