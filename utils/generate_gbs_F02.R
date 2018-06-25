@@ -2,16 +2,16 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
   # Fase="Grupos"){
   
   alldocs_selecF02<-alldocs%>%
-    select(nomconcursante,folio,Grupo,Partido,E1E2,Equipo_gsub,GolesFavor,Ganado,Perdido,Empate)%>%
+    select(nomconcursante,folio,Codigo2,Grupo,Partido,E1E2,Equipo_gsub,GolesFavor,Ganado,Perdido,Empate)%>%
     mutate_at(vars(Grupo,Partido,E1E2),.funs = funs(as.character))%>%
     filter(Grupo=="W" & Ganado==1)
   
   resultados_reales_F01_pterminados<-resultados_reales%>%
-    mutate_at(vars(Grupo,Partido,E1E2,Equipo_gsub,status_juego),.funs = funs(as.character))%>%
-    filter(Grupo=="W" & status_juego!="por_jugar")
+    mutate_at(vars(Grupo,Partido,E1E2,Equipo_gsub,status_juego,Codigo2),.funs = funs(as.character))%>%
+    filter(Grupo=="W" & status_juego!="por_jugar" & Ganado_real==1)
   
   alldocs_selecF02_pterminados<-alldocs_selecF02%>%
-    right_join(resultados_reales_F01_pterminados)%>%
+    right_join(resultados_reales_F01_pterminados%>%select(-Codigo,-Grupo,-Partido,-E1E2))%>%
     arrange(Grupo,Partido,nomconcursante,E1E2)%>%
     mutate(Dif_GF=as.integer(GolesFavor-GolesFavor_real),
            I_Ganados=Ganado*Ganado_real,
