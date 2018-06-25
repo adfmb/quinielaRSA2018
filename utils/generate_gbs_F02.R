@@ -31,10 +31,13 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
   gb_nomb_grupopartido<-alldocs_selecF02_pterminados%>%
     group_by(nomconcursante,folio,Codigo2)%>%
     summarise(Resultado_correcto_partido_Ganador=as.integer(sum(I_Ganados)),#/2),
+              Resultado_correcto_partido_Perdedor=as.integer(sum(I_Perdido)),
               # Resultado_correcto_partido_Empate=as.integer(sum(Resultado_correcto_equipo_Empate)/2),
               # min_Difgolesfavor=as.integer(min(Dif_GF)),
               # max_Difgolesfavor=as.integer(max(Dif_GF)),
-              Puntos=if_else(min_Difgolesfavor==0 & max_Difgolesfavor==0,1,0),
+              Puntos_primlugar=if_else(Codigo2=="Final",8*Resultado_correcto_partido_Ganador,0),
+              Puntos_seglugar=if_else(Codigo2=="Final",4*Resultado_correcto_partido_Perdedor,0),
+              Puntos_terlugar=if_else(Codigo2=="Tercer",2*Resultado_correcto_partido_Ganador,0),
               # Puntos_Resultado = 3*Resultado_correcto_partido_Ganador + 2*Resultado_correcto_partido_Empate,
               # Puntos_Marcador = if_else(Puntos_Resultado>0 & Marcador_correcto_partido==1,5,0),
               Puntos_Partido = Puntos_Resultado + Puntos_Marcador
