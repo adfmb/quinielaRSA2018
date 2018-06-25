@@ -1,4 +1,4 @@
-generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,matches=c(49,50,51,52,53,54,55,56)){#,
+generate_gbs_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales,matches=c(49,50,51,52,53,54,55,56)){#,
   # Fase="Grupos"){
   
   alldocs_selecF02<-alldocs%>%
@@ -31,10 +31,12 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
   gb_nomb_codigo2<-alldocs_selecF02_pterminados%>%
     group_by(nomconcursante,folio,Codigo2)%>%
     summarise(Resultado_correcto_partido_Ganador=as.integer(sum(I_Ganados)),#/2),
-              Resultado_correcto_partido_Perdedor=as.integer(sum(I_Perdido)),
+              Resultado_correcto_partido_Perdedor=as.integer(sum(I_Perdido)))%>%#,
               # Resultado_correcto_partido_Empate=as.integer(sum(Resultado_correcto_equipo_Empate)/2),
               # min_Difgolesfavor=as.integer(min(Dif_GF)),
               # max_Difgolesfavor=as.integer(max(Dif_GF)),
+    ungroup()%>%
+    mutate(
               Puntos_primlugar=if_else(Codigo2=="Final",8*Resultado_correcto_partido_Ganador,0),
               Puntos_seglugar=if_else(Codigo2=="Final",4*Resultado_correcto_partido_Perdedor,0),
               Puntos_terlugar=if_else(Codigo2=="Tercer",2*Resultado_correcto_partido_Ganador,0),
@@ -44,7 +46,7 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
               )
   
   gb_nomb<-gb_nomb_codigo2%>%
-    ungroup()%>%
+    # ungroup()%>%
     group_by(nomconcursante,folio)%>%
     summarise(Suma_Puntos_Resultado=sum(Resultado_correcto_partido_Ganador),
               Suma_Puntos_1erL=sum(Puntos_primlugar),
