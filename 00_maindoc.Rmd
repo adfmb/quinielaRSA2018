@@ -36,6 +36,9 @@ options(digits = 0)
 ```{r , child = '07_Resultados_FaseGrupos.Rmd'}
 ```
 
+```{r , child = '08_Resultados_FaseEliminacion.Rmd'}
+```
+
 ```{r , child = '01_como_jugar.Rmd'}
 ```
 
