@@ -1,0 +1,113 @@
+---
+  title: "QUINIELA RUSIA 2018"
+subtitle: "Sígueme A 2018"
+output: 
+  flexdashboard::flex_dashboard:
+  orientation: rows
+# vertical_layout: scroll
+logo: football-soccer-ball-48-183228.png
+theme: cerulean
+source_code: "https://github.com/adfmb/quinielaRSA2018"
+runtime: shiny
+---
+  
+Octavos de Final {data-orientation=columns data-navmenu="Resultados del día"}
+=======================================================================
+  
+  Column  {data-width=800}
+-------------------------------------
+  
+```{r, include=FALSE}
+# options(shiny.sanitize.errors = TRUE)
+library(dplyr)
+library(knitr)
+library(DT)
+library(googlesheets)
+source("utils/importacion.R")
+source("utils/generate_gbs_F02.R")
+source("utils/streamingmatch.R")
+source("utils/global.R")
+alldocs<-importa_alldocs(F)#readRDS("data/alldocs.rds")
+# resultados_reales<-read.csv("data/resultados_reales.csv",header=T)
+for_gs <- gs_title("resultados_reales")
+resultados_reales <- gs_read(ss)
+resultados_reales<-resultados_reales%>%
+  mutate_at(vars(Grupo,Partido,E1E2,Equipo_gsub,Codigo2,status_juego),.funs = funs(as.character))
+```
+
+```{r}
+gbs<-generate_gbs_F01(alldocs = alldocs,resultados_reales = resultados_reales)
+```
+
+```{r}
+sm<-streamingmatch(alldocs = alldocs,resultados_reales = resultados_reales)
+```
+
+
+### Partidos en juego {data-height=400}
+```{r echo = FALSE, results = 'asis'}
+if(nrow(sm$show_tblsm)==0){
+  datatable(sm$show_tblsm)
+}else{
+  kable(sm$show_tblsm)
+}
+```
+
+### Pronósticos {data-height=800}
+```{r echo = FALSE, results = 'asis'}
+# library(knitr)
+# kable(sm$sm%>%select(-Partido)%>%rename(Concursante=nomconcursante))
+datatable(sm$sm%>%select(-nomconcursante,-Partido),
+          extensions = 'FixedColumns',
+          options=list(
+            dom = 'RMDCT<"clear">lfrtip',
+            searchHighlight = TRUE,
+            # tableTools = list(sSwfPath = copySWF('www')),
+            pageLength = 10,
+            scrollX = TRUE,
+            fixedColumns =list(leftColumns=2)
+          ),
+          rownames=F)#%>%
+# rename(Concursante=nomconcursante)
+```
+
+Column {data-width=400}
+-------------------------------------
+  
+  ```{r}
+# renderTable({
+#   
+#   as.matrix(gbs$gb_nomb)
+#   
+#   })
+tb1<-gbs$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_Marcador),desc(Suma_Puntos_Resultado))%>%ungroup()
+names(tb1)<-c("Concursante","folio","Pts x resultados","Pts x marcadores","Pts Totales")
+# datatable(tb1,
+#           extensions = 'FixedColumns',
+#           options=list(
+#             dom = 'RMDCT<"clear">lfrtip',
+#             searchHighlight = TRUE,
+#             # tableTools = list(sSwfPath = copySWF('www')),
+#             pageLength = 15,
+#             scrollX = TRUE,
+#             fixedColumns =list(leftColumns=2)
+#             ),
+#           rownames=F)
+# if(nrow(tb1)==0){
+```
+
+### Tabla de Posiciones Grupo A
+```{r}
+datatable(tb1%>%filter(grepl("A",folio) | grepl("a",folio)))
+# }else{
+#   kable(tb1)
+# }
+```
+
+### Tabla de Posiciones Grupo B
+```{r}
+datatable(tb1%>%filter(grepl("B",folio) | grepl("b",folio)))
+# }else{
+#   kable(tb1)
+# }
+```
