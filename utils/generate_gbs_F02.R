@@ -28,7 +28,7 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
   
   
   ###  Agrupando por nomconcursante, folio & Codigo2 (Octavos, Cuartos, Semifinales, Tercer, Final)   -------------------------------FALTA EL IF_ELSE Fase="Grupos") ---- Por ahora esta funcion será solo para Fase de Grupos
-  gb_nomb_grupopartido<-alldocs_selecF02_pterminados%>%
+  gb_nomb_codigo2<-alldocs_selecF02_pterminados%>%
     group_by(nomconcursante,folio,Codigo2)%>%
     summarise(Resultado_correcto_partido_Ganador=as.integer(sum(I_Ganados)),#/2),
               Resultado_correcto_partido_Perdedor=as.integer(sum(I_Perdido)),
