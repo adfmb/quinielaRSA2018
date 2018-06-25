@@ -40,7 +40,7 @@ generate_gbs_F2<-function(alldocs=alldocs,resultados_reales=resultados_reales,ma
               Puntos_terlugar=if_else(Codigo2=="Tercer",2*Resultado_correcto_partido_Ganador,0),
               # Puntos_Resultado = 3*Resultado_correcto_partido_Ganador + 2*Resultado_correcto_partido_Empate,
               # Puntos_Marcador = if_else(Puntos_Resultado>0 & Marcador_correcto_partido==1,5,0),
-              Puntos_Partido = Puntos_Resultado + Puntos_Marcador
+              Puntos_Partido = 5*Resultado_correcto_partido_Ganador + Puntos_primlugar+Puntos_seglugar+Puntos_terlugar
               )
   
   gb_nomb<-gb_nomb_grupopartido%>%
