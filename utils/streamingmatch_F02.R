@@ -1,4 +1,4 @@
-source("utils/generate_gbs_F01.R")
+source("utils/generate_gbs_F02.R")
 library(dplyr)
 library(tidyr)
 streamingmatch_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales){
@@ -30,6 +30,8 @@ streamingmatch_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales
   gbs_sm00<-generate_gbs_F02(prediccones_sm00,reales_sm)
   
   equipos_orden<-as.character(as.data.frame(reales_sm%>%arrange(Grupo,Partido,E1E2))$Equipo_gsub)
+  
+  #### AQUÍ HAY QUE CAMBIAR LOS PRONÓSTICOS EN GOLES, POR LLENARLOS CON "GANA"/"PIERDE" O ALGO PARECIDO
   predicciones_sm01<-prediccones_sm00%>%
     select(nomconcursante,folio,Grupo,Partido,Equipo_gsub,GolesFavor)%>%
     spread(Equipo_gsub,GolesFavor,fill = "-")%>%
