@@ -13,6 +13,8 @@ generate_gbs_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales,m
     mutate_at(vars(Grupo,Partido,E1E2),.funs = funs(as.character))%>%
     filter(Grupo=="W" & Codigo2=="Final")
   
+  alldocs_selecF02<-bind_rows(alldocs_selecF02_NF,alldocs_selecF02_F)
+  
   resultados_reales_F02_pterminados<-resultados_reales%>%
     mutate_at(vars(Grupo,Partido,E1E2,Equipo_gsub,status_juego,Codigo2),.funs = funs(as.character))%>%
     filter(Grupo=="W" & status_juego!="por_jugar")# & Ganado_real==1)
