@@ -1,10 +1,17 @@
 generate_gbs_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales,matches=c(49,50,51,52,53,54,55,56)){#,
   # Fase="Grupos"){
   
-  alldocs_selecF02<-alldocs%>%
+  alldocs_selecF02_NF<-alldocs%>%
     select(nomconcursante,folio,Codigo2,Grupo,Partido,E1E2,Equipo_gsub,GolesFavor,Ganado,Perdido,Empate)%>%
     mutate_at(vars(Grupo,Partido,E1E2),.funs = funs(as.character))%>%
-    filter(Grupo=="W" & Ganado==1)
+    filter(Grupo=="W" & Ganado==1 & Codigo2!="Final") # El problema de filtrar por Ganado es que 
+                                  # no se podrían saber los pronósticos 
+                                 # para el Perdedor de la Final
+  
+  alldocs_selecF02_F<-alldocs%>%
+    select(nomconcursante,folio,Codigo2,Grupo,Partido,E1E2,Equipo_gsub,GolesFavor,Ganado,Perdido,Empate)%>%
+    mutate_at(vars(Grupo,Partido,E1E2),.funs = funs(as.character))%>%
+    filter(Grupo=="W" & Codigo2=="Final")
   
   resultados_reales_F02_pterminados<-resultados_reales%>%
     mutate_at(vars(Grupo,Partido,E1E2,Equipo_gsub,status_juego,Codigo2),.funs = funs(as.character))%>%

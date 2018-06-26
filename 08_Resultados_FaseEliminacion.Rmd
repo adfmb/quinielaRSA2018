@@ -11,7 +11,7 @@ source_code: "https://github.com/adfmb/quinielaRSA2018"
 runtime: shiny
 ---
   
-Octavos de Final {data-orientation=columns data-navmenu="Resultados del dÃ­a"}
+Octavos de Final {data-orientation=columns data-navmenu="Resultados del día"}
 =======================================================================
   
   Column  {data-width=800}
