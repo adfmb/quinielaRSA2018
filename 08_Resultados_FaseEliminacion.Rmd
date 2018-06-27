@@ -1,6 +1,6 @@
 ---
 title: "QUINIELA RUSIA 2018"
-subtitle: "Sígueme A 2018"
+subtitle: "S?gueme A 2018"
 output: 
   flexdashboard::flex_dashboard:
   orientation: rows
@@ -8,10 +8,10 @@ output:
 logo: football-soccer-ball-48-183228.png
 theme: cerulean
 source_code: "https://github.com/adfmb/quinielaRSA2018"
-# runtime: shiny
+runtime: shiny
 ---
   
-Octavos de Final {data-orientation=columns data-navmenu="Resultados del día"}
+Octavos de Final {data-orientation=columns data-navmenu="Resultados del d?a"}
 =======================================================================
   
   Column  {data-width=800}
@@ -53,7 +53,7 @@ if(nrow(sm2$show_tblsm)==0){
 }
 ```
 
-### Pronósticos {data-height=800}
+### Pron?sticos {data-height=800}
 ```{r echo = FALSE, results = 'asis'}
 library(knitr)
 # kable(sm2$sm%>%
