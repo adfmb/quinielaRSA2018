@@ -31,14 +31,17 @@ streamingmatch_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales
   
   equipos_orden<-as.character(as.data.frame(reales_sm%>%arrange(Grupo,Partido,E1E2))$Equipo_gsub)
   
-  #### AQUÍ HAY QUE CAMBIAR LOS PRONÓSTICOS EN GOLES, POR LLENARLOS CON "GANA"/"PIERDE" O ALGO PARECIDO
+  #### AQU? HAY QUE CAMBIAR LOS PRON?STICOS EN GOLES, POR LLENARLOS CON "GANA"/"PIERDE" O ALGO PARECIDO
   predicciones_sm01<-prediccones_sm00%>%
     mutate(Resultado=if_else(Ganado==1,"Gana","Pierde"))%>%
     select(nomconcursante,folio,Grupo,Codigo2,Partido,Equipo_gsub,Resultado)%>%
     spread(Equipo_gsub,Resultado,fill = "-")%>%
     select(nomconcursante,folio,Grupo,Codigo2,Partido,one_of(equipos_orden))%>%
     arrange(Grupo,Partido,nomconcursante,folio)%>%
-    select(-Partido)
+    select(-Partido)%>%
+    group_by(nomconcursante,folio,Codigo2)%>%
+    mutate_at(.vars = vars(equipos_orden),max)%>%
+    filter(row_number()==1)
   
   pts_sm00<-gbs_sm00$gb_nomb_codigo2%>%
     ungroup()#%>%
@@ -46,6 +49,7 @@ streamingmatch_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales
   
   sm<-predicciones_sm01%>%
     left_join(pts_sm00)
+  
   
   return(list("sm"=sm,"show_tblsm"=show_tblsm))
   
