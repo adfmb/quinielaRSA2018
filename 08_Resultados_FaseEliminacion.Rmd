@@ -1,6 +1,6 @@
 ---
 title: "QUINIELA RUSIA 2018"
-subtitle: "S?gueme A 2018"
+subtitle: "Sígueme A 2018"
 output: 
   flexdashboard::flex_dashboard:
   orientation: rows
@@ -11,7 +11,7 @@ source_code: "https://github.com/adfmb/quinielaRSA2018"
 runtime: shiny
 ---
   
-Octavos de Final {data-orientation=columns data-navmenu="Resultados del d?a"}
+Octavos de Final {data-orientation=columns data-navmenu="Resultados del día"}
 =======================================================================
   
   Column  {data-width=800}
@@ -53,13 +53,17 @@ if(nrow(sm2$show_tblsm)==0){
 }
 ```
 
-### Pron?sticos {data-height=800}
+### Pronósticos {data-height=800}
 ```{r echo = FALSE, results = 'asis'}
 library(knitr)
 # kable(sm2$sm%>%
 #         # select(-Partido)%>%
 #         rename(Concursante=nomconcursante))
-datatable(sm2$sm%>%select(-nomconcursante),
+datatable(sm2$sm%>%select(-nomconcursante,
+                          -Resultado_correcto_partido_Perdedor,
+                          -Puntos_primlugar,
+                          -Puntos_seglugar,
+                          -Puntos_terlugar)%>%rename(Puntos_por_ganadores=Puntos_Partido)%>%rename(Fase=Codigo2),
           extensions = 'FixedColumns',
           options=list(
             dom = 'RMDCT<"clear">lfrtip',
