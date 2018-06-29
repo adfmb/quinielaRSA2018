@@ -59,7 +59,7 @@ sm2<-streamingmatch_F02(alldocs = alldocs,resultados_reales = resultados_reales,
 if(nrow(sm2$show_tblsm)==0){
   datatable(sm2$show_tblsm)
 }else{
-  kable(sm2$show_tblsm%>%select(-Partido))
+  kable(sm2$show_tblsm%>%select(-Partido)%>%rename(Fase=Codigo2))
 }
 ```
 
