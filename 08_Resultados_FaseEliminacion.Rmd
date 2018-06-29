@@ -66,8 +66,11 @@ datatable(sm2$sm%>%
                    -Puntos_primlugar,
                    -Puntos_seglugar,
                    -Puntos_terlugar)%>%
+            rename(Folio=folio)%>%
             rename(Puntos_por_ganadores=Puntos_Partido)%>%
-            rename(Fase=Codigo2),
+            rename(Fase=Codigo2)%>%
+            rename(`Ganadores acertados`=Ganadores_Fase_acertados)%>%
+            rename(`Puntos por ganadores`=Puntos_por_ganadores),
           extensions = 'FixedColumns',
           options=list(
             dom = 'RMDCT<"clear">lfrtip',
