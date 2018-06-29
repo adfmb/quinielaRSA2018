@@ -11,7 +11,7 @@ source_code: "https://github.com/adfmb/quinielaRSA2018"
 runtime: shiny
 ---
   
-Octavos de Final {data-orientation=columns data-navmenu="Resultados del día"}
+Cuartos de Final {data-orientation=columns data-navmenu="Resultados del día"}
 =======================================================================
   
 Column  {data-width=800}
@@ -49,7 +49,7 @@ if(!exists("gbs2")){
 
 ```{r}
 source("utils/streamingmatch_F02.R")
-sm2<-streamingmatch_F02(alldocs = alldocs,resultados_reales = resultados_reales,fase="Octavos")
+sm2<-streamingmatch_F02(alldocs = alldocs,resultados_reales = resultados_reales,fase="Semifinal")
 
 ```
 

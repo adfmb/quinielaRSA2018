@@ -105,7 +105,7 @@ Column {data-width=400 .tabset .tabset-fade}
 #   
 #   })
 tb1<-gbs2$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_1erL),desc(Suma_Puntos_2doL),desc(Suma_Puntos_3erL))%>%ungroup()
-names(tb1)<-c("Concursante","folio","Ganadores Acertados","Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar","Pts Totales")
+names(tb1)<-c("Concursante","folio","Ganadores Acertados","Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar","Pts Fase Eliminación")
 # datatable(tb1,
 #           extensions = 'FixedColumns',
 #           options=list(
@@ -122,7 +122,7 @@ names(tb1)<-c("Concursante","folio","Ganadores Acertados","Pts x 1er Lugar","Pts
 
 ### Tabla de Posiciones Grupo A
 ```{r}
-datatable(tb1%>%filter(grepl("A",folio) | grepl("a",folio)))
+datatable(tb1%>%filter(grepl("A",folio) | grepl("a",folio))%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
 # }else{
 #   kable(tb1)
 # }
@@ -130,7 +130,7 @@ datatable(tb1%>%filter(grepl("A",folio) | grepl("a",folio)))
 
 ### Tabla de Posiciones Grupo B
 ```{r}
-datatable(tb1%>%filter(grepl("B",folio) | grepl("b",folio)))
+datatable(tb1%>%filter(grepl("B",folio) | grepl("b",folio))%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
 # }else{
 #   kable(tb1)
 # }
