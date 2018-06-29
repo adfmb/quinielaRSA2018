@@ -1,11 +1,11 @@
 source("utils/generate_gbs_F02.R")
 library(dplyr)
 library(tidyr)
-streamingmatch_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales){
+streamingmatch_F02<-function(alldocs=alldocs,resultados_reales=resultados_reales,fase="Octavos"){
   
   reales_sm<-resultados_reales%>%
     # filter(Grupo==Grupo_sm & Partido==Partido_sm)
-    filter(Grupo=="W" & status_juego=="jugando")
+    filter(Grupo=="W" & status_juego=="jugando" & Codigo2==fase)
   
   show_tblsm<-reales_sm%>%select(Codigo2,Partido)%>%distinct()%>%
     # mutate(Goles_e1=0)%>%

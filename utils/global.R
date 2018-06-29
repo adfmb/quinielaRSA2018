@@ -16,6 +16,6 @@
 ## if you version control your app, don't forget to ignore the token file!
 ## e.g., put it into .gitignore
 
-googlesheets::gs_auth(token = "Quinielas_Grupo_A/shiny_app_token.rds")
+googlesheets::gs_auth(token = "../Quinielas_Grupo_A/shiny_app_token.rds")
 sheet_key <- "1I-Fmc-rEsjqrKwmoddgf5vhoNpgtcfgb9lFy-I6SujM"
 ss <- googlesheets::gs_key(sheet_key)

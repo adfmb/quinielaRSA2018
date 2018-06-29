@@ -14,7 +14,7 @@ runtime: shiny
 Octavos de Final {data-orientation=columns data-navmenu="Resultados del día"}
 =======================================================================
   
-  Column  {data-width=800}
+Column  {data-width=800}
 -------------------------------------
   
 ```{r, include=FALSE}
@@ -40,7 +40,7 @@ gbs2<-generate_gbs_F02(alldocs = alldocs,resultados_reales = resultados_reales)
 ```
 
 ```{r}
-sm2<-streamingmatch_F02(alldocs = alldocs,resultados_reales = resultados_reales)
+sm2<-streamingmatch_F02(alldocs = alldocs,resultados_reales = resultados_reales,fase="Octavos")
 ```
 
 
