@@ -62,6 +62,7 @@ library(knitr)
 datatable(sm2$sm%>%
             ungroup()%>%
             select(-nomconcursante,
+                   -Grupo,
                    -Resultado_correcto_partido_Perdedor,
                    -Puntos_primlugar,
                    -Puntos_seglugar,
