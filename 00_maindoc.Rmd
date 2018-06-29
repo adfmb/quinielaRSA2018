@@ -42,6 +42,9 @@ options(digits = 0)
 ```{r , child = '09_Resultados_FaseCuartos.Rmd'}
 ```
 
+```{r , child = '10_Resultados_FaseSemis.Rmd'}
+```
+
 <!-- ```{r , child = '01_como_jugar.Rmd'} -->
 <!-- ``` -->
 

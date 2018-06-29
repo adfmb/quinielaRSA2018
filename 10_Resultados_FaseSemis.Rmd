@@ -11,7 +11,7 @@ source_code: "https://github.com/adfmb/quinielaRSA2018"
 runtime: shiny
 ---
   
-Cuartos de Final {data-orientation=columns data-navmenu="Resultados del día"}
+Semifinales {data-orientation=columns data-navmenu="Resultados del día"}
 =======================================================================
   
 Column  {data-width=800}
