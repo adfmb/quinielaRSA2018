@@ -59,11 +59,14 @@ library(knitr)
 # kable(sm2$sm%>%
 #         # select(-Partido)%>%
 #         rename(Concursante=nomconcursante))
-datatable(sm2$sm%>%select(-nomconcursante,
-                          -Resultado_correcto_partido_Perdedor,
-                          -Puntos_primlugar,
-                          -Puntos_seglugar,
-                          -Puntos_terlugar)%>%rename(Puntos_por_ganadores=Puntos_Partido)%>%rename(Fase=Codigo2),
+datatable(sm2$sm%>%
+            ungroup()%>%
+            select(-nomconcursante,
+                   -Resultado_correcto_partido_Perdedor,
+                   -Puntos_primlugar,
+                   -Puntos_terlugar)%>%
+            rename(Puntos_por_ganadores=Puntos_Partido)%>%
+            rename(Fase=Codigo2),
           extensions = 'FixedColumns',
           options=list(
             dom = 'RMDCT<"clear">lfrtip',
