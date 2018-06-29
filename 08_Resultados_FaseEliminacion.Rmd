@@ -64,6 +64,7 @@ datatable(sm2$sm%>%
             select(-nomconcursante,
                    -Resultado_correcto_partido_Perdedor,
                    -Puntos_primlugar,
+                   -Puntos_seglugar,
                    -Puntos_terlugar)%>%
             rename(Puntos_por_ganadores=Puntos_Partido)%>%
             rename(Fase=Codigo2),
