@@ -40,11 +40,17 @@ if(!exists("resultados_reales")){
 ```
 
 ```{r}
+if(!exists("gbs")){
+  source("utils/generate_gbs_F01.R")
+  gbs<-generate_gbs_F01(alldocs = alldocs,resultados_reales = resultados_reales)
+}
+
 if(!exists("gbs2")){
   source("utils/generate_gbs_F02.R")
   gbs2<-generate_gbs_F02(alldocs = alldocs,resultados_reales = resultados_reales)
 }
 
+gb_total<-gbs$gb_nomb%>%rename(Puntos_Partido_1F=Suma_Puntos_Partido)%>%left_join(gbs2$gb_nomb%>%rename(Puntos_Partido_2F=Suma_Puntos_Partido))
 ```
 
 ```{r}
