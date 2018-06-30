@@ -36,7 +36,7 @@ options(digits = 0)
 ```{r , child = '07_Resultados_FaseGrupos.Rmd'}
 ```
 
-```{r , child = '08_Resultados_FaseEliminacion.Rmd'}
+```{r , child = '08_Resultados_FaseOctavos.Rmd'}
 ```
 
 ```{r , child = '09_Resultados_FaseCuartos.Rmd'}
@@ -48,23 +48,26 @@ options(digits = 0)
 ```{r , child = '11_Resultados_FaseTerceryFinal.Rmd'}
 ```
 
+```{r , child = '12_Totales_puntos.Rmd'}
+```
 
-<!-- ```{r , child = '01_como_jugar.Rmd'} -->
-<!-- ``` -->
 
-<!-- ```{r , child = '02_fase_de_grupos.Rmd'} -->
-<!-- ``` -->
+```{r , child = '01_como_jugar.Rmd'}
+```
 
-<!-- ```{r , child = '03_octavos_de_final.Rmd'} -->
-<!-- ``` -->
+```{r , child = '02_fase_de_grupos.Rmd'}
+```
 
-<!-- ```{r , child = '04_cuartos_de_final.Rmd'} -->
-<!-- ``` -->
+```{r , child = '03_octavos_de_final.Rmd'}
+```
 
-<!-- ```{r , child = '05_semifinales.Rmd'} -->
-<!-- ``` -->
+```{r , child = '04_cuartos_de_final.Rmd'}
+```
 
-<!-- ```{r , child = '06_finales.Rmd'} -->
-<!-- ``` -->
+```{r , child = '05_semifinales.Rmd'}
+```
+
+```{r , child = '06_finales.Rmd'}
+```
 
 
