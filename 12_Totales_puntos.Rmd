@@ -50,6 +50,7 @@ gb_total<-gbs$gb_nomb%>%rename(Puntos_Partido_1F=Suma_Puntos_Partido)%>%left_joi
 gb_total<-gb_total%>%
   mutate(Puntos_totales=Puntos_Partido_1F+Puntos_Partido_2F)%>%
   arrange(desc(Puntos_totales),desc(Puntos_Partido_1F),desc(Puntos_Partido_2F))%>%
+            rename(Concursante=nomconcursante)%>%
             rename(Folio=folio)%>%
             rename(`Puntos por resultados 1era Fase`=Suma_Puntos_Resultado)%>%
             rename(`Puntos por marcadores 1era Fase`=Suma_Puntos_Marcador)%>%
