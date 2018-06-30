@@ -33,24 +33,23 @@ options(digits = 0)
 ```{r , child = '00_registro.Rmd'}
 ```
 
-```{r , child = '07_Resultados_FaseGrupos.Rmd'}
+```{r , child = '12_Totales_puntos.Rmd'}
 ```
+
+<!-- ```{r , child = '11_Resultados_FaseTerceryFinal.Rmd'} -->
+<!-- ``` -->
+
+<!-- ```{r , child = '10_Resultados_FaseSemis.Rmd'} -->
+<!-- ``` -->
+
+<!-- ```{r , child = '09_Resultados_FaseCuartos.Rmd'} -->
+<!-- ``` -->
 
 ```{r , child = '08_Resultados_FaseOctavos.Rmd'}
 ```
 
-```{r , child = '09_Resultados_FaseCuartos.Rmd'}
+```{r , child = '07_Resultados_FaseGrupos.Rmd'}
 ```
-
-```{r , child = '10_Resultados_FaseSemis.Rmd'}
-```
-
-```{r , child = '11_Resultados_FaseTerceryFinal.Rmd'}
-```
-
-```{r , child = '12_Totales_puntos.Rmd'}
-```
-
 
 ```{r , child = '01_como_jugar.Rmd'}
 ```
