@@ -66,7 +66,10 @@ Row
 -------------------------------------
 ### Tabla de Posiciones Grupo A
 ```{r}
-datatable(gb_total%>%filter(grepl("A",Folio) | grepl("a",Folio)))#%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
+datatable(gb_total%>%filter(grepl("A",Folio) | grepl("a",Folio)),
+          options=list(
+            pageLength = 5)
+          )#%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
 # }else{
 #   kable(tb1)
 # }
@@ -76,7 +79,10 @@ Row
 -------------------------------------
 ### Tabla de Posiciones Grupo B
 ```{r}
-datatable(gb_total%>%filter(grepl("B",Folio) | grepl("b",Folio)))#%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
+datatable(gb_total%>%filter(grepl("B",Folio) | grepl("b",Folio)),
+          options=list(
+            pageLength = 5)
+          )#%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
 # }else{
 #   kable(tb1)
 # }
