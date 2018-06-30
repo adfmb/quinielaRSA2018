@@ -13,10 +13,6 @@ runtime: shiny
   
 Puntuaciones acumuladas {data-navmenu="Resultados del día"}
 =======================================================================
-  
-Row  {data-width=800}
--------------------------------------
-  
 ```{r, include=FALSE}
 # options(shiny.sanitize.errors = TRUE)
 if(!exists("alldocs")){
@@ -51,96 +47,36 @@ if(!exists("gbs2")){
 }
 
 gb_total<-gbs$gb_nomb%>%rename(Puntos_Partido_1F=Suma_Puntos_Partido)%>%left_join(gbs2$gb_nomb%>%rename(Puntos_Partido_2F=Suma_Puntos_Partido))
-```
-
-```{r}
-source("utils/streamingmatch_F02.R")
-sm2<-streamingmatch_F02(alldocs = alldocs,resultados_reales = resultados_reales,fase=c("Tercer","Final"))
-
-```
-
-
-### Partidos en juego {data-height=400}
-```{r echo = FALSE, results = 'asis'}
-if(nrow(sm2$show_tblsm)==0){
-  datatable(sm2$show_tblsm)
-}else{
-  kable(sm2$show_tblsm%>%select(-Partido)%>%rename(Fase=Codigo2))
-}
-```
-
-### Pronósticos {data-height=800}
-```{r echo = FALSE, results = 'asis'}
-library(knitr)
-# kable(sm2$sm%>%
-#         # select(-Partido)%>%
-#         rename(Concursante=nomconcursante))
-datatable(sm2$sm%>%
-            ungroup()%>%
-            select(-nomconcursante,
-                   -Grupo,
-                   -Resultado_correcto_partido_Perdedor#,
-                   # -Puntos_primlugar,
-                   # -Puntos_seglugar,
-                   # -Puntos_terlugar
-                   )%>%
+gb_total<-gb_total%>%
+  mutate(Puntos_totales=Puntos_Partido_1F+Puntos_Partido_2F)%>%
+  arrange(desc(Puntos_totales),desc(Puntos_Partido_1F),desc(Puntos_Partido_2F))%>%
             rename(Folio=folio)%>%
-            rename(Puntos_por_ganadores=Puntos_Partido)%>%
-            rename(Fase=Codigo2)%>%
-            rename(`Ganadores acertados`=Ganadores_Fase_acertados)%>%
-            rename(`Puntos por ganadores`=Puntos_por_ganadores)%>%
-            rename(`Puntos por 1er Lugar`=Puntos_primlugar)%>%
-            rename(`Puntos por 2do Lugar`=Puntos_seglugar)%>%
-            rename(`Puntos por 3er Lugar`=Puntos_terlugar),
-          extensions = 'FixedColumns',
-          options=list(
-            dom = 'RMDCT<"clear">lfrtip',
-            searchHighlight = TRUE,
-            # tableTools = list(sSwfPath = copySWF('www')),
-            pageLength = 10,
-            scrollX = TRUE,
-            fixedColumns =list(leftColumns=2)
-          ),
-          rownames=F)#%>%
-# rename(Concursante=nomconcursante)
+            rename(`Puntos por resultados 1era Fase`=Suma_Puntos_Resultado)%>%
+            rename(`Puntos por marcadores 1era Fase`=Suma_Puntos_Marcador)%>%
+            rename(`Puntos totales por 1era Fase`=Puntos_Partido_1F)%>%
+            rename(`Ganadores acertados de 2da Fase`=Ganadores_TotalesF02_acertados)%>%
+            rename(`Puntos por 1er Lugar`=Suma_Puntos_1erL)%>%
+            rename(`Puntos por 2do Lugar`=Suma_Puntos_2doL)%>%
+            rename(`Puntos por 3er Lugar`=Suma_Puntos_3erL)%>%
+            rename(`Puntos totales por 2da Fase`=Puntos_Partido_2F)%>%
+            rename(`Puntos totales`=Puntos_totales)
 ```
 
-Column {data-width=600 .tabset .tabset-fade}
+Row
 -------------------------------------
-  
-```{r}
-# renderTable({
-#   
-#   as.matrix(gbs$gb_nomb)
-#   
-#   })
-tb1<-gbs2$gb_nomb%>%arrange(desc(Suma_Puntos_Partido),desc(Suma_Puntos_1erL),desc(Suma_Puntos_2doL),desc(Suma_Puntos_3erL))%>%ungroup()
-names(tb1)<-c("Concursante","folio","Ganadores Acertados","Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar","Pts Fase Eliminación")
-# datatable(tb1,
-#           extensions = 'FixedColumns',
-#           options=list(
-#             dom = 'RMDCT<"clear">lfrtip',
-#             searchHighlight = TRUE,
-#             # tableTools = list(sSwfPath = copySWF('www')),
-#             pageLength = 15,
-#             scrollX = TRUE,
-#             fixedColumns =list(leftColumns=2)
-#             ),
-#           rownames=F)
-# if(nrow(tb1)==0){
-```
-
 ### Tabla de Posiciones Grupo A
 ```{r}
-datatable(tb1%>%filter(grepl("A",folio) | grepl("a",folio)))#%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
+datatable(gb_total%>%filter(grepl("A",Folio) | grepl("a",Folio)))#%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
 # }else{
 #   kable(tb1)
 # }
 ```
 
+Row
+-------------------------------------
 ### Tabla de Posiciones Grupo B
 ```{r}
-datatable(tb1%>%filter(grepl("B",folio) | grepl("b",folio)))#%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
+datatable(gb_total%>%filter(grepl("B",Folio) | grepl("b",Folio)))#%>%select(-one_of(c("Pts x 1er Lugar","Pts x 2do Lugar","Pts x 3er Lugar"))))
 # }else{
 #   kable(tb1)
 # }
