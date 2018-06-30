@@ -11,10 +11,10 @@ source_code: "https://github.com/adfmb/quinielaRSA2018"
 runtime: shiny
 ---
   
-Primer, Segundo y Tercer Lugar {data-orientation=columns data-navmenu="Resultados del día"}
+Puntuaciones acumuladas {data-navmenu="Resultados del día"}
 =======================================================================
   
-Column  {data-width=800}
+Row  {data-width=800}
 -------------------------------------
   
 ```{r, include=FALSE}
