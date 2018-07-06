@@ -42,8 +42,8 @@ options(digits = 0)
 <!-- ```{r , child = '10_Resultados_FaseSemis.Rmd'} -->
 <!-- ``` -->
 
-<!-- ```{r , child = '09_Resultados_FaseCuartos.Rmd'} -->
-<!-- ``` -->
+```{r , child = '09_Resultados_FaseCuartos.Rmd'}
+```
 
 ```{r , child = '08_Resultados_FaseOctavos.Rmd'}
 ```
